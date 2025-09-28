@@ -77,7 +77,7 @@ Note that here we are now using `/` instead of `\`.
 
 ### Step 7
 
-Go back to the project folder and go to **CMakeLists.txt**. 
+Go back to the project folder that you had cloned back in **Step 1** and go to **CMakeLists.txt**. 
 Find the command 
 ```cmake
 set(THIRD_PARTY_ASSETS_DIR "C:/vcpkg/packages/third-party-assets_x64-windows") 
