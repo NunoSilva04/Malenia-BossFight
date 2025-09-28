@@ -74,7 +74,7 @@ Find the command
 set(THIRD_PARTY_ASSETS_DIR "C:/vcpkg/packages/third-party-assets_x64-windows") 
 ```
 
-and replace **"C:/vcpkg/..."** with the file path that you had previously copied in step 5
+and replace **"C:/vcpkg/..."** with the file path that you had previously copied in step 6
 
 ### Step 8
 
