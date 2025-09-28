@@ -82,7 +82,7 @@ Go back to the project folder that you had cloned back in **Step 1** and go into
 set(THIRD_PARTY_ASSETS_DIR "C:/vcpkg/packages/third-party-assets_x64-windows") 
 ```
 
-and replace **"C:/vcpkg/..."** with the file path that you had previously copied in **Step 6**
+Replace **"C:/vcpkg/..."** with the file path that you had previously copied in **Step 6**
 
 ### Step 8
 
