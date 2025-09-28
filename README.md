@@ -27,8 +27,9 @@ Example: **"C:/.../vcpkg/packages/third-party-assets_x64-windows"**
 Find the command 
 ```cmake
 set(THIRD_PARTY_ASSETS_DIR "C:/vcpkg/packages/third-party-assets_x64-windows") 
+```
 
-and replace "C:/vcpkg/..."with the file path that you had previously copied in step 5
+and replace **"C:/vcpkg/..."** with the file path that you had previously copied in step 5
 
 7. Create a directory (for example build) in the main project folder. After that run the command `cmake -B <directory_name>`
 
@@ -38,4 +39,4 @@ Your folder should look something like this
 
 8. Once finished run the command `cmake --build <directory_name>`
 
-9. The .exe will be located inside the <directory_name>/Debug folder. For that just navigate all the way until where the .exe is located and run the command bossFight.exe
+9. The .exe will be located inside the **<directory_name>/Debug folder**. For that just navigate all the way until where the .exe is located and run the command `bossFight.exe`
