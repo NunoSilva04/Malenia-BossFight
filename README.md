@@ -19,8 +19,7 @@ Download the third party assets zip folder from the git repository [release page
 
 
 ### Step 3
-Extract the zip anywhere you like and copy the file path.
-Copy the absolute path to this folder **(this will be your assets path)**.
+Extract the zip anywhere you like and copy the absolute file path **(this will be your assets path)**.
 
 Example:
 ```
@@ -30,7 +29,7 @@ C:/example/path/to/third-party-assets
 **Make sure you replace all instances of `\` for `/` in your file path**
 
 **IMPORTANT:**  
-The project expects all third-party assets to be inside a folder called `third-party-assets`.  
+The project expects all third party assets to be inside a folder called `third-party-assets`.  
 
 - If extracting the zip creates a bunch of files directly on your desktop (or other location) instead of a folder, **manually create a folder named `third-party-assets`** and move all extracted contents into it. 
 - In the end you should have something like this 
@@ -57,7 +56,7 @@ C:\vcpkg>
 Run the command `vcpkg install third-party-assets --overlay-ports=C:\path\to\your\project\third-party-assets`
 
 **IMPORTANT:** 
-- Here the argument in `--overlay-ports`is not the **assets path**. It's the path that contains `portfile.cmake` and `vcpkg.json`. These files will be inside the project that you cloned back in **Step 1** inside a folder called **third-party-assets**
+- Here the argument in `--overlay-ports` is not the **assets path**. It's the path that contains `portfile.cmake` and `vcpkg.json`. These files will be inside the project that you cloned back in **Step 1** inside a folder called **third-party-assets**
 
 - Note that here we are using `\` instead of `/`. 
 
@@ -77,7 +76,7 @@ Find the command
 set(THIRD_PARTY_ASSETS_DIR "C:/vcpkg/packages/third-party-assets_x64-windows") 
 ```
 
-and replace **"C:/vcpkg/..."** with the file path that you had previously copied in step 6
+and replace **"C:/vcpkg/..."** with the file path that you had previously copied in **Step 6**
 
 ### Step 8
 
