@@ -7,8 +7,8 @@ using myImporter = fbxsdk::FbxImporter;
 using myScene = fbxsdk::FbxScene;
 
 Mesh::Mesh(){
-
-}
+    // Changed done
+}   
 
 Mesh::~Mesh(){
 
