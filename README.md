@@ -17,6 +17,8 @@ In order to build this project you need to have installed
 
 3. Extract the zip anywhere you would like and copy the file path (C:\example\path\to\third-party-assets)
 
+**IMPORTANT**: If you extract the third party assets from the zip file and they are not inside a folder called **third-party-assets**, please make sure to create a folder with this name ***third-party-assets*** 
+
 4. Open the project and go to **third-party-assets/portfile.cmake** and replace any instance of **pathToAssets** to your new file path
 
 5. Open a command prompt and navigate all the way until the **vcpkg** folder 
