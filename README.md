@@ -17,7 +17,7 @@ In order to build this project you need to have installed
 
 3. Extract the zip anywhere you like and copy the file path.
 
-Example:`C:\example\path\to\third-party-assets` **Make sure you don't have `/` in your path but `\`
+Example:`C:\example\path\to\third-party-assets` **Make sure you don't have `/` in your path but `\`**
 
 **IMPORTANT:**  
 The project expects all third-party assets to be inside a folder called `third-party-assets`.  
