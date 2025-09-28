@@ -27,6 +27,7 @@ The project expects all third-party assets to be inside a folder called `third-p
 
 ![extracted_folders](ReadMe_Pictures/extracted_folders.png)
 
+- **Don't forget to copy the file path**
 
 4. Open the project and go to **third-party-assets/portfile.cmake** and replace any instance of **pathToAssets** to your new file path
 
