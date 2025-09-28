@@ -91,7 +91,7 @@ Open a command prompt inside the project folder cloned back in **Step 1** and cr
 
 ![project_structure](ReadMe_Pictures/project_structure.png)
 
-Your folder structure should look something like thiss
+Your folder structure should look something like this
 
 ### Step 9
 
