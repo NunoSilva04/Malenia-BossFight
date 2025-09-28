@@ -20,7 +20,10 @@ In order to build this project you need to have installed
 **IMPORTANT:**  
 The project expects all third-party assets to be inside a folder called `third-party-assets`.  
 
-- If extracting the zip creates a bunch of files directly on your desktop (or other location) instead of a folder, **manually create a folder named `third-party-assets`** and move all extracted contents into it:
+- If extracting the zip creates a bunch of files directly on your desktop (or other location) instead of a folder, **manually create a folder named `third-party-assets`** and move all extracted contents into it. 
+- In the end you should have something like this 
+
+![]
 
 
 4. Open the project and go to **third-party-assets/portfile.cmake** and replace any instance of **pathToAssets** to your new file path
