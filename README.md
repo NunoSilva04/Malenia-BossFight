@@ -17,7 +17,7 @@ In order to build this project you need to have installed
 Example:
 
 ```cmd
-C:\vcpkg>`
+C:\vcpkg>
 ```
 
 5. Run the command `vcpkg install third-party-assets --overlay-ports=C:\example\path\to\third-party-assets`
