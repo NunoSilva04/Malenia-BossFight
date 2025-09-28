@@ -10,6 +10,7 @@ In order to build this project you need to have installed
 ## Build The Project
 
 1. Open a command prompt and navigate to the directory where you want to have the project. Once there call run the command
+
 `git clone https://github.com/NunoSilva04/Malenia-BossFight.git`
 
 1. Download the third party assets zip folder from the git repository [release page](https://github.com/NunoSilva04/Malenia-BossFight/releases/tag/v1.0)
