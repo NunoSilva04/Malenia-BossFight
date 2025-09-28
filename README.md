@@ -53,7 +53,7 @@ C:\vcpkg>
 
 ### Step 6
 
-Run the command `vcpkg install third-party-assets --overlay-ports=C:\example\path\to\third-party-assets`
+Run the command `vcpkg install third-party-assets --overlay-ports=C:\where\Melania-BossFight\project\third-party-assets`
 
 **IMPORTANT:**
 Note that here we are using `\` instead of `/`. 
