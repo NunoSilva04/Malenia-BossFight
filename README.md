@@ -23,6 +23,8 @@ Find the command set(THIRD_PARTY_ASSETS_DIR "C:/vcpkg/packages/third-party-asset
 with the file path that you had previously copied
 
 7. Create a directory (for example build) in the main project folder. After that run the command cmake -B <directory_name>
+Your folder should look something like this 
+![](C:/Users/nunom/Pictures/Screenshots/Screenshot 2025-09-28-204612.png)
 
 8. Once finished run the command cmake --build <directory_name>
 
