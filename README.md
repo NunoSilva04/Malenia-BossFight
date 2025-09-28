@@ -78,7 +78,7 @@ and replace **"C:/vcpkg/..."** with the file path that you had previously copied
 
 ### Step 8
 
-Create a directory (for example build) in the main project folder. After that run the command `cmake -B <directory_name>`
+Create a directory (for example **build**) in the main project folder. After that run the command `cmake -B <directory_name>`
 
 Your folder structure should look something like this
 
