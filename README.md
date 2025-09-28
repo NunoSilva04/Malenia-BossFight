@@ -1,4 +1,10 @@
 # Malenia-BossFight 
+
+## Disclaimer
+
+Make sure you have either a PS4 or a PS5 controller connected when running the project
+***THIS PROJECT IS STILL IN THE MAKING***
+
 ## PreRequisites
 
 In order to build this project you need to have installed
@@ -102,7 +108,3 @@ Once finished run the command `cmake --build <directory_name>`
 
 The **bossFight.exe** will be located inside the **<directory_name>/Debug folder**. Navigate all the way where **bossFight.exe** is located and run the command `bossFight.exe` or double click the **bossFight.exe** directly inside the folder
 - **Note:** Here `<directory_name>` is the name you gave to the directory you created back in **Step 8**.
-
-# Disclaimer
-
-Make sure you have either a PS4 or a PS5 controller connected when running the project
