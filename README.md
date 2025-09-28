@@ -67,7 +67,10 @@ Run the command `vcpkg install third-party-assets --overlay-ports=C:\path\to\you
 After the command executes you should see inside your **vcpkg folder** a new folder called **packages** and inside it another folder called
 **third-party-assets_x64-windows**. Enter that folder and copy that file path.
 
-Example: **"C:/.../vcpkg/packages/third-party-assets_x64-windows"**
+Example: 
+```
+"C:/.../vcpkg/packages/third-party-assets_x64-windows"
+```
 
 **IMPORTANT:**
 Note that here we are now using `/` instead of `\`. 
