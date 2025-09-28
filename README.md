@@ -23,7 +23,7 @@ The project expects all third-party assets to be inside a folder called `third-p
 - If extracting the zip creates a bunch of files directly on your desktop (or other location) instead of a folder, **manually create a folder named `third-party-assets`** and move all extracted contents into it. 
 - In the end you should have something like this 
 
-![]
+![extracted_folders](ReadMe_Pictures/extracted_folders.png)
 
 
 4. Open the project and go to **third-party-assets/portfile.cmake** and replace any instance of **pathToAssets** to your new file path
@@ -55,7 +55,7 @@ and replace **"C:/vcpkg/..."** with the file path that you had previously copied
 
 Your folder structure should look something like this
 
-![](ReadMe_Pictures/example1.png)
+![project_structure](ReadMe_Pictures/project_structure.png)
 
 9. Once finished run the command `cmake --build <directory_name>`
 
