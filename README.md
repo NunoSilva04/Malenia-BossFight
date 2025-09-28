@@ -105,4 +105,4 @@ The **bossFight.exe** will be located inside the **<directory_name>/Debug folder
 
 # Disclaimer
 
-Make sure you have either a PS4 or a PS5 controller
+Make sure you have either a PS4 or a PS5 controller connected when running the project
