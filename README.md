@@ -24,6 +24,7 @@ with the file path that you had previously copied
 
 7. Create a directory (for example build) in the main project folder. After that run the command cmake -B <directory_name>
 Your folder should look something like this 
+
 ![](ReadMe_Pictures/example1.png)
 
 8. Once finished run the command cmake --build <directory_name>
