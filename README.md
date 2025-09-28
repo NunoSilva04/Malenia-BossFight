@@ -15,7 +15,9 @@ In order to build this project you need to have installed
 
 2. Download the third party assets zip folder from the git repository [release page](https://github.com/NunoSilva04/Malenia-BossFight/releases/tag/v1.0)
 
-3. Extract the zip anywhere you like.
+3. Extract the zip anywhere you like and copy the file path.
+
+Example: `(C:\example\path\to\third-party-assets)`
 
 **IMPORTANT:**  
 The project expects all third-party assets to be inside a folder called `third-party-assets`.  
