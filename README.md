@@ -9,15 +9,24 @@ In order to build this project you need to have installed
 
 ## Build The Project
 
-1. Open a command prompt and navigate to the directory where you want to have the project. Once there call run the command
+### Step 1 
+Open a command prompt and navigate to the directory where you want to have the project. Once there run the command
 
 `git clone https://github.com/NunoSilva04/Malenia-BossFight.git`
 
-2. Download the third party assets zip folder from the git repository [release page](https://github.com/NunoSilva04/Malenia-BossFight/releases/tag/v1.0)
+### Step 2
+Download the third party assets zip folder from the git repository [release page](https://github.com/NunoSilva04/Malenia-BossFight/releases/tag/v1.0)
 
-3. Extract the zip anywhere you like and copy the file path.
 
-Example:`C:\example\path\to\third-party-assets` **Make sure you don't have `/` in your path but `\`**
+### Step 3
+Extract the zip anywhere you like and copy the file path.
+
+Example:
+```
+C:/example/path/to/third-party-assets 
+```
+
+**Make sure you replace all instances of `\` for `/` in your file path**
 
 **IMPORTANT:**  
 The project expects all third-party assets to be inside a folder called `third-party-assets`.  
@@ -27,24 +36,27 @@ The project expects all third-party assets to be inside a folder called `third-p
 
 ![extracted_folders](ReadMe_Pictures/extracted_folders.png)
 
-- **Don't forget to copy the file path**
+- **Don't forget to copy the file path and replace all instances of `\` for `/`**
 
 4. Open the project and go to **third-party-assets/portfile.cmake** and replace any instance of **pathToAssets** to your new file path
 
 5. Open a command prompt and navigate all the way until the **vcpkg** folder 
 
 Example:
-
 ```cmd
 C:\vcpkg>
 ```
 
 6. Run the command `vcpkg install third-party-assets --overlay-ports=C:\example\path\to\third-party-assets`
 
+**IMPORTANT:**Note that here we are using `\` instead of `/`. 
+
 After the command executes you should see inside your **vcpkg folder** a new folder called **packages** and inside it another folder called
 **third-party-assets_x64-windows**. Enter that folder and copy that file path.
 
 Example: **"C:/.../vcpkg/packages/third-party-assets_x64-windows"**
+
+**IMPORTANT:**Note that here we are now using `/` instead of `\`. 
 
 7. Go back to the project folder and go to **CMakeLists.txt**. 
 Find the command 
