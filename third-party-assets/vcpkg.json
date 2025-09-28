@@ -1,0 +1,8 @@
+{
+    "name": "third-party-assets",
+    "version-string": "1",
+    "description": "third party assets for bossFight",
+    "license": "Proprietary",
+    "supports": "windows",
+    "dependencies": []
+}

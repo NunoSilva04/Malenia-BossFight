@@ -1,0 +1,27 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/DebugUtils",
+                "${workspaceFolder}/Game/World",
+                "${workspaceFolder}/Graphics",
+                "${workspaceFolder}/Include",
+                "${workspaceFolder}/Math2"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "windowsSdkVersion": "10.0.26100.0",
+            "compilerPath": "C:/msys64/ucrt64/bin/g++.exe",
+            "cStandard": "c17",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "gcc-x64"//,
+            //"configurationProvider": "windows-msvc-x64"
+        }
+    ],
+    "version": 4
+}
