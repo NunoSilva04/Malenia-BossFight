@@ -3,6 +3,7 @@
 
 In order to build this project you need to have installed
 
+ - [git](https://git-scm.com/downloads/win)
  - [vcpkg](https://learn.microsoft.com/en-us/vcpkg/get_started/get-started?pivots=shell-powershell) 
  - [cmake](https://cmake.org/download/)
 
