@@ -14,7 +14,11 @@ In order to build this project you need to have installed
 
 4. Open a command prompt and navigate all the way until the **vcpkg** folder 
 
-Example: `C:\vcpkg>`
+Example:
+
+```cmd
+C:\vcpkg>`
+```
 
 5. Run the command `vcpkg install third-party-assets --overlay-ports=C:\example\path\to\third-party-assets`
 
@@ -33,10 +37,10 @@ and replace **"C:/vcpkg/..."** with the file path that you had previously copied
 
 7. Create a directory (for example build) in the main project folder. After that run the command `cmake -B <directory_name>`
 
-Your folder should look something like this 
+Your folder structure should look something like this
 
 ![](ReadMe_Pictures/example1.png)
 
 8. Once finished run the command `cmake --build <directory_name>`
 
-9. The .exe will be located inside the **<directory_name>/Debug folder**. For that just navigate all the way until where the .exe is located and run the command `bossFight.exe`
+9. The .exe will be located inside the **<directory_name>/Debug folder**. For that just navigate all the way until where the **.exe** is located and run the command `bossFight.exe`
