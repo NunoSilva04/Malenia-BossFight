@@ -6,13 +6,13 @@ In order to build this project you need to have installed
  - [vcpkg](https://learn.microsoft.com/en-us/vcpkg/get_started/get-started?pivots=shell-powershell) 
  - [cmake](https://cmake.org/download/)
 
-1. Download the third party assets zip folder from the git repository [git](https://github.com/NunoSilva04/Malenia-BossFight/releases/tag/v1.0)
+1. Download the third party assets zip folder from the git repository [release page](https://github.com/NunoSilva04/Malenia-BossFight/releases/tag/v1.0)
 
 2. Extract the zip anywhere you would like and copy the file path (C:\example\path\to\third-party-assets)
 
 3. Open the project and go to third-party-assets/portfile.cmake and replace any instance of pathToAssets to your new file path
 
-4. Open a command prompt and navigate all the way until the vcpkg folder 
+4. Open a command prompt and navigate all the way until the **vcpkg** folder 
 Example : C:\vcpkg>
 
 5. Run the command vcpkg install third-party-assets --overlay-ports=C:\example\path\to\third-party-assets
