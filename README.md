@@ -96,6 +96,7 @@ Your folder structure should look something like this
 ### Step 9
 
 Once finished run the command `cmake --build <directory_name>`
+- **Note:** Here `<directory_name>` is the name you gave to the directory you created back in **Step 8**.
 
 ### Step 10
 
