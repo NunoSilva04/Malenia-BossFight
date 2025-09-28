@@ -15,9 +15,13 @@ In order to build this project you need to have installed
 
 2. Download the third party assets zip folder from the git repository [release page](https://github.com/NunoSilva04/Malenia-BossFight/releases/tag/v1.0)
 
-3. Extract the zip anywhere you would like and copy the file path (C:\example\path\to\third-party-assets)
+3. Extract the zip anywhere you like.
 
-**IMPORTANT**: If you extract the third party assets from the zip file and they are not inside a folder called **third-party-assets**, please make sure to create a folder with this name ***third-party-assets*** 
+**IMPORTANT:**  
+The project expects all third-party assets to be inside a folder called `third-party-assets`.  
+
+- If extracting the zip creates a bunch of files directly on your desktop (or other location) instead of a folder, **manually create a folder named `third-party-assets`** and move all extracted contents into it:
+
 
 4. Open the project and go to **third-party-assets/portfile.cmake** and replace any instance of **pathToAssets** to your new file path
 
