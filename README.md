@@ -101,6 +101,7 @@ Once finished run the command `cmake --build <directory_name>`
 ### Step 10
 
 The .exe will be located inside the **<directory_name>/Debug folder**. For that just navigate all the way until where the **.exe** is located and run the command `bossFight.exe`
+- **Note:** Here `<directory_name>` is the name you gave to the directory you created back in **Step 8**.
 
 # Disclaimer
 
