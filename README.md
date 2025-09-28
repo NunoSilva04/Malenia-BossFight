@@ -40,7 +40,7 @@ The project expects all third-party assets to be inside a folder called `third-p
 
 ### Step 4
 
-Open the project and go to **third-party-assets/portfile.cmake** and replace any instance of **pathToAssets** to your new file path
+Open the project and go to **third-party-assets/portfile.cmake** and replace all instance of **pathToAssets** with your new file path
 
 ### Step 5
 
