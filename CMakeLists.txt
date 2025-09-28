@@ -2,7 +2,6 @@ cmake_minimum_required(VERSION 3.10)
 
 project(bossFight)
 
-#path to where you download it
 set(THIRD_PARTY_ASSETS_DIR "C:/vcpkg/packages/third-party-assets_x64-windows")
 message(STATUS "third party assets dir = ${THIRD_PARTY_ASSETS_DIR}")
 file(COPY "${THIRD_PARTY_ASSETS_DIR}/Include" DESTINATION ${CMAKE_SOURCE_DIR})
