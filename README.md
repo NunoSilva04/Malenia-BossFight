@@ -46,3 +46,7 @@ Your folder structure should look something like this
 8. Once finished run the command `cmake --build <directory_name>`
 
 9. The .exe will be located inside the **<directory_name>/Debug folder**. For that just navigate all the way until where the **.exe** is located and run the command `bossFight.exe`
+
+# Disclaimer
+
+Make sure you have either a PS4 or a PS5 controller
