@@ -1,10 +1,12 @@
 # Malenia-BossFight 
-# Building Instructions
+# PreRequisites
 
 In order to build this project you need to have installed
 
  - [vcpkg](https://learn.microsoft.com/en-us/vcpkg/get_started/get-started?pivots=shell-powershell) 
  - [cmake](https://cmake.org/download/)
+
+# Buil The Project
 
 1. Download the third party assets zip folder from the git repository [release page](https://github.com/NunoSilva04/Malenia-BossFight/releases/tag/v1.0)
 
