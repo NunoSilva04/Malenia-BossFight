@@ -86,7 +86,7 @@ and replace **"C:/vcpkg/..."** with the file path that you had previously copied
 
 ### Step 8
 
-Open a command prompt inside the project folder cloned back in **Step 1** and create a directory inside it. After that run the command `cmake -B <directory_name>`
+Create a new directory with a name of your choice inside the project folder you cloned back in **Step 1**. After that open a command prompt and navigate all the way where the **CMakeLists.txt** file is and run the command `cmake -B <directory_name>`
 - **Note:** Here `<directory_name>` is the name you gave to the directory you just created. In the picture below I named it build
 
 ![project_structure](ReadMe_Pictures/project_structure.png)
@@ -100,7 +100,7 @@ Once finished run the command `cmake --build <directory_name>`
 
 ### Step 10
 
-The .exe will be located inside the **<directory_name>/Debug folder**. For that just navigate all the way until where the **.exe** is located and run the command `bossFight.exe`
+The **bossFight.exe** will be located inside the **<directory_name>/Debug folder**. Navigate all the way where **bossFight.exe** is located and run the command `bossFight.exe` or double click the **bossFight.exe** directly inside the folder
 - **Note:** Here `<directory_name>` is the name you gave to the directory you created back in **Step 8**.
 
 # Disclaimer
