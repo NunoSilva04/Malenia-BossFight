@@ -84,7 +84,7 @@ Your folder structure should look something like this
 
 ![project_structure](ReadMe_Pictures/project_structure.png)
 
-where **build** is the <directory_name>
+where **build** is the `<directory_name>`
 
 ### Step 9
 
