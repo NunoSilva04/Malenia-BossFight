@@ -5,7 +5,11 @@ In order to build this project you need to have installed
 
  - [git](https://git-scm.com/downloads/win)
  - [vcpkg](https://learn.microsoft.com/en-us/vcpkg/get_started/get-started?pivots=shell-powershell) 
- - [cmake](https://cmake.org/download/)
+ - [CMake](https://cmake.org/download/)
+ - [Visual Studio Tools](https://visualstudio.microsoft.com/vs/community/)
+
+**IMPORTANT:**
+When downloading **Visual Studio Tools** make sure during installation to have included, at least, **Desktop development with C++** and inside this workload you have **MSVC compiler, Windows 10/11 SDK and C++ CMake tools for Windows**.
 
 ## Build The Project
 
