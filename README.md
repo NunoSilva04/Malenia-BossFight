@@ -9,7 +9,7 @@ In order to build this project you need to have installed
  - [Visual Studio Tools](https://visualstudio.microsoft.com/vs/community/)
 
 **IMPORTANT:**
-When downloading **Visual Studio Tools** make sure during installation to have included, at least, **Desktop development with C++** and inside this workload you have **MSVC compiler, Windows 10/11 SDK and C++ CMake tools for Windows**.
+When downloading **Visual Studio Tools** make sure during installation to have included, at least, **Desktop development with C++** and inside this workload you have **MSVC compiler, Windows 10/11 SDK and C++ CMake tools for Windows** selected.
 
 ## Build The Project
 
