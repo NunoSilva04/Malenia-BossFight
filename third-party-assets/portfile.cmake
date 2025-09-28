@@ -1,6 +1,6 @@
 #Fill pathToAssets in line 2 and 3 with the path of the extracted zip folder (don't forget to do C:/ not C:\)
-message(STATUS "THIRD_PARTY_ASSETS = C:/Users/nunom/third-party-assets")
-set(THIRD_PARTY_ASSETS "C:/Users/nunom/third-party-assets")
+message(STATUS "THIRD_PARTY_ASSETS = pathToAssets")
+set(THIRD_PARTY_ASSETS "pathToAssets")
 
 #Include Folder
 file(INSTALL "${THIRD_PARTY_ASSETS}/Include/" DESTINATION "${CURRENT_PACKAGES_DIR}/Include")
