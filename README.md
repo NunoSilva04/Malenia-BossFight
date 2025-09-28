@@ -41,7 +41,7 @@ The project expects all third-party assets to be inside a folder called `third-p
 
 ### Step 4
 
-Open the project and go to **third-party-assets/portfile.cmake** and replace all instance of **pathToAssets** with the **assets path you copied in Step 3**
+Open the project that you had cloned back in **Step 1** and go to **third-party-assets**. Open the file **portfile.cmake** and replace all instance of **pathToAssets** with the **assets path you copied in Step 3**
 
 ### Step 5
 
