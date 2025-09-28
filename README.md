@@ -20,6 +20,7 @@ Download the third party assets zip folder from the git repository [release page
 
 ### Step 3
 Extract the zip anywhere you like and copy the file path.
+Copy the absolute path to this folder **(this will be your assets path)**.
 
 Example:
 ```
@@ -40,7 +41,7 @@ The project expects all third-party assets to be inside a folder called `third-p
 
 ### Step 4
 
-Open the project and go to **third-party-assets/portfile.cmake** and replace all instance of **pathToAssets** with your new file path
+Open the project and go to **third-party-assets/portfile.cmake** and replace all instance of **pathToAssets** with the **assets path you copied in Step 3**
 
 ### Step 5
 
@@ -53,10 +54,12 @@ C:\vcpkg>
 
 ### Step 6
 
-Run the command `vcpkg install third-party-assets --overlay-ports=C:\where\Melania-BossFight\project\third-party-assets`
+Run the command `vcpkg install third-party-assets --overlay-ports=C:\path\to\your\project\third-party-assets`
 
-**IMPORTANT:**
-Note that here we are using `\` instead of `/`. 
+**IMPORTANT:** 
+- Here the argument in `--overlay-ports`is not the **assets path**. It's the path that contains `portfile.cmake` and `vcpkg.json`. These files will be inside the project that you cloned back in **Step 1** inside a folder called **third-party-assets**
+
+- Note that here we are using `\` instead of `/`. 
 
 After the command executes you should see inside your **vcpkg folder** a new folder called **packages** and inside it another folder called
 **third-party-assets_x64-windows**. Enter that folder and copy that file path.
