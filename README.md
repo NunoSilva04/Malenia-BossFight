@@ -2,8 +2,8 @@
 
 ## Disclaimer
 
-- **THIS PROJECT IS STILL IN THE MAKING**
-- **THIS PROJECT CAN ONLY RUN ON WINDOWS SINCE IT USES DIRECTX 11**
+- **This project is still in the making**
+- **This project can only run on windows since it uses DirectX 11**
 - **Make sure you have either a PS4 or a PS5 controller connected when running the project.**
 
 ## PreRequisites
