@@ -21,6 +21,13 @@ Mat4x4 Mat4x4::matrixIdentity(){
                   Vec4(0, 0, 0, 1));
 }
 
+Mat4x4 Mat4x4::zero(){
+    return Mat4x4(Vec4(0, 0, 0, 0), 
+                  Vec4(0, 0, 0, 0),
+                  Vec4(0, 0, 0, 0),
+                  Vec4(0, 0, 0, 0));
+}
+
 void Mat4x4::print(){
     std::printf("(%f, %f, %f, %f)\n"
                 "(%f, %f, %f, %f)\n"
