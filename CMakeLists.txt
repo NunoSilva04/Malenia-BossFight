@@ -87,6 +87,7 @@ target_link_libraries(Game PUBLIC World)
 target_link_libraries(Graphics PUBLIC MathLib)
 target_link_libraries(Graphics PUBLIC SystemFolder)
 target_link_libraries(Graphics PUBLIC Windows_OS)
+target_link_libraries(Graphics PUBLIC World)
 #Camera
 target_link_libraries(Camera PUBLIC MathLib)
 target_link_libraries(Camera PUBLIC InputLib)
