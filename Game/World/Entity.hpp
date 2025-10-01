@@ -2,12 +2,37 @@
 #define __ENTITY_HPP__
 
 #include <string>
+#include "Math2.h"
 
-class Mesh;
 class IResources;
 class IRender;
+class ICamera;
+
+class Entity;
+class Mesh;
+class Position;
+
+
+namespace EntitySystem{
+    Entity *createPlayer(IResources *, std::string, std::string);
+    void updatePlayerPosition_Camera(Entity *, ICamera *);
+    void destroyEntity(Entity *);
+};
 
 class Entity{
+//Entity System
+private:
+    friend Entity* EntitySystem::createPlayer(IResources *, std::string, std::string);
+    friend void EntitySystem::updatePlayerPosition_Camera(Entity *, ICamera *);
+    friend void EntitySystem::destroyEntity(Entity *);
+
+//Entity
+public:
+    void printEntity(void);
+    const std::string getName(void);
+    const int getId(void);
+
+
 protected:
     std::string name;
     int id;
@@ -17,26 +42,19 @@ protected:
     };
     EntityType type;
     Mesh *mesh;
-
-public:
-    //Entity
-    void printEntity(void);
-    const std::string getName(void);
-    const int getId(void);
-    const int getType(void);
-    //Mesh
-    bool hasMesh(void);
+    Position *position;
 
 private:
-    friend Entity* createPlayer(IResources *, std::string, int, std::string);
-    friend void destroyEntity(Entity *);
-    friend void renderEntity(Entity *, IRender *);
-};
+    static int entityID;
+    const EntityType getType(void);
+    
+//Mesh
+public:
+    bool hasMesh(void);
 
-//Entity
-Entity *createPlayer(IResources *, std::string, int, std::string);
-void destroyEntity(Entity *);
-//Temporary render system
-void renderEntity(Entity *, IRender *);
+//Transform
+public:
+    bool hasPosition(void);
+};
 
 #endif

@@ -9,18 +9,21 @@
 #include "Matrix.h"
 
 class IResources;
-class IRender;
 
 class Mesh{
 public:
     Mesh();
     ~Mesh();
     bool loadMesh(IResources *, std::string);
-    void renderMesh(IRender *render);
-    void destroyMesh();
+    const Vec4 getOriginPoint(void);
+    void destroyMesh(void);
 
 private:
     fbxsdk::FbxManager *manager;
+    fbxsdk::FbxScene *scene;
+    
+    bool createMeshResources(IResources *);
+    Vec4 originPoint;
     struct Vertices_t{
         Vec4 vertice;
     };
@@ -38,8 +41,6 @@ private:
     ID3D11InputLayout *inputLayout;
     ID3D11Buffer *vertexBuffer;
     ID3D11Buffer *indexBuffer;
-    ID3D11Buffer *constantBuffer;
-    Mat4x4 world;
 };
 
 #endif

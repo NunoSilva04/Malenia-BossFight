@@ -43,7 +43,7 @@ bool Mesh::loadMesh(IResources *resources, std::string fileName){
         return false;
     }
 
-    myScene *scene = myScene::Create(manager, "MyScene");
+    scene = myScene::Create(manager, "MyScene");
     if(scene == nullptr){
         std::printf("Couldn't create my scene");
         importer->Destroy();
@@ -66,6 +66,7 @@ bool Mesh::loadMesh(IResources *resources, std::string fileName){
         fbxsdk::FbxMesh *mesh = node->GetMesh();
         
         if(mesh != nullptr){
+            originPoint = Vec4(node->LclTranslation.Get().mData[0], node->LclTranslation.Get().mData[1], node->LclTranslation.Get().mData[2], 0); 
             std::printf("Mesh name %s\n", mesh->GetName());
             numVertices = mesh->GetControlPointsCount();
             std::printf("Number of vertices: %d\n", numVertices);
@@ -103,18 +104,24 @@ bool Mesh::loadMesh(IResources *resources, std::string fileName){
         }
     }
 
+    if(!createMeshResources(resources)){
+        std::printf("Couldn't create mesh resources\n");
+        return false;
+    }
+
+    return true;
+}
+
+bool Mesh::createMeshResources(IResources *resources){
     ID3D10Blob *pVertexShader = nullptr;
     //This path is relative to the .exe not to the actual .cpp file
     if(!resources->compileShader(&pVertexShader, L"../../Models/VertexShader.hlsl", "main", "vs_5_0")){
         std::printf("Couldn't compile red cube vertex shader\n");
-        MessageBoxA(nullptr, "Couldn't compile red cube vertex shader", "Error", MB_OK);
-        if(pVertexShader) pVertexShader->Release();
         return false;
     }
 
     if(!resources->createVertexShader(&vertexShader, pVertexShader)){
         std::printf("Couldn't create red cube vertex shader\n");
-        if(pVertexShader) pVertexShader->Release();
         return false;
     }
 
@@ -122,14 +129,12 @@ bool Mesh::loadMesh(IResources *resources, std::string fileName){
     if(!resources->compileShader(&pPixelShader, L"../../Models/PixelShader.hlsl", "main", "ps_5_0")){
         std::printf("Couldn't compile red cube pixel shader\n");
         if(pVertexShader) pVertexShader->Release();
-        if(pPixelShader) pPixelShader->Release();
         return false;
     }
 
     if(!resources->createPixelShader(&pixelShader, pPixelShader)){
         std::printf("Couldn't create red cube vertex shader\n");
         if(pVertexShader) pVertexShader->Release();
-        if(pPixelShader) pPixelShader->Release();
         return false;
     }
 
@@ -159,6 +164,7 @@ bool Mesh::loadMesh(IResources *resources, std::string fileName){
         std::printf("Couldn't create red cube vertex buffer\n");
         if(pVertexShader) pVertexShader->Release();
         if(pPixelShader) pPixelShader->Release();
+        if(inputLayout) inputLayout->Release();
         return false;
     }
 
@@ -177,39 +183,16 @@ bool Mesh::loadMesh(IResources *resources, std::string fileName){
         std::printf("Couldn't create red cube index buffer\n");
         if(pVertexShader) pVertexShader->Release();
         if(pPixelShader) pPixelShader->Release();
-        return false;
-    }
-
-    D3D11_BUFFER_DESC constantBufferDesc;
-    ZeroMemory(&constantBufferDesc, sizeof(D3D11_BUFFER_DESC));
-    constantBufferDesc.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
-    constantBufferDesc.ByteWidth = sizeof(Mat4x4);
-    constantBufferDesc.CPUAccessFlags = 0;
-    constantBufferDesc.Usage = D3D11_USAGE_DEFAULT;
-
-    if(!resources->createBuffer(&constantBufferDesc, nullptr, &constantBuffer)){
-        std::printf("Couldn't create constant buffer\n");
+        if(inputLayout) inputLayout->Release();
+        if(vertexBuffer != nullptr) vertexBuffer->Release();
         return false;
     }
 
     return true;
 }
 
-void Mesh::renderMesh(IRender *render){
-    render->updateSubResource(constantBuffer, &world);
-    render->setConstantBuffer(&constantBuffer, 1, 1);
-
-    render->setInputLayout(inputLayout);
-    uint32_t strides = {sizeof(Vertices_t)};
-    uint32_t offset = {0};
-    render->setVertexBuffer(&vertexBuffer, 0, 1, &strides, &offset);
-    render->setIndexBuffer(indexBuffer);
-    render->setPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
-    
-    render->setVertexShader(vertexShader);
-    render->setPixelShader(pixelShader);
-
-    render->drawIndexed(numIndices, 0, 0);
+const Vec4 Mesh::getOriginPoint(void){
+    return originPoint;
 }
 
 void Mesh::destroyMesh(){
@@ -220,6 +203,6 @@ void Mesh::destroyMesh(){
     if(inputLayout != nullptr) inputLayout->Release();
     if(vertexBuffer != nullptr) vertexBuffer->Release();
     if(indexBuffer != nullptr) indexBuffer->Release();
-    if(constantBuffer != nullptr) constantBuffer->Release();
+    scene->Destroy();
     manager->Destroy();
 }

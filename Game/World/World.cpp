@@ -12,21 +12,23 @@ World::~World(){
 }
 
 bool World::initWorld(IResources *resources){
-    Entity *newEntity = createPlayer(resources, "Player", 1, "../../Models/Sphere.fbx");
-    entities.push_back(newEntity);
-    entities[0]->printEntity();
+    player = EntitySystem::createPlayer(resources, "Player", "../../Models/Sphere.fbx");
+    entities.push_back(player);
 
     return true;
 }   
 
+void World::updateWorld(const float frame_time, IRender *render, IInput *input, ICamera *camera){
+    //TODO
+}
+
 void World::renderWorld(IRender *render){
-    if(entities[0]->hasMesh()){
-        renderEntity(entities[0], render);
-    }
+    //TODO
 }
 
 void World::destroyWorld(void){
+    if(player != nullptr) EntitySystem::destroyEntity(player);
     for(int i = 0; i < entities.size(); i++){
-        destroyEntity(entities[i]);
+        EntitySystem::destroyEntity(entities[i]);
     }
 }
