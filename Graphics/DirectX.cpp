@@ -48,6 +48,10 @@ bool Graphics::initDirectX(HWND hWnd, HMONITOR hMonitor, const windowPreferances
     //    std::printf("Couldn't initialize default sampler state\n");
     //    return false;
     //}
+    if(!initTransformSRV()){
+        std::printf("Couldn't create transform shader resource view\n");
+        return false;
+    }
 
     return true;
 }
@@ -378,7 +382,39 @@ bool Graphics::initDefaultSamplerState(){
     return true;
 }
 
-void Graphics::cleanDirectX(){
+bool Graphics::initTransformSRV(void){
+    HRESULT hr;
+
+    D3D11_BUFFER_DESC transformBufferDesc;
+    ZeroMemory(&transformBufferDesc, sizeof(D3D11_BUFFER_DESC));
+    transformBufferDesc.BindFlags = D3D11_BIND_SHADER_RESOURCE;
+    transformBufferDesc.ByteWidth = maxObjects * sizeof(ObjectData_t);
+    transformBufferDesc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
+    transformBufferDesc.MiscFlags = D3D11_RESOURCE_MISC_BUFFER_STRUCTURED;
+    transformBufferDesc.StructureByteStride = sizeof(ObjectData_t);
+    transformBufferDesc.Usage = D3D11_USAGE_DYNAMIC;
+
+    hr = dev->CreateBuffer(&transformBufferDesc, nullptr, &transformBuffer);
+    if(FAILED(hr)){
+        return false;
+    }
+
+    D3D11_SHADER_RESOURCE_VIEW_DESC transformSRVDesc;
+    ZeroMemory(&transformSRVDesc, sizeof(D3D11_SHADER_RESOURCE_VIEW_DESC));
+    transformSRVDesc.Format = DXGI_FORMAT_UNKNOWN;
+    transformSRVDesc.ViewDimension = D3D11_SRV_DIMENSION_BUFFER;
+    transformSRVDesc.Buffer.FirstElement = 0;
+    transformSRVDesc.Buffer.NumElements = maxObjects;
+
+    hr = dev->CreateShaderResourceView(transformBuffer, &transformSRVDesc, &transformSRV);
+    if(FAILED(hr)){
+        return false;
+    }
+
+    return true;
+}
+
+void Graphics::cleanDirectX(void){
     if(dev) dev->Release();
     if(devCon) devCon->Release();
     if(swapChain) swapChain->Release();
@@ -389,4 +425,5 @@ void Graphics::cleanDirectX(){
     if(blendState) blendState->Release();
     if(rasterizerState) rasterizerState->Release();
     if(defaultSamplerState) defaultSamplerState->Release();
+    if(transformSRV != nullptr) transformSRV->Release();
 }

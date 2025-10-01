@@ -2,6 +2,7 @@
 #define __DIRECTX_H__
 
 #include "IGraphics.h"
+#include "Math2.h"
 
 struct windowPreferances;
 
@@ -22,6 +23,7 @@ private:
     bool initBlendState(void);
     bool initRasterizerState(void);
     bool initDefaultSamplerState(void);
+    bool initTransformSRV(void);
     ID3D11Device *dev;
     ID3D11DeviceContext *devCon;
     IDXGISwapChain1 *swapChain;
@@ -32,6 +34,15 @@ private:
     ID3D11BlendState *blendState;
     ID3D11RasterizerState *rasterizerState;
     ID3D11SamplerState *defaultSamplerState;
+
+    ID3D11ShaderResourceView *transformSRV;
+    ID3D11Buffer *transformBuffer;
+    struct ObjectData_t{
+        Mat4x4 transform;
+        int id;
+    };
+    ObjectData_t *objectData;
+    static constexpr int maxObjects = 100;
 
 //IGraphics
 public:
@@ -64,6 +75,10 @@ private:
     void updateSubResource(ID3D11Resource *resource, const void *dataSource) override;
     void setConstantBuffer(ID3D11Buffer **constantBuffer, uint32_t numBuffers, uint32_t startIndexBuffer) override;
     void setDepthStencilState(uint32_t stencilValue, ID3D11DepthStencilState *depthStencilState)  override;
+    bool createObjectDataArray(const int) override;
+    void setDataIntoObjectArray(const int, const Mat4x4, const int) override;
+    void sendObjectDataArray_GPU(const int) override;
+    void destroyObjectDataArray(void) override;
 };
 
 #endif

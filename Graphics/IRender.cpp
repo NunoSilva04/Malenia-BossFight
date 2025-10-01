@@ -39,3 +39,40 @@ void Graphics::setConstantBuffer(ID3D11Buffer **constantBuffer, uint32_t numBuff
 void Graphics::setDepthStencilState(uint32_t stencilValue, ID3D11DepthStencilState *depthStencilState){
     devCon->OMSetDepthStencilState(depthStencilState, stencilValue);
 }
+
+bool Graphics::createObjectDataArray(const int numObjects){
+    if(numObjects <= 0){
+        return false;
+    }
+
+    objectData = new ObjectData_t[numObjects];
+    if(objectData == nullptr){
+        return false;
+    }
+    return true;
+}
+
+void Graphics::setDataIntoObjectArray(const int objectNumber, const Mat4x4 transform, const int id){
+    objectData[objectNumber].transform = transform;
+    objectData[objectNumber].id = id;
+}
+
+void Graphics::sendObjectDataArray_GPU(const int numObjects){
+    HRESULT hr;
+
+    D3D11_MAPPED_SUBRESOURCE mappedSubResource;
+    hr = devCon->Map(objectDataBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedSubResource);
+    if(SUCCEEDED(hr)){
+        memcpy(mappedSubResource.pData, objectData, numObjects * sizeof(ObjectData_t));
+        devCon->Unmap(objectDataBuffer, 0);
+    }else{
+        MessageBoxA(nullptr, "Failed to map object data buffer", "Error", MB_OK);
+    }
+    devCon->VSSetShaderResources(0, 1, &shaderResourceView);
+}
+
+void Graphics::destroyObjectDataArray(void){
+    if(objectData != nullptr){
+        delete[] objectData;
+    }
+}
