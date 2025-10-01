@@ -43,6 +43,7 @@ private:
     };
     ObjectData_t *objectData;
     static constexpr int maxObjects = 100;
+    int numTransforms;
 
 //IGraphics
 public:
@@ -74,11 +75,12 @@ private:
     void drawIndexed(uint32_t numIndices, uint32_t firstIndex, uint32_t lastIndex) override;
     void updateSubResource(ID3D11Resource *resource, const void *dataSource) override;
     void setConstantBuffer(ID3D11Buffer **constantBuffer, uint32_t numBuffers, uint32_t startIndexBuffer) override;
-    void setDepthStencilState(uint32_t stencilValue, ID3D11DepthStencilState *depthStencilState)  override;
-    bool createObjectDataArray(const int) override;
-    void setDataIntoObjectArray(const int, const Mat4x4, const int) override;
-    void sendObjectDataArray_GPU(const int) override;
-    void destroyObjectDataArray(void) override;
+    void setDepthStencilState(uint32_t stencilValue, ID3D11DepthStencilState *depthStencilState) override;
+    void createObjectDataArray(const int) override;
+    void pushEntityDataIntoObjectDataArray(Position *, const int) override;
+    void sendObjectArrayGPU(void) override;
+    void renderEntity(Entity *) override;
+    void cleanObjectDataArray(void) override;
 };
 
 #endif

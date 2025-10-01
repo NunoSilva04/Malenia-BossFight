@@ -1,4 +1,6 @@
 #include "DirectX.h"
+#include "Entity.hpp"
+#include "Position.hpp"
 
 void Graphics::setInputLayout(ID3D11InputLayout *inputLayout){
     devCon->IASetInputLayout(inputLayout);
@@ -40,39 +42,37 @@ void Graphics::setDepthStencilState(uint32_t stencilValue, ID3D11DepthStencilSta
     devCon->OMSetDepthStencilState(depthStencilState, stencilValue);
 }
 
-bool Graphics::createObjectDataArray(const int numObjects){
-    if(numObjects <= 0){
-        return false;
-    }
-
+void Graphics::createObjectDataArray(const int numObjects){
     objectData = new ObjectData_t[numObjects];
     if(objectData == nullptr){
-        return false;
+        return;
     }
-    return true;
 }
 
-void Graphics::setDataIntoObjectArray(const int objectNumber, const Mat4x4 transform, const int id){
-    objectData[objectNumber].transform = transform;
-    objectData[objectNumber].id = id;
+void Graphics::pushEntityDataIntoObjectDataArray(Position *position, const int id){
+    objectData[id].transform = position->getTransformMat();
+    objectData[id].id = id;
+    numTransforms += 1;
 }
 
-void Graphics::sendObjectDataArray_GPU(const int numObjects){
+void Graphics::sendObjectArrayGPU(void){
     HRESULT hr;
 
     D3D11_MAPPED_SUBRESOURCE mappedSubResource;
-    hr = devCon->Map(objectDataBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedSubResource);
+    hr = devCon->Map(transformBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedSubResource);
     if(SUCCEEDED(hr)){
-        memcpy(mappedSubResource.pData, objectData, numObjects * sizeof(ObjectData_t));
-        devCon->Unmap(objectDataBuffer, 0);
+        memcpy(mappedSubResource.pData, objectData, numTransforms * sizeof(ObjectData_t));
+        devCon->Unmap(transformBuffer, 0);
     }else{
-        MessageBoxA(nullptr, "Failed to map object data buffer", "Error", MB_OK);
+        MessageBoxA(nullptr, "Couldn't map transform buffer\n", "Error", MB_OK);
+        return;
     }
-    devCon->VSSetShaderResources(0, 1, &shaderResourceView);
 }
 
-void Graphics::destroyObjectDataArray(void){
-    if(objectData != nullptr){
-        delete[] objectData;
-    }
+void Graphics::renderEntity(Entity *){
+    //TODO
+}
+
+void Graphics::cleanObjectDataArray(void){
+    //TODO
 }
