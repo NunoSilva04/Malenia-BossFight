@@ -43,7 +43,8 @@ target_include_directories(Camera PUBLIC ${CMAKE_SOURCE_DIR}/Game/Camera)
 add_library(World STATIC ${CMAKE_SOURCE_DIR}/Game/World/World.cpp
                          ${CMAKE_SOURCE_DIR}/Game/World/Entity.cpp
                          ${CMAKE_SOURCE_DIR}/Game/World/Physics.cpp
-                         ${CMAKE_SOURCE_DIR}/Game/World/Mesh.cpp)
+                         ${CMAKE_SOURCE_DIR}/Game/World/Mesh.cpp
+                         ${CMAKE_SOURCE_DIR}/Game/World/Position.cpp)
 target_include_directories(World PUBLIC ${CMAKE_SOURCE_DIR}/Game/World)
 
 #DebugUtils
@@ -94,6 +95,7 @@ target_link_libraries(Camera PUBLIC Graphics)
 #World
 target_link_libraries(World PUBLIC Graphics)
 target_link_libraries(World PUBLIC MathLib)
+target_link_libraries(World PUBLIC Camera)
 
 
 #Properties for Win32
