@@ -13,7 +13,8 @@ struct windowPreferances;
 
 class ICamera{
 public:
-    ~ICamera(){}
+    virtual ~ICamera(void){}
+    virtual const Vec4 getCamPosition(void) = 0;
 };
 
 class Camera : public ICamera{
@@ -28,7 +29,7 @@ private:
     void moveCameraPos(IInput *input, float frame_time);
     void moveCameraTarget(IInput *input);
     void testMovePosition(void);
-    void testMoveCamera(void);
+    const Vec4 getCamPosition(void) override;
 
     ID3D11Buffer *cameraBuffer;
     Vec4 camPosition, camTarget, camUp;

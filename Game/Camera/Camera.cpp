@@ -98,7 +98,7 @@ void Camera::moveCameraPos(IInput *input, float frame_time){
     cameraBuffer_t.camView = Math::CamLookAtLH(camPosition, camTarget, camUp);
 }
 
-void Camera::testMovePosition(){
+void Camera::testMovePosition(void){
     static float angle = 0.0f;
     angle += 0.01f;
     camPosition.x = distanceToTarget * std::cosf(angle) + camTarget.x;
@@ -108,8 +108,8 @@ void Camera::testMovePosition(){
     cameraBuffer_t.camView = Math::CamLookAtLH(camPosition, camTarget, camUp);
 }
 
-void Camera::testMoveCamera(){
-
+const Vec4 Camera::getCamPosition(void){
+    return this->camPosition;
 }
 
 void Camera::updateCamera(IRender *render, IInput *input, float frame_time){
