@@ -49,6 +49,7 @@ void Game::updateGame(float frame_time){
     IRender *render = gfx;
     input->update(frame_time);
     camera->updateCamera(render, input, frame_time);
+    world->updateWorld(frame_time, render, static_cast<IInput*>(input), static_cast<ICamera*>(camera));
 }
 
 void Game::renderGame(){
