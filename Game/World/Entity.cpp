@@ -50,10 +50,7 @@ Entity *EntitySystem::createPlayer(IResources *resources, std::string name, std:
 }
 
 void EntitySystem::updatePlayerPosition_Camera(Entity *player, ICamera *camera){
-    if(player->getType() != Entity::EntityType::PlayerType){
-        std::printf("Not player\n");
-        return;
-    }
+    player->position->add(camera->getCamPosition());
 }
 
 void EntitySystem::destroyEntity(Entity *entity){
@@ -83,10 +80,6 @@ const int Entity::getId(void){
     return this->id;
 }
 
-const Entity::EntityType Entity::getType(void){
-    return this->type;
-}
-
 bool Entity::hasMesh(void){
     if(this->mesh != nullptr){
         return true;
@@ -95,9 +88,21 @@ bool Entity::hasMesh(void){
     return false;
 }
 
+Mesh *Entity::getMesh(void){
+    return this->mesh;
+}
+
 bool Entity::hasPosition(void){
     if(this->position == nullptr){
         return false;
     }
     return true;
+}
+
+Position *Entity::getPosition(void){
+    return this->position;
+}
+
+const Entity::EntityType Entity::getType(void){
+    return this->type;
 }

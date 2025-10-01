@@ -16,12 +16,9 @@ bool Position::initPosition(Mesh *mesh){
     return true;
 }
 
-void Position::updatePosition(void (*operation)(const Vec4), const Vec4 position){
-    operation(position);
-}
-
 void Position::add(const Vec4 position){
     origin += position;
+    translation.translate(position.x, position.y, position.z);
 }
 
 void Position::subtract(const Vec4 position){

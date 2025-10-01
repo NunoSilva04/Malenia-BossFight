@@ -10,7 +10,6 @@ public:
     Position(void);
     ~Position(void);
     bool initPosition(Mesh *);
-    void updatePosition(void (*operation)(const Vec4), const Vec4);
     void add(const Vec4);
     void subtract(const Vec4);
     void multiply(const Vec4);

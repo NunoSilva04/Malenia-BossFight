@@ -31,7 +31,10 @@ public:
     void printEntity(void);
     const std::string getName(void);
     const int getId(void);
-
+    bool hasMesh(void);
+    Mesh *getMesh(void);
+    bool hasPosition(void);
+    Position *getPosition(void);
 
 protected:
     std::string name;
@@ -47,14 +50,6 @@ protected:
 private:
     static int entityID;
     const EntityType getType(void);
-    
-//Mesh
-public:
-    bool hasMesh(void);
-
-//Transform
-public:
-    bool hasPosition(void);
 };
 
 #endif
