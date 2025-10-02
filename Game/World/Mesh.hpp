@@ -16,6 +16,15 @@ public:
     ~Mesh();
     bool loadMesh(IResources *, std::string);
     const Vec4 getOriginPoint(void);
+    ID3D11VertexShader *getVertexShader(void);
+    ID3D11PixelShader *getPixelShader(void);    
+    ID3D11InputLayout *getInputLayout(void);
+    ID3D11Buffer *getVertexBuffer(void);
+    ID3D11Buffer *getIndexBuffer(void);
+    uint32_t getVertexBufferStrides(void);
+    uint32_t getVertexBufferOffset(void);
+    int getNumVertices(void);
+    int getNumIndices(void);
     void destroyMesh(void);
 
 private:

@@ -66,7 +66,7 @@ bool Mesh::loadMesh(IResources *resources, std::string fileName){
         fbxsdk::FbxMesh *mesh = node->GetMesh();
         
         if(mesh != nullptr){
-            originPoint = Vec4(node->LclTranslation.Get().mData[0], node->LclTranslation.Get().mData[1], node->LclTranslation.Get().mData[2], 0); 
+            originPoint = Vec4(static_cast<float>(node->LclTranslation.Get().mData[0]), static_cast<float>(node->LclTranslation.Get().mData[1]), static_cast<float>(node->LclTranslation.Get().mData[2]), 0); 
             std::printf("Mesh name %s\n", mesh->GetName());
             numVertices = mesh->GetControlPointsCount();
             std::printf("Number of vertices: %d\n", numVertices);
@@ -193,6 +193,42 @@ bool Mesh::createMeshResources(IResources *resources){
 
 const Vec4 Mesh::getOriginPoint(void){
     return originPoint;
+}
+
+ID3D11VertexShader *Mesh::getVertexShader(void){
+    return vertexShader;
+}
+
+ID3D11PixelShader *Mesh::getPixelShader(void){
+    return pixelShader;
+}   
+
+ID3D11InputLayout *Mesh::getInputLayout(void){
+    return inputLayout;
+}
+
+ID3D11Buffer *Mesh::getVertexBuffer(void){
+    return vertexBuffer;
+}
+
+ID3D11Buffer *Mesh::getIndexBuffer(void){
+    return indexBuffer;
+}
+
+uint32_t Mesh::getVertexBufferStrides(void){
+    return sizeof(Vertices_t);
+}
+
+uint32_t Mesh::getVertexBufferOffset(void){
+    return 0;
+}
+
+int Mesh::getNumVertices(void){
+    return numVertices;
+}
+
+int Mesh::getNumIndices(void){
+    return numIndices;
 }
 
 void Mesh::destroyMesh(){

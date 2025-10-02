@@ -22,18 +22,18 @@ void World::updateWorld(const float frame_time, IRender *render, IInput *input, 
     if(player->hasPosition()){
         EntitySystem::updatePlayerPosition_Camera(player, camera);
     }
-    render->createObjectDataArray(static_cast<int>(entities.size()));
+    render->createTransformDataArray(static_cast<int>(entities.size()));
     for(int i = 0; i < entities.size(); i++){
-        render->pushEntityDataIntoObjectDataArray(entities[i]->getPosition(), entities[i]->getId());
+        render->pushEntityDataIntoTransformDataArray(entities[i]->getPosition(), entities[i]->getId());
     }
-    render->sendObjectArrayGPU();
+    render->sendTransformArrayGPU();
 }
 
 void World::renderWorld(IRender *render){
     for(int i = 0; i < entities.size(); i++){
-        render->renderEntity(entities[i]);
+        render->renderEntity(entities[i]->getMesh(), entities[i]->getId());
     }
-    render->cleanObjectDataArray();
+    render->cleanTransformDataArray();
 }
 
 void World::destroyWorld(void){
