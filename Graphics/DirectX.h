@@ -6,6 +6,9 @@
 
 struct windowPreferances;
 
+constexpr int OBJECTID_CBSLOT = 1;
+constexpr int TRANSFORMSRV_SLOT = 0;
+
 class Graphics : public IGraphics, public IResources, public IRender{
 //DirectX 11 initialization
 public:
@@ -24,6 +27,7 @@ private:
     bool initRasterizerState(void);
     bool initDefaultSamplerState(void);
     bool initTransformSRV(void);
+    bool initIdCbBuffer(void);
     ID3D11Device *dev;
     ID3D11DeviceContext *devCon;
     IDXGISwapChain1 *swapChain;
@@ -36,12 +40,15 @@ private:
     ID3D11SamplerState *defaultSamplerState;
 
     ID3D11ShaderResourceView *transformSRV;
-    ID3D11Buffer *transformBuffer;
-    struct ObjectData_t{
+    struct TransformData_t{
         Mat4x4 transform;
-        int id;
     };
-    ObjectData_t *objectData;
+    TransformData_t *transformData;
+    ID3D11Buffer *transformBuffer;
+
+    int objectId;
+    ID3D11Buffer *objectIdBuffer;
+
     static constexpr int maxObjects = 100;
     int numTransforms;
 
@@ -76,11 +83,11 @@ private:
     void updateSubResource(ID3D11Resource *resource, const void *dataSource) override;
     void setConstantBuffer(ID3D11Buffer **constantBuffer, uint32_t numBuffers, uint32_t startIndexBuffer) override;
     void setDepthStencilState(uint32_t stencilValue, ID3D11DepthStencilState *depthStencilState) override;
-    void createObjectDataArray(const int) override;
-    void pushEntityDataIntoObjectDataArray(Position *, const int) override;
-    void sendObjectArrayGPU(void) override;
-    void renderEntity(Entity *) override;
-    void cleanObjectDataArray(void) override;
+    void createTransformDataArray(const int) override;
+    void pushEntityDataIntoTransformDataArray(Position *, const int) override;
+    void sendTransformArrayGPU(void) override;
+    void renderEntity(Mesh *, const int) override;
+    void cleanTransformDataArray(void) override;
 };
 
 #endif

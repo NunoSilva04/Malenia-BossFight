@@ -1,5 +1,5 @@
 #include "DirectX.h"
-#include "Entity.hpp"
+#include "Mesh.hpp"
 #include "Position.hpp"
 
 void Graphics::setInputLayout(ID3D11InputLayout *inputLayout){
@@ -42,37 +42,54 @@ void Graphics::setDepthStencilState(uint32_t stencilValue, ID3D11DepthStencilSta
     devCon->OMSetDepthStencilState(depthStencilState, stencilValue);
 }
 
-void Graphics::createObjectDataArray(const int numObjects){
-    objectData = new ObjectData_t[numObjects];
-    if(objectData == nullptr){
+void Graphics::createTransformDataArray(const int numObjects){
+    transformData = new TransformData_t[numObjects];
+    if(transformData == nullptr){
         return;
     }
 }
 
-void Graphics::pushEntityDataIntoObjectDataArray(Position *position, const int id){
-    objectData[id].transform = position->getTransformMat();
-    objectData[id].id = id;
+void Graphics::pushEntityDataIntoTransformDataArray(Position *position, const int id){
+    transformData[id].transform = position->getTransformMat();
+    printf("Id = %d\n", id);
     numTransforms += 1;
 }
 
-void Graphics::sendObjectArrayGPU(void){
+void Graphics::sendTransformArrayGPU(void){
     HRESULT hr;
 
     D3D11_MAPPED_SUBRESOURCE mappedSubResource;
     hr = devCon->Map(transformBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedSubResource);
     if(SUCCEEDED(hr)){
-        memcpy(mappedSubResource.pData, objectData, numTransforms * sizeof(ObjectData_t));
+        transformData[0].transform.print();
+        memcpy(mappedSubResource.pData, transformData, numTransforms * sizeof(TransformData_t));
         devCon->Unmap(transformBuffer, 0);
     }else{
         MessageBoxA(nullptr, "Couldn't map transform buffer\n", "Error", MB_OK);
         return;
     }
+    devCon->VSSetShaderResources(TRANSFORMSRV_SLOT, 1, &transformSRV);
 }
 
-void Graphics::renderEntity(Entity *){
-    //TODO
+void Graphics::renderEntity(Mesh *mesh, const int id){
+    objectId = id;
+    devCon->UpdateSubresource(objectIdBuffer, 0, nullptr, &objectId, 0, 0);
+    devCon->VSSetConstantBuffers(OBJECTID_CBSLOT, 1, &objectIdBuffer);
+
+    devCon->IASetInputLayout(mesh->getInputLayout());
+    ID3D11Buffer *vertexBuffer = mesh->getVertexBuffer();
+    uint32_t strides = {mesh->getVertexBufferStrides()};
+    uint32_t offset = {mesh->getVertexBufferOffset()};
+    devCon->IASetVertexBuffers(0, 1, &vertexBuffer, &strides, &offset);
+    devCon->IASetIndexBuffer(mesh->getIndexBuffer(), DXGI_FORMAT_R32_UINT, 0);
+    devCon->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+
+    devCon->VSSetShader(mesh->getVertexShader(), 0, 0);
+    devCon->PSSetShader(mesh->getPixelShader(), 0, 0);
+
+    devCon->DrawIndexed(mesh->getNumIndices(), 0, 0);
 }
 
-void Graphics::cleanObjectDataArray(void){
-    //TODO
+void Graphics::cleanTransformDataArray(void){
+    if(transformData == nullptr) delete[] transformData;
 }

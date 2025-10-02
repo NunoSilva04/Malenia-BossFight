@@ -11,7 +11,7 @@
 #include "Math2.h"
 
 class Vec4;
-class Entity;
+class Mesh;
 class Position;
 
 class IGraphics{
@@ -50,11 +50,11 @@ public:
     virtual void updateSubResource(ID3D11Resource *resource, const void *dataSource) = 0;
     virtual void setConstantBuffer(ID3D11Buffer **constantBuffer, uint32_t numBuffers, uint32_t startIndexBuffer) = 0;
     virtual void setDepthStencilState(uint32_t stencilValue, ID3D11DepthStencilState *depthStencilState) = 0;
-    virtual void createObjectDataArray(const int) = 0;
-    virtual void pushEntityDataIntoObjectDataArray(Position *, const int) = 0;
-    virtual void sendObjectArrayGPU(void) = 0;
-    virtual void renderEntity(Entity *) = 0;
-    virtual void cleanObjectDataArray(void) = 0; 
+    virtual void createTransformDataArray(const int) = 0;
+    virtual void pushEntityDataIntoTransformDataArray(Position *, const int) = 0;
+    virtual void sendTransformArrayGPU(void) = 0;
+    virtual void renderEntity(Mesh *, const int) = 0;
+    virtual void cleanTransformDataArray(void) = 0; 
 };
 
 #endif

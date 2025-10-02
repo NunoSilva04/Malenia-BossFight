@@ -52,6 +52,10 @@ bool Graphics::initDirectX(HWND hWnd, HMONITOR hMonitor, const windowPreferances
         std::printf("Couldn't create transform shader resource view\n");
         return false;
     }
+    if(!initIdCbBuffer()){
+        std::printf("Couldn't initialize id constant buffer\n");
+        return false;
+    }
 
     return true;
 }
@@ -384,14 +388,16 @@ bool Graphics::initDefaultSamplerState(){
 
 bool Graphics::initTransformSRV(void){
     HRESULT hr;
+    numTransforms = 0;
 
+    //Structured buffer that holds the transform
     D3D11_BUFFER_DESC transformBufferDesc;
     ZeroMemory(&transformBufferDesc, sizeof(D3D11_BUFFER_DESC));
     transformBufferDesc.BindFlags = D3D11_BIND_SHADER_RESOURCE;
-    transformBufferDesc.ByteWidth = maxObjects * sizeof(ObjectData_t);
+    transformBufferDesc.ByteWidth = maxObjects * sizeof(TransformData_t);
     transformBufferDesc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
     transformBufferDesc.MiscFlags = D3D11_RESOURCE_MISC_BUFFER_STRUCTURED;
-    transformBufferDesc.StructureByteStride = sizeof(ObjectData_t);
+    transformBufferDesc.StructureByteStride = sizeof(TransformData_t);
     transformBufferDesc.Usage = D3D11_USAGE_DYNAMIC;
 
     hr = dev->CreateBuffer(&transformBufferDesc, nullptr, &transformBuffer);
@@ -414,6 +420,25 @@ bool Graphics::initTransformSRV(void){
     return true;
 }
 
+bool Graphics::initIdCbBuffer(void){
+    HRESULT hr;
+    objectId = 0;
+
+    D3D11_BUFFER_DESC objectIdBufferDesc;
+    ZeroMemory(&objectIdBufferDesc, sizeof(D3D11_BUFFER_DESC));
+    objectIdBufferDesc.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
+    objectIdBufferDesc.ByteWidth = sizeof(int) * 4;             //A constant buffer must be at least 16 bytes
+    objectIdBufferDesc.CPUAccessFlags = 0;
+    objectIdBufferDesc.Usage = D3D11_USAGE_DEFAULT;
+
+    hr = dev->CreateBuffer(&objectIdBufferDesc, nullptr, &objectIdBuffer);
+    if(FAILED(hr)){
+        return false;
+    }
+
+    return true;
+}
+
 void Graphics::cleanDirectX(void){
     if(dev) dev->Release();
     if(devCon) devCon->Release();
@@ -426,4 +451,5 @@ void Graphics::cleanDirectX(void){
     if(rasterizerState) rasterizerState->Release();
     if(defaultSamplerState) defaultSamplerState->Release();
     if(transformSRV != nullptr) transformSRV->Release();
+    if(objectIdBuffer != nullptr) objectIdBuffer->Release();
 }
