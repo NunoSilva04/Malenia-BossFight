@@ -31,20 +31,18 @@ private:
     fbxsdk::FbxManager *manager;
     fbxsdk::FbxScene *scene;
     
-    bool createMeshResources(IResources *);
-    Vec4 originPoint;
-    struct Vertices_t{
-        Vec4 vertice;
-    };
-    Vertices_t *vertices;
-    int numVertices;
+    bool createMeshResources(IResources *);    
+    struct Scene_t{
+        int numMeshes;
+        Vec4 *originPoints;
+        int numVertices;
+        Vec4 *vertices;
+        int numIndices;
+        uint32_t *indices;
+    };  
+    Scene_t sceneData;
 
-    struct Indices_t{
-        uint32_t index;
-    };
-    Indices_t *indices;
-    int numIndices;
-    
+
     ID3D11VertexShader *vertexShader;
     ID3D11PixelShader *pixelShader;
     ID3D11InputLayout *inputLayout;

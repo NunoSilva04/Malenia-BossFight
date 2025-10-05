@@ -12,7 +12,7 @@ World::~World(){
 }
 
 bool World::initWorld(IResources *resources){
-    player = EntitySystem::createPlayer(resources, "Player", "../../Models/Sphere.fbx");
+    player = EntitySystem::createPlayer(resources, "Player", "../../Models/Sphere_and_Cube.fbx");
     entities.push_back(player);
 
     return true;

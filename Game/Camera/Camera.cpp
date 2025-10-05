@@ -115,7 +115,6 @@ const Vec4 Camera::getCamPosition(void){
 void Camera::updateCamera(IRender *render, IInput *input, float frame_time){
     moveCameraTarget(input);
     moveCameraPos(input, frame_time);
-    //testMovePosition();
     render->updateSubResource(cameraBuffer, &cameraBuffer_t);
     render->setConstantBuffer(&cameraBuffer, 1, 0);
 }   
