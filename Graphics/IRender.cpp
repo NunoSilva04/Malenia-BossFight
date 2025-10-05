@@ -51,8 +51,7 @@ void Graphics::createTransformDataArray(const int numObjects){
 
 void Graphics::pushEntityDataIntoTransformDataArray(Position *position, const int id){
     transformData[id].transform = position->getTransformMat();
-    printf("Id = %d\n", id);
-    numTransforms += 1;
+    numTransforms += 1;   
 }
 
 void Graphics::sendTransformArrayGPU(void){
@@ -61,8 +60,7 @@ void Graphics::sendTransformArrayGPU(void){
     D3D11_MAPPED_SUBRESOURCE mappedSubResource;
     hr = devCon->Map(transformBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedSubResource);
     if(SUCCEEDED(hr)){
-        transformData[0].transform.print();
-        memcpy(mappedSubResource.pData, transformData, numTransforms * sizeof(TransformData_t));
+        memcpy(mappedSubResource.pData, transformData, maxObjects * sizeof(TransformData_t));
         devCon->Unmap(transformBuffer, 0);
     }else{
         MessageBoxA(nullptr, "Couldn't map transform buffer\n", "Error", MB_OK);
@@ -92,4 +90,5 @@ void Graphics::renderEntity(Mesh *mesh, const int id){
 
 void Graphics::cleanTransformDataArray(void){
     if(transformData == nullptr) delete[] transformData;
+    numTransforms = 0;
 }

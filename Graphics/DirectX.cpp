@@ -343,7 +343,7 @@ bool Graphics::initRasterizerState(){
     rasterizerStateDesc.DepthBias = 0;
     rasterizerStateDesc.SlopeScaledDepthBias = 0.0f;
     rasterizerStateDesc.DepthBiasClamp = 0.0f;
-    rasterizerStateDesc.DepthClipEnable = true;
+    rasterizerStateDesc.DepthClipEnable = false;
     rasterizerStateDesc.ScissorEnable = false;
     rasterizerStateDesc.MultisampleEnable = false;
     rasterizerStateDesc.AntialiasedLineEnable = false;
@@ -427,7 +427,7 @@ bool Graphics::initIdCbBuffer(void){
     D3D11_BUFFER_DESC objectIdBufferDesc;
     ZeroMemory(&objectIdBufferDesc, sizeof(D3D11_BUFFER_DESC));
     objectIdBufferDesc.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
-    objectIdBufferDesc.ByteWidth = sizeof(int) * 4;             //A constant buffer must be at least 16 bytes
+    objectIdBufferDesc.ByteWidth = sizeof(int) * 4; 
     objectIdBufferDesc.CPUAccessFlags = 0;
     objectIdBufferDesc.Usage = D3D11_USAGE_DEFAULT;
 
