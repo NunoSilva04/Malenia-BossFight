@@ -33,7 +33,7 @@
                 "CMAKE_ARCHIVE_OUTPUT_DIRECTORY": "${sourceDir}/bin/Windows/Release/static_libs",
                 "DEBUG":{
                     "type": "boolean",
-                    "value": "off"
+                    "value": "false"
                 },
                 "CMAKE_CXX_COMPILER": "g++"
             }
@@ -50,6 +50,22 @@
                 "DEBUG":{
                     "type": "boolean",
                     "value": "on"
+                },
+                "CMAKE_CXX_COMPILER": "clang++"
+            }
+        },
+        {
+            "name": "MacOS Release",
+            "generator": "Unix Makefiles",
+            "binaryDir": "${sourceDir}/build",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release",
+                "CMAKE_RUNTIME_OUTPUT_DIRECTORY": "${sourceDir}/bin/MacOS/Release",
+                "CMAKE_LIBRARY_OUTPUT_DIRECTORY": "${sourceDir}/bin/MacOS/Release",
+                "CMAKE_ARCHIVE_OUTPUT_DIRECTORY": "${sourceDir}/bin/MacOS/Release/static_libs",
+                "DEBUG":{
+                    "type": "boolean",
+                    "value": "false"
                 },
                 "CMAKE_CXX_COMPILER": "clang++"
             }
