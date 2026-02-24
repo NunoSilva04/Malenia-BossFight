@@ -2,8 +2,8 @@
 
 ## Disclaimer
 
-- **This project is still in the making**
-- **This project can only run on windows since it uses DirectX 11**
+- **This project is currently being refactored to be cross-platform.**
+- **This is the last update done which involves windows only and uses DirectX11.**
 - **Make sure you have either a PS4 or a PS5 controller connected when running the project.**
 
 ## PreRequisites
