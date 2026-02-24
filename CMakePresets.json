@@ -8,24 +8,28 @@
     "configurePresets": [
         {
             "name": "Windows Debug",
-            "generator": "Unix Makefiles",
-            "binaryDir": "${sourceDir}/build",
+            "generator": "Visual Studio 18 2026",
+            "binaryDir": "${sourceDir}/build/windows-msvc-debug",
             "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Debug",
                 "CMAKE_RUNTIME_OUTPUT_DIRECTORY": "${sourceDir}/bin/Windows/Debug",
                 "CMAKE_LIBRARY_OUTPUT_DIRECTORY": "${sourceDir}/bin/Windows/Debug",
                 "CMAKE_ARCHIVE_OUTPUT_DIRECTORY": "${sourceDir}/bin/Windows/Debug/static_libs",
                 "DEBUG":{
                     "type": "boolean",
-                    "value": "on"
+                    "value": "true"
                 },
                 "CMAKE_CXX_COMPILER": "g++"
+            },
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Windows"
             }
         },
         {
             "name": "Windows Release",
-            "generator": "Unix Makefiles",
-            "binaryDir": "${sourceDir}/build",
+            "generator": "Visual Studio 18 2026",
+            "binaryDir": "${sourceDir}/build/windows-msvc-release",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Release",
                 "CMAKE_RUNTIME_OUTPUT_DIRECTORY": "${sourceDir}/bin/Windows/Release",
@@ -34,14 +38,18 @@
                 "DEBUG":{
                     "type": "boolean",
                     "value": "false"
-                },
-                "CMAKE_CXX_COMPILER": "g++"
+                }
+            },
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Windows"
             }
         },
         {
             "name": "MacOS Debug",
             "generator": "Unix Makefiles",
-            "binaryDir": "${sourceDir}/build",
+            "binaryDir": "${sourceDir}/build/macos-debug",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Debug",
                 "CMAKE_RUNTIME_OUTPUT_DIRECTORY": "${sourceDir}/bin/MacOS/Debug",
@@ -49,15 +57,19 @@
                 "CMAKE_ARCHIVE_OUTPUT_DIRECTORY": "${sourceDir}/bin/MacOS/Debug/static_libs",
                 "DEBUG":{
                     "type": "boolean",
-                    "value": "on"
-                },
-                "CMAKE_CXX_COMPILER": "clang++"
+                    "value": "true"
+                }
+            },
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Darwin"
             }
         },
         {
             "name": "MacOS Release",
             "generator": "Unix Makefiles",
-            "binaryDir": "${sourceDir}/build",
+            "binaryDir": "${sourceDir}/build/macos-release",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Release",
                 "CMAKE_RUNTIME_OUTPUT_DIRECTORY": "${sourceDir}/bin/MacOS/Release",
@@ -68,7 +80,61 @@
                     "value": "false"
                 },
                 "CMAKE_CXX_COMPILER": "clang++"
+            },
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Darwin"
             }
+        },
+        {
+            "name": "Linux Debug",
+            "generator": "Unix Makefiles",
+            "binaryDir": "${sourceDir}/build/linux-debug",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_RUNTIME_OUTPUT_DIRECTORY": "${sourceDir}/bin/Linux/Debug",
+                "CMAKE_LIBRARY_OUTPUT_DIRECTORY": "${sourceDir}/bin/Linux/Debug",
+                "CMAKE_ARCHIVE_OUTPUT_DIRECTORY": "${sourceDir}/bin/Linux/Debug/static_libs",
+                "DEBUG":{
+                    "type": "boolean",
+                    "value": "true"
+                },
+                "CMAKE_CXX_COMPILER": "g++"
+            },
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Linux"
+            }
+        },
+        {
+            "name": "Linux Release",
+            "generator": "Unix Makefiles",
+            "binaryDir": "${sourceDir}/build/linux-release",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release",
+                "CMAKE_RUNTIME_OUTPUT_DIRECTORY": "${sourceDir}/bin/Linux/Release",
+                "CMAKE_LIBRARY_OUTPUT_DIRECTORY": "${sourceDir}/bin/Linux/Release",
+                "CMAKE_ARCHIVE_OUTPUT_DIRECTORY": "${sourceDir}/bin/Linux/Release/static_libs",
+                "DEBUG":{
+                    "type": "boolean",
+                    "value": "false"
+                },
+                "CMAKE_CXX_COMPILER": "g++"
+            },
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Linux"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "Windows Debug",
+            "configurePreset": "Windows Debug",
+            "configuration": "Debug"
         }
     ]
 }
