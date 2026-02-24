@@ -1,0 +1,2098 @@
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineSystem.cmake:212 (message)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      The system is: Windows - 10.0.26200 - AMD64
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeUnixFindMake.cmake:5 (find_program)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_MAKE_PROGRAM"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "gmake"
+      - "make"
+      - "smake"
+    candidate_directories:
+      - "C:/Windows/System32/"
+      - "C:/Windows/"
+      - "C:/Windows/System32/wbem/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
+      - "C:/Windows/System32/OpenSSH/"
+      - "C:/Program Files/dotnet/"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/"
+      - "C:/Program Files/MATLAB/R2025b/bin/"
+      - "C:/Program Files/CMake/bin/"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/"
+      - "C:/Program Files/Git/cmd/"
+      - "C:/Users/nunot/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/Users/nunot/AppData/Local/Programs/Microsoft VS Code/bin/"
+      - "C:/msys64/ucrt64/bin/"
+      - "C:/msys64/usr/bin/"
+    searched_directories:
+      - "C:/Windows/System32/gmake.com"
+      - "C:/Windows/System32/gmake.exe"
+      - "C:/Windows/System32/gmake"
+      - "C:/Windows/gmake.com"
+      - "C:/Windows/gmake.exe"
+      - "C:/Windows/gmake"
+      - "C:/Windows/System32/wbem/gmake.com"
+      - "C:/Windows/System32/wbem/gmake.exe"
+      - "C:/Windows/System32/wbem/gmake"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/gmake.com"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/gmake.exe"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/gmake"
+      - "C:/Windows/System32/OpenSSH/gmake.com"
+      - "C:/Windows/System32/OpenSSH/gmake.exe"
+      - "C:/Windows/System32/OpenSSH/gmake"
+      - "C:/Program Files/dotnet/gmake.com"
+      - "C:/Program Files/dotnet/gmake.exe"
+      - "C:/Program Files/dotnet/gmake"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/gmake.com"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/gmake.exe"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/gmake"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/gmake.com"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/gmake.exe"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/gmake"
+      - "C:/Program Files/MATLAB/R2025b/bin/gmake.com"
+      - "C:/Program Files/MATLAB/R2025b/bin/gmake.exe"
+      - "C:/Program Files/MATLAB/R2025b/bin/gmake"
+      - "C:/Program Files/CMake/bin/gmake.com"
+      - "C:/Program Files/CMake/bin/gmake.exe"
+      - "C:/Program Files/CMake/bin/gmake"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/gmake.com"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/gmake.exe"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/gmake"
+      - "C:/Program Files/Git/cmd/gmake.com"
+      - "C:/Program Files/Git/cmd/gmake.exe"
+      - "C:/Program Files/Git/cmd/gmake"
+      - "C:/Users/nunot/AppData/Local/Microsoft/WindowsApps/gmake.com"
+      - "C:/Users/nunot/AppData/Local/Microsoft/WindowsApps/gmake.exe"
+      - "C:/Users/nunot/AppData/Local/Microsoft/WindowsApps/gmake"
+      - "C:/Users/nunot/AppData/Local/Programs/Microsoft VS Code/bin/gmake.com"
+      - "C:/Users/nunot/AppData/Local/Programs/Microsoft VS Code/bin/gmake.exe"
+      - "C:/Users/nunot/AppData/Local/Programs/Microsoft VS Code/bin/gmake"
+      - "C:/msys64/ucrt64/bin/gmake.com"
+      - "C:/msys64/ucrt64/bin/gmake.exe"
+      - "C:/msys64/ucrt64/bin/gmake"
+      - "C:/msys64/usr/bin/gmake.com"
+      - "C:/msys64/usr/bin/gmake.exe"
+      - "C:/msys64/usr/bin/gmake"
+      - "C:/Windows/System32/make.com"
+      - "C:/Windows/System32/make.exe"
+      - "C:/Windows/System32/make"
+      - "C:/Windows/make.com"
+      - "C:/Windows/make.exe"
+      - "C:/Windows/make"
+      - "C:/Windows/System32/wbem/make.com"
+      - "C:/Windows/System32/wbem/make.exe"
+      - "C:/Windows/System32/wbem/make"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/make.com"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/make.exe"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/make"
+      - "C:/Windows/System32/OpenSSH/make.com"
+      - "C:/Windows/System32/OpenSSH/make.exe"
+      - "C:/Windows/System32/OpenSSH/make"
+      - "C:/Program Files/dotnet/make.com"
+      - "C:/Program Files/dotnet/make.exe"
+      - "C:/Program Files/dotnet/make"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/make.com"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/make.exe"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/make"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/make.com"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/make.exe"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/make"
+      - "C:/Program Files/MATLAB/R2025b/bin/make.com"
+      - "C:/Program Files/MATLAB/R2025b/bin/make.exe"
+      - "C:/Program Files/MATLAB/R2025b/bin/make"
+      - "C:/Program Files/CMake/bin/make.com"
+      - "C:/Program Files/CMake/bin/make.exe"
+      - "C:/Program Files/CMake/bin/make"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/make.com"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/make.exe"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/make"
+      - "C:/Program Files/Git/cmd/make.com"
+      - "C:/Program Files/Git/cmd/make.exe"
+      - "C:/Program Files/Git/cmd/make"
+      - "C:/Users/nunot/AppData/Local/Microsoft/WindowsApps/make.com"
+      - "C:/Users/nunot/AppData/Local/Microsoft/WindowsApps/make.exe"
+      - "C:/Users/nunot/AppData/Local/Microsoft/WindowsApps/make"
+      - "C:/Users/nunot/AppData/Local/Programs/Microsoft VS Code/bin/make.com"
+      - "C:/Users/nunot/AppData/Local/Programs/Microsoft VS Code/bin/make.exe"
+      - "C:/Users/nunot/AppData/Local/Programs/Microsoft VS Code/bin/make"
+      - "C:/msys64/ucrt64/bin/make.com"
+      - "C:/msys64/ucrt64/bin/make.exe"
+      - "C:/msys64/ucrt64/bin/make"
+      - "C:/msys64/usr/bin/make.com"
+    found: "C:/msys64/usr/bin/make.exe"
+    search_context:
+      ENV{PATH}:
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files\\NVIDIA Corporation\\NVIDIA App\\NvDLISR"
+        - "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common"
+        - "C:\\Program Files\\MATLAB\\R2025b\\bin"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Users\\nunot\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\nunot\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\msys64\\ucrt64\\bin"
+        - "C:\\msys64\\usr\\bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompiler.cmake:115 (find_program)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:71 (_cmake_find_compiler_path)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_CXX_COMPILER_WITH_PATH"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "clang++"
+    candidate_directories:
+      - "C:/Windows/System32/"
+      - "C:/Windows/"
+      - "C:/Windows/System32/wbem/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
+      - "C:/Windows/System32/OpenSSH/"
+      - "C:/Program Files/dotnet/"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/"
+      - "C:/Program Files/MATLAB/R2025b/bin/"
+      - "C:/Program Files/CMake/bin/"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/"
+      - "C:/Program Files/Git/cmd/"
+      - "C:/Users/nunot/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/Users/nunot/AppData/Local/Programs/Microsoft VS Code/bin/"
+      - "C:/msys64/ucrt64/bin/"
+      - "C:/msys64/usr/bin/"
+    searched_directories:
+      - "C:/Windows/System32/clang++.com"
+      - "C:/Windows/System32/clang++.exe"
+      - "C:/Windows/System32/clang++"
+      - "C:/Windows/clang++.com"
+      - "C:/Windows/clang++.exe"
+      - "C:/Windows/clang++"
+      - "C:/Windows/System32/wbem/clang++.com"
+      - "C:/Windows/System32/wbem/clang++.exe"
+      - "C:/Windows/System32/wbem/clang++"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/clang++.com"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/clang++.exe"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/clang++"
+      - "C:/Windows/System32/OpenSSH/clang++.com"
+      - "C:/Windows/System32/OpenSSH/clang++.exe"
+      - "C:/Windows/System32/OpenSSH/clang++"
+      - "C:/Program Files/dotnet/clang++.com"
+      - "C:/Program Files/dotnet/clang++.exe"
+      - "C:/Program Files/dotnet/clang++"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/clang++.com"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/clang++.exe"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/clang++"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/clang++.com"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/clang++.exe"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/clang++"
+      - "C:/Program Files/MATLAB/R2025b/bin/clang++.com"
+      - "C:/Program Files/MATLAB/R2025b/bin/clang++.exe"
+      - "C:/Program Files/MATLAB/R2025b/bin/clang++"
+      - "C:/Program Files/CMake/bin/clang++.com"
+      - "C:/Program Files/CMake/bin/clang++.exe"
+      - "C:/Program Files/CMake/bin/clang++"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/clang++.com"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/clang++.exe"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/clang++"
+      - "C:/Program Files/Git/cmd/clang++.com"
+      - "C:/Program Files/Git/cmd/clang++.exe"
+      - "C:/Program Files/Git/cmd/clang++"
+      - "C:/Users/nunot/AppData/Local/Microsoft/WindowsApps/clang++.com"
+      - "C:/Users/nunot/AppData/Local/Microsoft/WindowsApps/clang++.exe"
+      - "C:/Users/nunot/AppData/Local/Microsoft/WindowsApps/clang++"
+      - "C:/Users/nunot/AppData/Local/Programs/Microsoft VS Code/bin/clang++.com"
+      - "C:/Users/nunot/AppData/Local/Programs/Microsoft VS Code/bin/clang++.exe"
+      - "C:/Users/nunot/AppData/Local/Programs/Microsoft VS Code/bin/clang++"
+      - "C:/msys64/ucrt64/bin/clang++.com"
+      - "C:/msys64/ucrt64/bin/clang++.exe"
+      - "C:/msys64/ucrt64/bin/clang++"
+      - "C:/msys64/usr/bin/clang++.com"
+      - "C:/msys64/usr/bin/clang++.exe"
+      - "C:/msys64/usr/bin/clang++"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files\\NVIDIA Corporation\\NVIDIA App\\NvDLISR"
+        - "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common"
+        - "C:\\Program Files\\MATLAB\\R2025b\\bin"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Users\\nunot\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\nunot\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\msys64\\ucrt64\\bin"
+        - "C:\\msys64\\usr\\bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:462 (find_file)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:500 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCXXCompilerId.cpp.in"
+    candidate_directories:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/"
+    found: "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeCXXCompilerId.cpp.in"
+    search_context:
+      ENV{PATH}:
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files\\NVIDIA Corporation\\NVIDIA App\\NvDLISR"
+        - "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common"
+        - "C:\\Program Files\\MATLAB\\R2025b\\bin"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Users\\nunot\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\nunot\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\msys64\\ucrt64\\bin"
+        - "C:\\msys64\\usr\\bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+      Compiler: clang++ 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      no such file or directory
+      
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:462 (find_file)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:500 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCXXCompilerId.cpp.in"
+    candidate_directories:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/"
+    found: "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeCXXCompilerId.cpp.in"
+    search_context:
+      ENV{PATH}:
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files\\NVIDIA Corporation\\NVIDIA App\\NvDLISR"
+        - "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common"
+        - "C:\\Program Files\\MATLAB\\R2025b\\bin"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Users\\nunot\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\nunot\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\msys64\\ucrt64\\bin"
+        - "C:\\msys64\\usr\\bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+      Compiler: clang++ 
+      Build flags: 
+      Id flags: -c 
+      
+      The output was:
+      no such file or directory
+      
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:462 (find_file)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:500 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCXXCompilerId.cpp.in"
+    candidate_directories:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/"
+    found: "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeCXXCompilerId.cpp.in"
+    search_context:
+      ENV{PATH}:
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files\\NVIDIA Corporation\\NVIDIA App\\NvDLISR"
+        - "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common"
+        - "C:\\Program Files\\MATLAB\\R2025b\\bin"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Users\\nunot\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\nunot\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\msys64\\ucrt64\\bin"
+        - "C:\\msys64\\usr\\bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+      Compiler: clang++ 
+      Build flags: 
+      Id flags: --c++ 
+      
+      The output was:
+      no such file or directory
+      
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:462 (find_file)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:500 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCXXCompilerId.cpp.in"
+    candidate_directories:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/"
+    found: "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeCXXCompilerId.cpp.in"
+    search_context:
+      ENV{PATH}:
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files\\NVIDIA Corporation\\NVIDIA App\\NvDLISR"
+        - "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common"
+        - "C:\\Program Files\\MATLAB\\R2025b\\bin"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Users\\nunot\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\nunot\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\msys64\\ucrt64\\bin"
+        - "C:\\msys64\\usr\\bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+      Compiler: clang++ 
+      Build flags: 
+      Id flags: --ec++ 
+      
+      The output was:
+      no such file or directory
+      
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:462 (find_file)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:500 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCXXCompilerId.cpp.in"
+    candidate_directories:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/"
+    found: "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeCXXCompilerId.cpp.in"
+    search_context:
+      ENV{PATH}:
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files\\NVIDIA Corporation\\NVIDIA App\\NvDLISR"
+        - "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common"
+        - "C:\\Program Files\\MATLAB\\R2025b\\bin"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Users\\nunot\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\nunot\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\msys64\\ucrt64\\bin"
+        - "C:\\msys64\\usr\\bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+      Compiler: clang++ 
+      Build flags: 
+      Id flags: --target=arm-arm-none-eabi;-mcpu=cortex-m3 
+      
+      The output was:
+      no such file or directory
+      
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:462 (find_file)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:500 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCXXCompilerId.cpp.in"
+    candidate_directories:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/"
+    found: "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeCXXCompilerId.cpp.in"
+    search_context:
+      ENV{PATH}:
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files\\NVIDIA Corporation\\NVIDIA App\\NvDLISR"
+        - "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common"
+        - "C:\\Program Files\\MATLAB\\R2025b\\bin"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Users\\nunot\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\nunot\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\msys64\\ucrt64\\bin"
+        - "C:\\msys64\\usr\\bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+      Compiler: clang++ 
+      Build flags: 
+      Id flags: -c;-I__does_not_exist__ 
+      
+      The output was:
+      no such file or directory
+      
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:462 (find_file)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:500 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCXXCompilerId.cpp.in"
+    candidate_directories:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/"
+    found: "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeCXXCompilerId.cpp.in"
+    search_context:
+      ENV{PATH}:
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files\\NVIDIA Corporation\\NVIDIA App\\NvDLISR"
+        - "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common"
+        - "C:\\Program Files\\MATLAB\\R2025b\\bin"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Users\\nunot\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\nunot\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\msys64\\ucrt64\\bin"
+        - "C:\\msys64\\usr\\bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+      Compiler: clang++ 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      no such file or directory
+      
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:462 (find_file)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:500 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCXXCompilerId.cpp.in"
+    candidate_directories:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/"
+    found: "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeCXXCompilerId.cpp.in"
+    search_context:
+      ENV{PATH}:
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files\\NVIDIA Corporation\\NVIDIA App\\NvDLISR"
+        - "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common"
+        - "C:\\Program Files\\MATLAB\\R2025b\\bin"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Users\\nunot\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\nunot\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\msys64\\ucrt64\\bin"
+        - "C:\\msys64\\usr\\bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+      Compiler: clang++ 
+      Build flags: 
+      Id flags: -c 
+      
+      The output was:
+      no such file or directory
+      
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:462 (find_file)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:500 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCXXCompilerId.cpp.in"
+    candidate_directories:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/"
+    found: "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeCXXCompilerId.cpp.in"
+    search_context:
+      ENV{PATH}:
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files\\NVIDIA Corporation\\NVIDIA App\\NvDLISR"
+        - "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common"
+        - "C:\\Program Files\\MATLAB\\R2025b\\bin"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Users\\nunot\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\nunot\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\msys64\\ucrt64\\bin"
+        - "C:\\msys64\\usr\\bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+      Compiler: clang++ 
+      Build flags: 
+      Id flags: --c++ 
+      
+      The output was:
+      no such file or directory
+      
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:462 (find_file)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:500 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCXXCompilerId.cpp.in"
+    candidate_directories:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/"
+    found: "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeCXXCompilerId.cpp.in"
+    search_context:
+      ENV{PATH}:
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files\\NVIDIA Corporation\\NVIDIA App\\NvDLISR"
+        - "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common"
+        - "C:\\Program Files\\MATLAB\\R2025b\\bin"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Users\\nunot\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\nunot\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\msys64\\ucrt64\\bin"
+        - "C:\\msys64\\usr\\bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+      Compiler: clang++ 
+      Build flags: 
+      Id flags: --ec++ 
+      
+      The output was:
+      no such file or directory
+      
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:462 (find_file)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:500 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCXXCompilerId.cpp.in"
+    candidate_directories:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/"
+    found: "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeCXXCompilerId.cpp.in"
+    search_context:
+      ENV{PATH}:
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files\\NVIDIA Corporation\\NVIDIA App\\NvDLISR"
+        - "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common"
+        - "C:\\Program Files\\MATLAB\\R2025b\\bin"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Users\\nunot\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\nunot\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\msys64\\ucrt64\\bin"
+        - "C:\\msys64\\usr\\bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+      Compiler: clang++ 
+      Build flags: 
+      Id flags: --target=arm-arm-none-eabi;-mcpu=cortex-m3 
+      
+      The output was:
+      no such file or directory
+      
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:462 (find_file)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:500 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCXXCompilerId.cpp.in"
+    candidate_directories:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/"
+    found: "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeCXXCompilerId.cpp.in"
+    search_context:
+      ENV{PATH}:
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files\\NVIDIA Corporation\\NVIDIA App\\NvDLISR"
+        - "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common"
+        - "C:\\Program Files\\MATLAB\\R2025b\\bin"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Users\\nunot\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\nunot\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\msys64\\ucrt64\\bin"
+        - "C:\\msys64\\usr\\bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+      Compiler: clang++ 
+      Build flags: 
+      Id flags: -c;-I__does_not_exist__ 
+      
+      The output was:
+      no such file or directory
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:1303 (message)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:86 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Checking whether the CXX compiler is IAR using "" did not match "IAR .+ Compiler":
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:1303 (message)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:86 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Checking whether the CXX compiler is IAR using "" did not match "IAR .+ Compiler":
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_AR"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "ar"
+    candidate_directories:
+      - "C:/Windows/System32/"
+      - "C:/Windows/"
+      - "C:/Windows/System32/wbem/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
+      - "C:/Windows/System32/OpenSSH/"
+      - "C:/Program Files/dotnet/"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/"
+      - "C:/Program Files/MATLAB/R2025b/bin/"
+      - "C:/Program Files/CMake/bin/"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/"
+      - "C:/Program Files/Git/cmd/"
+      - "C:/Users/nunot/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/Users/nunot/AppData/Local/Programs/Microsoft VS Code/bin/"
+      - "C:/msys64/ucrt64/bin/"
+      - "C:/msys64/usr/bin/"
+    searched_directories:
+      - "C:/Windows/System32/ar.com"
+      - "C:/Windows/System32/ar.exe"
+      - "C:/Windows/System32/ar"
+      - "C:/Windows/ar.com"
+      - "C:/Windows/ar.exe"
+      - "C:/Windows/ar"
+      - "C:/Windows/System32/wbem/ar.com"
+      - "C:/Windows/System32/wbem/ar.exe"
+      - "C:/Windows/System32/wbem/ar"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/ar.com"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/ar.exe"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/ar"
+      - "C:/Windows/System32/OpenSSH/ar.com"
+      - "C:/Windows/System32/OpenSSH/ar.exe"
+      - "C:/Windows/System32/OpenSSH/ar"
+      - "C:/Program Files/dotnet/ar.com"
+      - "C:/Program Files/dotnet/ar.exe"
+      - "C:/Program Files/dotnet/ar"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/ar.com"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/ar.exe"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/ar"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/ar.com"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/ar.exe"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/ar"
+      - "C:/Program Files/MATLAB/R2025b/bin/ar.com"
+      - "C:/Program Files/MATLAB/R2025b/bin/ar.exe"
+      - "C:/Program Files/MATLAB/R2025b/bin/ar"
+      - "C:/Program Files/CMake/bin/ar.com"
+      - "C:/Program Files/CMake/bin/ar.exe"
+      - "C:/Program Files/CMake/bin/ar"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/ar.com"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/ar.exe"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/ar"
+      - "C:/Program Files/Git/cmd/ar.com"
+      - "C:/Program Files/Git/cmd/ar.exe"
+      - "C:/Program Files/Git/cmd/ar"
+      - "C:/Users/nunot/AppData/Local/Microsoft/WindowsApps/ar.com"
+      - "C:/Users/nunot/AppData/Local/Microsoft/WindowsApps/ar.exe"
+      - "C:/Users/nunot/AppData/Local/Microsoft/WindowsApps/ar"
+      - "C:/Users/nunot/AppData/Local/Programs/Microsoft VS Code/bin/ar.com"
+      - "C:/Users/nunot/AppData/Local/Programs/Microsoft VS Code/bin/ar.exe"
+      - "C:/Users/nunot/AppData/Local/Programs/Microsoft VS Code/bin/ar"
+      - "C:/msys64/ucrt64/bin/ar.com"
+    found: "C:/msys64/ucrt64/bin/ar.exe"
+    search_context:
+      ENV{PATH}:
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files\\NVIDIA Corporation\\NVIDIA App\\NvDLISR"
+        - "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common"
+        - "C:\\Program Files\\MATLAB\\R2025b\\bin"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Users\\nunot\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\nunot\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\msys64\\ucrt64\\bin"
+        - "C:\\msys64\\usr\\bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_RANLIB"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "ranlib"
+    candidate_directories:
+      - "C:/Windows/System32/"
+      - "C:/Windows/"
+      - "C:/Windows/System32/wbem/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
+      - "C:/Windows/System32/OpenSSH/"
+      - "C:/Program Files/dotnet/"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/"
+      - "C:/Program Files/MATLAB/R2025b/bin/"
+      - "C:/Program Files/CMake/bin/"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/"
+      - "C:/Program Files/Git/cmd/"
+      - "C:/Users/nunot/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/Users/nunot/AppData/Local/Programs/Microsoft VS Code/bin/"
+      - "C:/msys64/ucrt64/bin/"
+      - "C:/msys64/usr/bin/"
+    searched_directories:
+      - "C:/Windows/System32/ranlib.com"
+      - "C:/Windows/System32/ranlib.exe"
+      - "C:/Windows/System32/ranlib"
+      - "C:/Windows/ranlib.com"
+      - "C:/Windows/ranlib.exe"
+      - "C:/Windows/ranlib"
+      - "C:/Windows/System32/wbem/ranlib.com"
+      - "C:/Windows/System32/wbem/ranlib.exe"
+      - "C:/Windows/System32/wbem/ranlib"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/ranlib.com"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/ranlib.exe"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/ranlib"
+      - "C:/Windows/System32/OpenSSH/ranlib.com"
+      - "C:/Windows/System32/OpenSSH/ranlib.exe"
+      - "C:/Windows/System32/OpenSSH/ranlib"
+      - "C:/Program Files/dotnet/ranlib.com"
+      - "C:/Program Files/dotnet/ranlib.exe"
+      - "C:/Program Files/dotnet/ranlib"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/ranlib.com"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/ranlib.exe"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/ranlib"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/ranlib.com"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/ranlib.exe"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/ranlib"
+      - "C:/Program Files/MATLAB/R2025b/bin/ranlib.com"
+      - "C:/Program Files/MATLAB/R2025b/bin/ranlib.exe"
+      - "C:/Program Files/MATLAB/R2025b/bin/ranlib"
+      - "C:/Program Files/CMake/bin/ranlib.com"
+      - "C:/Program Files/CMake/bin/ranlib.exe"
+      - "C:/Program Files/CMake/bin/ranlib"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/ranlib.com"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/ranlib.exe"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/ranlib"
+      - "C:/Program Files/Git/cmd/ranlib.com"
+      - "C:/Program Files/Git/cmd/ranlib.exe"
+      - "C:/Program Files/Git/cmd/ranlib"
+      - "C:/Users/nunot/AppData/Local/Microsoft/WindowsApps/ranlib.com"
+      - "C:/Users/nunot/AppData/Local/Microsoft/WindowsApps/ranlib.exe"
+      - "C:/Users/nunot/AppData/Local/Microsoft/WindowsApps/ranlib"
+      - "C:/Users/nunot/AppData/Local/Programs/Microsoft VS Code/bin/ranlib.com"
+      - "C:/Users/nunot/AppData/Local/Programs/Microsoft VS Code/bin/ranlib.exe"
+      - "C:/Users/nunot/AppData/Local/Programs/Microsoft VS Code/bin/ranlib"
+      - "C:/msys64/ucrt64/bin/ranlib.com"
+    found: "C:/msys64/ucrt64/bin/ranlib.exe"
+    search_context:
+      ENV{PATH}:
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files\\NVIDIA Corporation\\NVIDIA App\\NvDLISR"
+        - "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common"
+        - "C:\\Program Files\\MATLAB\\R2025b\\bin"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Users\\nunot\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\nunot\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\msys64\\ucrt64\\bin"
+        - "C:\\msys64\\usr\\bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_STRIP"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "strip"
+    candidate_directories:
+      - "C:/Windows/System32/"
+      - "C:/Windows/"
+      - "C:/Windows/System32/wbem/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
+      - "C:/Windows/System32/OpenSSH/"
+      - "C:/Program Files/dotnet/"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/"
+      - "C:/Program Files/MATLAB/R2025b/bin/"
+      - "C:/Program Files/CMake/bin/"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/"
+      - "C:/Program Files/Git/cmd/"
+      - "C:/Users/nunot/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/Users/nunot/AppData/Local/Programs/Microsoft VS Code/bin/"
+      - "C:/msys64/ucrt64/bin/"
+      - "C:/msys64/usr/bin/"
+    searched_directories:
+      - "C:/Windows/System32/strip.com"
+      - "C:/Windows/System32/strip.exe"
+      - "C:/Windows/System32/strip"
+      - "C:/Windows/strip.com"
+      - "C:/Windows/strip.exe"
+      - "C:/Windows/strip"
+      - "C:/Windows/System32/wbem/strip.com"
+      - "C:/Windows/System32/wbem/strip.exe"
+      - "C:/Windows/System32/wbem/strip"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/strip.com"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/strip.exe"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/strip"
+      - "C:/Windows/System32/OpenSSH/strip.com"
+      - "C:/Windows/System32/OpenSSH/strip.exe"
+      - "C:/Windows/System32/OpenSSH/strip"
+      - "C:/Program Files/dotnet/strip.com"
+      - "C:/Program Files/dotnet/strip.exe"
+      - "C:/Program Files/dotnet/strip"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/strip.com"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/strip.exe"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/strip"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/strip.com"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/strip.exe"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/strip"
+      - "C:/Program Files/MATLAB/R2025b/bin/strip.com"
+      - "C:/Program Files/MATLAB/R2025b/bin/strip.exe"
+      - "C:/Program Files/MATLAB/R2025b/bin/strip"
+      - "C:/Program Files/CMake/bin/strip.com"
+      - "C:/Program Files/CMake/bin/strip.exe"
+      - "C:/Program Files/CMake/bin/strip"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/strip.com"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/strip.exe"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/strip"
+      - "C:/Program Files/Git/cmd/strip.com"
+      - "C:/Program Files/Git/cmd/strip.exe"
+      - "C:/Program Files/Git/cmd/strip"
+      - "C:/Users/nunot/AppData/Local/Microsoft/WindowsApps/strip.com"
+      - "C:/Users/nunot/AppData/Local/Microsoft/WindowsApps/strip.exe"
+      - "C:/Users/nunot/AppData/Local/Microsoft/WindowsApps/strip"
+      - "C:/Users/nunot/AppData/Local/Programs/Microsoft VS Code/bin/strip.com"
+      - "C:/Users/nunot/AppData/Local/Programs/Microsoft VS Code/bin/strip.exe"
+      - "C:/Users/nunot/AppData/Local/Programs/Microsoft VS Code/bin/strip"
+      - "C:/msys64/ucrt64/bin/strip.com"
+    found: "C:/msys64/ucrt64/bin/strip.exe"
+    search_context:
+      ENV{PATH}:
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files\\NVIDIA Corporation\\NVIDIA App\\NvDLISR"
+        - "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common"
+        - "C:\\Program Files\\MATLAB\\R2025b\\bin"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Users\\nunot\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\nunot\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\msys64\\ucrt64\\bin"
+        - "C:\\msys64\\usr\\bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_LINKER"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "ld"
+    candidate_directories:
+      - "C:/Windows/System32/"
+      - "C:/Windows/"
+      - "C:/Windows/System32/wbem/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
+      - "C:/Windows/System32/OpenSSH/"
+      - "C:/Program Files/dotnet/"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/"
+      - "C:/Program Files/MATLAB/R2025b/bin/"
+      - "C:/Program Files/CMake/bin/"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/"
+      - "C:/Program Files/Git/cmd/"
+      - "C:/Users/nunot/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/Users/nunot/AppData/Local/Programs/Microsoft VS Code/bin/"
+      - "C:/msys64/ucrt64/bin/"
+      - "C:/msys64/usr/bin/"
+    searched_directories:
+      - "C:/Windows/System32/ld.com"
+      - "C:/Windows/System32/ld.exe"
+      - "C:/Windows/System32/ld"
+      - "C:/Windows/ld.com"
+      - "C:/Windows/ld.exe"
+      - "C:/Windows/ld"
+      - "C:/Windows/System32/wbem/ld.com"
+      - "C:/Windows/System32/wbem/ld.exe"
+      - "C:/Windows/System32/wbem/ld"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/ld.com"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/ld.exe"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/ld"
+      - "C:/Windows/System32/OpenSSH/ld.com"
+      - "C:/Windows/System32/OpenSSH/ld.exe"
+      - "C:/Windows/System32/OpenSSH/ld"
+      - "C:/Program Files/dotnet/ld.com"
+      - "C:/Program Files/dotnet/ld.exe"
+      - "C:/Program Files/dotnet/ld"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/ld.com"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/ld.exe"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/ld"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/ld.com"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/ld.exe"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/ld"
+      - "C:/Program Files/MATLAB/R2025b/bin/ld.com"
+      - "C:/Program Files/MATLAB/R2025b/bin/ld.exe"
+      - "C:/Program Files/MATLAB/R2025b/bin/ld"
+      - "C:/Program Files/CMake/bin/ld.com"
+      - "C:/Program Files/CMake/bin/ld.exe"
+      - "C:/Program Files/CMake/bin/ld"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/ld.com"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/ld.exe"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/ld"
+      - "C:/Program Files/Git/cmd/ld.com"
+      - "C:/Program Files/Git/cmd/ld.exe"
+      - "C:/Program Files/Git/cmd/ld"
+      - "C:/Users/nunot/AppData/Local/Microsoft/WindowsApps/ld.com"
+      - "C:/Users/nunot/AppData/Local/Microsoft/WindowsApps/ld.exe"
+      - "C:/Users/nunot/AppData/Local/Microsoft/WindowsApps/ld"
+      - "C:/Users/nunot/AppData/Local/Programs/Microsoft VS Code/bin/ld.com"
+      - "C:/Users/nunot/AppData/Local/Programs/Microsoft VS Code/bin/ld.exe"
+      - "C:/Users/nunot/AppData/Local/Programs/Microsoft VS Code/bin/ld"
+      - "C:/msys64/ucrt64/bin/ld.com"
+    found: "C:/msys64/ucrt64/bin/ld.exe"
+    search_context:
+      ENV{PATH}:
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files\\NVIDIA Corporation\\NVIDIA App\\NvDLISR"
+        - "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common"
+        - "C:\\Program Files\\MATLAB\\R2025b\\bin"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Users\\nunot\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\nunot\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\msys64\\ucrt64\\bin"
+        - "C:\\msys64\\usr\\bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_NM"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "nm"
+    candidate_directories:
+      - "C:/Windows/System32/"
+      - "C:/Windows/"
+      - "C:/Windows/System32/wbem/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
+      - "C:/Windows/System32/OpenSSH/"
+      - "C:/Program Files/dotnet/"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/"
+      - "C:/Program Files/MATLAB/R2025b/bin/"
+      - "C:/Program Files/CMake/bin/"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/"
+      - "C:/Program Files/Git/cmd/"
+      - "C:/Users/nunot/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/Users/nunot/AppData/Local/Programs/Microsoft VS Code/bin/"
+      - "C:/msys64/ucrt64/bin/"
+      - "C:/msys64/usr/bin/"
+    searched_directories:
+      - "C:/Windows/System32/nm.com"
+      - "C:/Windows/System32/nm.exe"
+      - "C:/Windows/System32/nm"
+      - "C:/Windows/nm.com"
+      - "C:/Windows/nm.exe"
+      - "C:/Windows/nm"
+      - "C:/Windows/System32/wbem/nm.com"
+      - "C:/Windows/System32/wbem/nm.exe"
+      - "C:/Windows/System32/wbem/nm"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/nm.com"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/nm.exe"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/nm"
+      - "C:/Windows/System32/OpenSSH/nm.com"
+      - "C:/Windows/System32/OpenSSH/nm.exe"
+      - "C:/Windows/System32/OpenSSH/nm"
+      - "C:/Program Files/dotnet/nm.com"
+      - "C:/Program Files/dotnet/nm.exe"
+      - "C:/Program Files/dotnet/nm"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/nm.com"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/nm.exe"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/nm"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/nm.com"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/nm.exe"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/nm"
+      - "C:/Program Files/MATLAB/R2025b/bin/nm.com"
+      - "C:/Program Files/MATLAB/R2025b/bin/nm.exe"
+      - "C:/Program Files/MATLAB/R2025b/bin/nm"
+      - "C:/Program Files/CMake/bin/nm.com"
+      - "C:/Program Files/CMake/bin/nm.exe"
+      - "C:/Program Files/CMake/bin/nm"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/nm.com"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/nm.exe"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/nm"
+      - "C:/Program Files/Git/cmd/nm.com"
+      - "C:/Program Files/Git/cmd/nm.exe"
+      - "C:/Program Files/Git/cmd/nm"
+      - "C:/Users/nunot/AppData/Local/Microsoft/WindowsApps/nm.com"
+      - "C:/Users/nunot/AppData/Local/Microsoft/WindowsApps/nm.exe"
+      - "C:/Users/nunot/AppData/Local/Microsoft/WindowsApps/nm"
+      - "C:/Users/nunot/AppData/Local/Programs/Microsoft VS Code/bin/nm.com"
+      - "C:/Users/nunot/AppData/Local/Programs/Microsoft VS Code/bin/nm.exe"
+      - "C:/Users/nunot/AppData/Local/Programs/Microsoft VS Code/bin/nm"
+      - "C:/msys64/ucrt64/bin/nm.com"
+    found: "C:/msys64/ucrt64/bin/nm.exe"
+    search_context:
+      ENV{PATH}:
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files\\NVIDIA Corporation\\NVIDIA App\\NvDLISR"
+        - "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common"
+        - "C:\\Program Files\\MATLAB\\R2025b\\bin"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Users\\nunot\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\nunot\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\msys64\\ucrt64\\bin"
+        - "C:\\msys64\\usr\\bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_OBJDUMP"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "objdump"
+    candidate_directories:
+      - "C:/Windows/System32/"
+      - "C:/Windows/"
+      - "C:/Windows/System32/wbem/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
+      - "C:/Windows/System32/OpenSSH/"
+      - "C:/Program Files/dotnet/"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/"
+      - "C:/Program Files/MATLAB/R2025b/bin/"
+      - "C:/Program Files/CMake/bin/"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/"
+      - "C:/Program Files/Git/cmd/"
+      - "C:/Users/nunot/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/Users/nunot/AppData/Local/Programs/Microsoft VS Code/bin/"
+      - "C:/msys64/ucrt64/bin/"
+      - "C:/msys64/usr/bin/"
+    searched_directories:
+      - "C:/Windows/System32/objdump.com"
+      - "C:/Windows/System32/objdump.exe"
+      - "C:/Windows/System32/objdump"
+      - "C:/Windows/objdump.com"
+      - "C:/Windows/objdump.exe"
+      - "C:/Windows/objdump"
+      - "C:/Windows/System32/wbem/objdump.com"
+      - "C:/Windows/System32/wbem/objdump.exe"
+      - "C:/Windows/System32/wbem/objdump"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/objdump.com"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/objdump.exe"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/objdump"
+      - "C:/Windows/System32/OpenSSH/objdump.com"
+      - "C:/Windows/System32/OpenSSH/objdump.exe"
+      - "C:/Windows/System32/OpenSSH/objdump"
+      - "C:/Program Files/dotnet/objdump.com"
+      - "C:/Program Files/dotnet/objdump.exe"
+      - "C:/Program Files/dotnet/objdump"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/objdump.com"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/objdump.exe"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/objdump"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/objdump.com"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/objdump.exe"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/objdump"
+      - "C:/Program Files/MATLAB/R2025b/bin/objdump.com"
+      - "C:/Program Files/MATLAB/R2025b/bin/objdump.exe"
+      - "C:/Program Files/MATLAB/R2025b/bin/objdump"
+      - "C:/Program Files/CMake/bin/objdump.com"
+      - "C:/Program Files/CMake/bin/objdump.exe"
+      - "C:/Program Files/CMake/bin/objdump"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/objdump.com"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/objdump.exe"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/objdump"
+      - "C:/Program Files/Git/cmd/objdump.com"
+      - "C:/Program Files/Git/cmd/objdump.exe"
+      - "C:/Program Files/Git/cmd/objdump"
+      - "C:/Users/nunot/AppData/Local/Microsoft/WindowsApps/objdump.com"
+      - "C:/Users/nunot/AppData/Local/Microsoft/WindowsApps/objdump.exe"
+      - "C:/Users/nunot/AppData/Local/Microsoft/WindowsApps/objdump"
+      - "C:/Users/nunot/AppData/Local/Programs/Microsoft VS Code/bin/objdump.com"
+      - "C:/Users/nunot/AppData/Local/Programs/Microsoft VS Code/bin/objdump.exe"
+      - "C:/Users/nunot/AppData/Local/Programs/Microsoft VS Code/bin/objdump"
+      - "C:/msys64/ucrt64/bin/objdump.com"
+    found: "C:/msys64/ucrt64/bin/objdump.exe"
+    search_context:
+      ENV{PATH}:
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files\\NVIDIA Corporation\\NVIDIA App\\NvDLISR"
+        - "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common"
+        - "C:\\Program Files\\MATLAB\\R2025b\\bin"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Users\\nunot\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\nunot\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\msys64\\ucrt64\\bin"
+        - "C:\\msys64\\usr\\bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_OBJCOPY"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "objcopy"
+    candidate_directories:
+      - "C:/Windows/System32/"
+      - "C:/Windows/"
+      - "C:/Windows/System32/wbem/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
+      - "C:/Windows/System32/OpenSSH/"
+      - "C:/Program Files/dotnet/"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/"
+      - "C:/Program Files/MATLAB/R2025b/bin/"
+      - "C:/Program Files/CMake/bin/"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/"
+      - "C:/Program Files/Git/cmd/"
+      - "C:/Users/nunot/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/Users/nunot/AppData/Local/Programs/Microsoft VS Code/bin/"
+      - "C:/msys64/ucrt64/bin/"
+      - "C:/msys64/usr/bin/"
+    searched_directories:
+      - "C:/Windows/System32/objcopy.com"
+      - "C:/Windows/System32/objcopy.exe"
+      - "C:/Windows/System32/objcopy"
+      - "C:/Windows/objcopy.com"
+      - "C:/Windows/objcopy.exe"
+      - "C:/Windows/objcopy"
+      - "C:/Windows/System32/wbem/objcopy.com"
+      - "C:/Windows/System32/wbem/objcopy.exe"
+      - "C:/Windows/System32/wbem/objcopy"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/objcopy.com"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/objcopy.exe"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/objcopy"
+      - "C:/Windows/System32/OpenSSH/objcopy.com"
+      - "C:/Windows/System32/OpenSSH/objcopy.exe"
+      - "C:/Windows/System32/OpenSSH/objcopy"
+      - "C:/Program Files/dotnet/objcopy.com"
+      - "C:/Program Files/dotnet/objcopy.exe"
+      - "C:/Program Files/dotnet/objcopy"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/objcopy.com"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/objcopy.exe"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/objcopy"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/objcopy.com"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/objcopy.exe"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/objcopy"
+      - "C:/Program Files/MATLAB/R2025b/bin/objcopy.com"
+      - "C:/Program Files/MATLAB/R2025b/bin/objcopy.exe"
+      - "C:/Program Files/MATLAB/R2025b/bin/objcopy"
+      - "C:/Program Files/CMake/bin/objcopy.com"
+      - "C:/Program Files/CMake/bin/objcopy.exe"
+      - "C:/Program Files/CMake/bin/objcopy"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/objcopy.com"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/objcopy.exe"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/objcopy"
+      - "C:/Program Files/Git/cmd/objcopy.com"
+      - "C:/Program Files/Git/cmd/objcopy.exe"
+      - "C:/Program Files/Git/cmd/objcopy"
+      - "C:/Users/nunot/AppData/Local/Microsoft/WindowsApps/objcopy.com"
+      - "C:/Users/nunot/AppData/Local/Microsoft/WindowsApps/objcopy.exe"
+      - "C:/Users/nunot/AppData/Local/Microsoft/WindowsApps/objcopy"
+      - "C:/Users/nunot/AppData/Local/Programs/Microsoft VS Code/bin/objcopy.com"
+      - "C:/Users/nunot/AppData/Local/Programs/Microsoft VS Code/bin/objcopy.exe"
+      - "C:/Users/nunot/AppData/Local/Programs/Microsoft VS Code/bin/objcopy"
+      - "C:/msys64/ucrt64/bin/objcopy.com"
+    found: "C:/msys64/ucrt64/bin/objcopy.exe"
+    search_context:
+      ENV{PATH}:
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files\\NVIDIA Corporation\\NVIDIA App\\NvDLISR"
+        - "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common"
+        - "C:\\Program Files\\MATLAB\\R2025b\\bin"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Users\\nunot\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\nunot\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\msys64\\ucrt64\\bin"
+        - "C:\\msys64\\usr\\bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_READELF"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "readelf"
+    candidate_directories:
+      - "C:/Windows/System32/"
+      - "C:/Windows/"
+      - "C:/Windows/System32/wbem/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
+      - "C:/Windows/System32/OpenSSH/"
+      - "C:/Program Files/dotnet/"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/"
+      - "C:/Program Files/MATLAB/R2025b/bin/"
+      - "C:/Program Files/CMake/bin/"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/"
+      - "C:/Program Files/Git/cmd/"
+      - "C:/Users/nunot/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/Users/nunot/AppData/Local/Programs/Microsoft VS Code/bin/"
+      - "C:/msys64/ucrt64/bin/"
+      - "C:/msys64/usr/bin/"
+    searched_directories:
+      - "C:/Windows/System32/readelf.com"
+      - "C:/Windows/System32/readelf.exe"
+      - "C:/Windows/System32/readelf"
+      - "C:/Windows/readelf.com"
+      - "C:/Windows/readelf.exe"
+      - "C:/Windows/readelf"
+      - "C:/Windows/System32/wbem/readelf.com"
+      - "C:/Windows/System32/wbem/readelf.exe"
+      - "C:/Windows/System32/wbem/readelf"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/readelf.com"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/readelf.exe"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/readelf"
+      - "C:/Windows/System32/OpenSSH/readelf.com"
+      - "C:/Windows/System32/OpenSSH/readelf.exe"
+      - "C:/Windows/System32/OpenSSH/readelf"
+      - "C:/Program Files/dotnet/readelf.com"
+      - "C:/Program Files/dotnet/readelf.exe"
+      - "C:/Program Files/dotnet/readelf"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/readelf.com"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/readelf.exe"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/readelf"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/readelf.com"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/readelf.exe"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/readelf"
+      - "C:/Program Files/MATLAB/R2025b/bin/readelf.com"
+      - "C:/Program Files/MATLAB/R2025b/bin/readelf.exe"
+      - "C:/Program Files/MATLAB/R2025b/bin/readelf"
+      - "C:/Program Files/CMake/bin/readelf.com"
+      - "C:/Program Files/CMake/bin/readelf.exe"
+      - "C:/Program Files/CMake/bin/readelf"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/readelf.com"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/readelf.exe"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/readelf"
+      - "C:/Program Files/Git/cmd/readelf.com"
+      - "C:/Program Files/Git/cmd/readelf.exe"
+      - "C:/Program Files/Git/cmd/readelf"
+      - "C:/Users/nunot/AppData/Local/Microsoft/WindowsApps/readelf.com"
+      - "C:/Users/nunot/AppData/Local/Microsoft/WindowsApps/readelf.exe"
+      - "C:/Users/nunot/AppData/Local/Microsoft/WindowsApps/readelf"
+      - "C:/Users/nunot/AppData/Local/Programs/Microsoft VS Code/bin/readelf.com"
+      - "C:/Users/nunot/AppData/Local/Programs/Microsoft VS Code/bin/readelf.exe"
+      - "C:/Users/nunot/AppData/Local/Programs/Microsoft VS Code/bin/readelf"
+      - "C:/msys64/ucrt64/bin/readelf.com"
+    found: "C:/msys64/ucrt64/bin/readelf.exe"
+    search_context:
+      ENV{PATH}:
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files\\NVIDIA Corporation\\NVIDIA App\\NvDLISR"
+        - "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common"
+        - "C:\\Program Files\\MATLAB\\R2025b\\bin"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Users\\nunot\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\nunot\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\msys64\\ucrt64\\bin"
+        - "C:\\msys64\\usr\\bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_DLLTOOL"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "dlltool"
+    candidate_directories:
+      - "C:/Windows/System32/"
+      - "C:/Windows/"
+      - "C:/Windows/System32/wbem/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
+      - "C:/Windows/System32/OpenSSH/"
+      - "C:/Program Files/dotnet/"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/"
+      - "C:/Program Files/MATLAB/R2025b/bin/"
+      - "C:/Program Files/CMake/bin/"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/"
+      - "C:/Program Files/Git/cmd/"
+      - "C:/Users/nunot/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/Users/nunot/AppData/Local/Programs/Microsoft VS Code/bin/"
+      - "C:/msys64/ucrt64/bin/"
+      - "C:/msys64/usr/bin/"
+    searched_directories:
+      - "C:/Windows/System32/dlltool.com"
+      - "C:/Windows/System32/dlltool.exe"
+      - "C:/Windows/System32/dlltool"
+      - "C:/Windows/dlltool.com"
+      - "C:/Windows/dlltool.exe"
+      - "C:/Windows/dlltool"
+      - "C:/Windows/System32/wbem/dlltool.com"
+      - "C:/Windows/System32/wbem/dlltool.exe"
+      - "C:/Windows/System32/wbem/dlltool"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/dlltool.com"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/dlltool.exe"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/dlltool"
+      - "C:/Windows/System32/OpenSSH/dlltool.com"
+      - "C:/Windows/System32/OpenSSH/dlltool.exe"
+      - "C:/Windows/System32/OpenSSH/dlltool"
+      - "C:/Program Files/dotnet/dlltool.com"
+      - "C:/Program Files/dotnet/dlltool.exe"
+      - "C:/Program Files/dotnet/dlltool"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/dlltool.com"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/dlltool.exe"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/dlltool"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/dlltool.com"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/dlltool.exe"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/dlltool"
+      - "C:/Program Files/MATLAB/R2025b/bin/dlltool.com"
+      - "C:/Program Files/MATLAB/R2025b/bin/dlltool.exe"
+      - "C:/Program Files/MATLAB/R2025b/bin/dlltool"
+      - "C:/Program Files/CMake/bin/dlltool.com"
+      - "C:/Program Files/CMake/bin/dlltool.exe"
+      - "C:/Program Files/CMake/bin/dlltool"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/dlltool.com"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/dlltool.exe"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/dlltool"
+      - "C:/Program Files/Git/cmd/dlltool.com"
+      - "C:/Program Files/Git/cmd/dlltool.exe"
+      - "C:/Program Files/Git/cmd/dlltool"
+      - "C:/Users/nunot/AppData/Local/Microsoft/WindowsApps/dlltool.com"
+      - "C:/Users/nunot/AppData/Local/Microsoft/WindowsApps/dlltool.exe"
+      - "C:/Users/nunot/AppData/Local/Microsoft/WindowsApps/dlltool"
+      - "C:/Users/nunot/AppData/Local/Programs/Microsoft VS Code/bin/dlltool.com"
+      - "C:/Users/nunot/AppData/Local/Programs/Microsoft VS Code/bin/dlltool.exe"
+      - "C:/Users/nunot/AppData/Local/Programs/Microsoft VS Code/bin/dlltool"
+      - "C:/msys64/ucrt64/bin/dlltool.com"
+    found: "C:/msys64/ucrt64/bin/dlltool.exe"
+    search_context:
+      ENV{PATH}:
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files\\NVIDIA Corporation\\NVIDIA App\\NvDLISR"
+        - "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common"
+        - "C:\\Program Files\\MATLAB\\R2025b\\bin"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Users\\nunot\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\nunot\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\msys64\\ucrt64\\bin"
+        - "C:\\msys64\\usr\\bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_ADDR2LINE"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "addr2line"
+    candidate_directories:
+      - "C:/Windows/System32/"
+      - "C:/Windows/"
+      - "C:/Windows/System32/wbem/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
+      - "C:/Windows/System32/OpenSSH/"
+      - "C:/Program Files/dotnet/"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/"
+      - "C:/Program Files/MATLAB/R2025b/bin/"
+      - "C:/Program Files/CMake/bin/"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/"
+      - "C:/Program Files/Git/cmd/"
+      - "C:/Users/nunot/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/Users/nunot/AppData/Local/Programs/Microsoft VS Code/bin/"
+      - "C:/msys64/ucrt64/bin/"
+      - "C:/msys64/usr/bin/"
+    searched_directories:
+      - "C:/Windows/System32/addr2line.com"
+      - "C:/Windows/System32/addr2line.exe"
+      - "C:/Windows/System32/addr2line"
+      - "C:/Windows/addr2line.com"
+      - "C:/Windows/addr2line.exe"
+      - "C:/Windows/addr2line"
+      - "C:/Windows/System32/wbem/addr2line.com"
+      - "C:/Windows/System32/wbem/addr2line.exe"
+      - "C:/Windows/System32/wbem/addr2line"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/addr2line.com"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/addr2line.exe"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/addr2line"
+      - "C:/Windows/System32/OpenSSH/addr2line.com"
+      - "C:/Windows/System32/OpenSSH/addr2line.exe"
+      - "C:/Windows/System32/OpenSSH/addr2line"
+      - "C:/Program Files/dotnet/addr2line.com"
+      - "C:/Program Files/dotnet/addr2line.exe"
+      - "C:/Program Files/dotnet/addr2line"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/addr2line.com"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/addr2line.exe"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/addr2line"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/addr2line.com"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/addr2line.exe"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/addr2line"
+      - "C:/Program Files/MATLAB/R2025b/bin/addr2line.com"
+      - "C:/Program Files/MATLAB/R2025b/bin/addr2line.exe"
+      - "C:/Program Files/MATLAB/R2025b/bin/addr2line"
+      - "C:/Program Files/CMake/bin/addr2line.com"
+      - "C:/Program Files/CMake/bin/addr2line.exe"
+      - "C:/Program Files/CMake/bin/addr2line"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/addr2line.com"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/addr2line.exe"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/addr2line"
+      - "C:/Program Files/Git/cmd/addr2line.com"
+      - "C:/Program Files/Git/cmd/addr2line.exe"
+      - "C:/Program Files/Git/cmd/addr2line"
+      - "C:/Users/nunot/AppData/Local/Microsoft/WindowsApps/addr2line.com"
+      - "C:/Users/nunot/AppData/Local/Microsoft/WindowsApps/addr2line.exe"
+      - "C:/Users/nunot/AppData/Local/Microsoft/WindowsApps/addr2line"
+      - "C:/Users/nunot/AppData/Local/Programs/Microsoft VS Code/bin/addr2line.com"
+      - "C:/Users/nunot/AppData/Local/Programs/Microsoft VS Code/bin/addr2line.exe"
+      - "C:/Users/nunot/AppData/Local/Programs/Microsoft VS Code/bin/addr2line"
+      - "C:/msys64/ucrt64/bin/addr2line.com"
+    found: "C:/msys64/ucrt64/bin/addr2line.exe"
+    search_context:
+      ENV{PATH}:
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files\\NVIDIA Corporation\\NVIDIA App\\NvDLISR"
+        - "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common"
+        - "C:\\Program Files\\MATLAB\\R2025b\\bin"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Users\\nunot\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\nunot\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\msys64\\ucrt64\\bin"
+        - "C:\\msys64\\usr\\bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_TAPI"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "tapi"
+    candidate_directories:
+      - "C:/Windows/System32/"
+      - "C:/Windows/"
+      - "C:/Windows/System32/wbem/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
+      - "C:/Windows/System32/OpenSSH/"
+      - "C:/Program Files/dotnet/"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/"
+      - "C:/Program Files/MATLAB/R2025b/bin/"
+      - "C:/Program Files/CMake/bin/"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/"
+      - "C:/Program Files/Git/cmd/"
+      - "C:/Users/nunot/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/Users/nunot/AppData/Local/Programs/Microsoft VS Code/bin/"
+      - "C:/msys64/ucrt64/bin/"
+      - "C:/msys64/usr/bin/"
+    searched_directories:
+      - "C:/Windows/System32/tapi.com"
+      - "C:/Windows/System32/tapi.exe"
+      - "C:/Windows/System32/tapi"
+      - "C:/Windows/tapi.com"
+      - "C:/Windows/tapi.exe"
+      - "C:/Windows/tapi"
+      - "C:/Windows/System32/wbem/tapi.com"
+      - "C:/Windows/System32/wbem/tapi.exe"
+      - "C:/Windows/System32/wbem/tapi"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/tapi.com"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/tapi.exe"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/tapi"
+      - "C:/Windows/System32/OpenSSH/tapi.com"
+      - "C:/Windows/System32/OpenSSH/tapi.exe"
+      - "C:/Windows/System32/OpenSSH/tapi"
+      - "C:/Program Files/dotnet/tapi.com"
+      - "C:/Program Files/dotnet/tapi.exe"
+      - "C:/Program Files/dotnet/tapi"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/tapi.com"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/tapi.exe"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/tapi"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/tapi.com"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/tapi.exe"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/tapi"
+      - "C:/Program Files/MATLAB/R2025b/bin/tapi.com"
+      - "C:/Program Files/MATLAB/R2025b/bin/tapi.exe"
+      - "C:/Program Files/MATLAB/R2025b/bin/tapi"
+      - "C:/Program Files/CMake/bin/tapi.com"
+      - "C:/Program Files/CMake/bin/tapi.exe"
+      - "C:/Program Files/CMake/bin/tapi"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/tapi.com"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/tapi.exe"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/tapi"
+      - "C:/Program Files/Git/cmd/tapi.com"
+      - "C:/Program Files/Git/cmd/tapi.exe"
+      - "C:/Program Files/Git/cmd/tapi"
+      - "C:/Users/nunot/AppData/Local/Microsoft/WindowsApps/tapi.com"
+      - "C:/Users/nunot/AppData/Local/Microsoft/WindowsApps/tapi.exe"
+      - "C:/Users/nunot/AppData/Local/Microsoft/WindowsApps/tapi"
+      - "C:/Users/nunot/AppData/Local/Programs/Microsoft VS Code/bin/tapi.com"
+      - "C:/Users/nunot/AppData/Local/Programs/Microsoft VS Code/bin/tapi.exe"
+      - "C:/Users/nunot/AppData/Local/Programs/Microsoft VS Code/bin/tapi"
+      - "C:/msys64/ucrt64/bin/tapi.com"
+      - "C:/msys64/ucrt64/bin/tapi.exe"
+      - "C:/msys64/ucrt64/bin/tapi"
+      - "C:/msys64/usr/bin/tapi.com"
+      - "C:/msys64/usr/bin/tapi.exe"
+      - "C:/msys64/usr/bin/tapi"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files\\NVIDIA Corporation\\NVIDIA App\\NvDLISR"
+        - "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common"
+        - "C:\\Program Files\\MATLAB\\R2025b\\bin"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Users\\nunot\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\nunot\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\msys64\\ucrt64\\bin"
+        - "C:\\msys64\\usr\\bin"
+...
