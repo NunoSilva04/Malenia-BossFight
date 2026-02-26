@@ -7,101 +7,101 @@
     },
     "configurePresets": [
         {
-            "name": "windows-debug-preset",
+            "name": "windows-base",
+            "hidden": true,
             "generator": "Ninja",
-            "binaryDir": "${sourceDir}/build/windows-ninja-debug",
-            "cacheVariables": {
-                "CMAKE_RUNTIME_OUTPUT_DIRECTORY": "${sourceDir}/bin/Windows/Debug",
-                "CMAKE_LIBRARY_OUTPUT_DIRECTORY": "${sourceDir}/bin/Windows/Debug",
-                "CMAKE_ARCHIVE_OUTPUT_DIRECTORY": "${sourceDir}/bin/Windows/Debug/static_libs"
-            },
             "condition": {
                 "type": "equals",
                 "lhs": "${hostSystemName}",
                 "rhs": "Windows"
+            }
+        },
+        {
+            "name": "windows-debug-preset",
+            "inherits": ["windows-base"],
+            "binaryDir": "${sourceDir}/build/windows-ninja-debug",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_RUNTIME_OUTPUT_DIRECTORY": "${sourceDir}/bin/Windows/Debug",
+                "CMAKE_LIBRARY_OUTPUT_DIRECTORY": "${sourceDir}/bin/Windows/Debug",
+                "CMAKE_ARCHIVE_OUTPUT_DIRECTORY": "${sourceDir}/bin/Windows/Debug/static_libs"
             }
         },
         {
             "name": "windows-release-preset",
-            "generator": "Visual Studio 18 2026",
-            "binaryDir": "${sourceDir}/build/windows-msvc-release",
+            "inherits": ["windows-base"],
+            "binaryDir": "${sourceDir}/build/windows-ninja-release",
             "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release",
                 "CMAKE_RUNTIME_OUTPUT_DIRECTORY": "${sourceDir}/bin/Windows/Release",
                 "CMAKE_LIBRARY_OUTPUT_DIRECTORY": "${sourceDir}/bin/Windows/Release",
                 "CMAKE_ARCHIVE_OUTPUT_DIRECTORY": "${sourceDir}/bin/Windows/Release/static_libs"
-            },
+            }
+        },
+
+        {
+            "name": "macos-base",
+            "hidden": true,
+            "generator": "Ninja",
             "condition": {
                 "type": "equals",
                 "lhs": "${hostSystemName}",
-                "rhs": "Windows"
+                "rhs": "Darwin"
             }
         },
         {
             "name": "macos-debug-preset",
-            "generator": "Ninja",
-            "binaryDir": "${sourceDir}/build/macos-debug",
+            "inherits": ["macos-base"],
+            "binaryDir": "${sourceDir}/build/macos-ninja-debug",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Debug",
                 "CMAKE_RUNTIME_OUTPUT_DIRECTORY": "${sourceDir}/bin/MacOS/Debug",
                 "CMAKE_LIBRARY_OUTPUT_DIRECTORY": "${sourceDir}/bin/MacOS/Debug",
-                "CMAKE_ARCHIVE_OUTPUT_DIRECTORY": "${sourceDir}/bin/MacOS/Debug/static_libs",
-                "CMAKE_CXX_COMPILER": "clang++"
-            },
-            "condition": {
-                "type": "equals",
-                "lhs": "${hostSystemName}",
-                "rhs": "Darwin"
+                "CMAKE_ARCHIVE_OUTPUT_DIRECTORY": "${sourceDir}/bin/MacOS/Debug/static_libs"
             }
         },
         {
             "name": "macos-release-preset",
-            "generator": "Ninja",
-            "binaryDir": "${sourceDir}/build/macos-release",
+            "inherits": ["macos-base"],
+            "binaryDir": "${sourceDir}/build/macos-ninja-release",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Release",
                 "CMAKE_RUNTIME_OUTPUT_DIRECTORY": "${sourceDir}/bin/MacOS/Release",
                 "CMAKE_LIBRARY_OUTPUT_DIRECTORY": "${sourceDir}/bin/MacOS/Release",
-                "CMAKE_ARCHIVE_OUTPUT_DIRECTORY": "${sourceDir}/bin/MacOS/Release/static_libs",
-                "CMAKE_CXX_COMPILER": "clang++"
-            },
+                "CMAKE_ARCHIVE_OUTPUT_DIRECTORY": "${sourceDir}/bin/MacOS/Release/static_libs"
+            }
+        },
+
+        {
+            "name": "linux-base",
+            "hidden": true,
+            "generator": "Ninja",
             "condition": {
                 "type": "equals",
                 "lhs": "${hostSystemName}",
-                "rhs": "Darwin"
+                "rhs": "Linux"
             }
         },
         {
             "name": "linux-debug-preset",
-            "generator": "Ninja",
+            "inherits": ["linux-base"],
             "binaryDir": "${sourceDir}/build/linux-debug",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Debug",
                 "CMAKE_RUNTIME_OUTPUT_DIRECTORY": "${sourceDir}/bin/Linux/Debug",
                 "CMAKE_LIBRARY_OUTPUT_DIRECTORY": "${sourceDir}/bin/Linux/Debug",
-                "CMAKE_ARCHIVE_OUTPUT_DIRECTORY": "${sourceDir}/bin/Linux/Debug/static_libs",
-                "CMAKE_CXX_COMPILER": "g++"
-            },
-            "condition": {
-                "type": "equals",
-                "lhs": "${hostSystemName}",
-                "rhs": "Linux"
+                "CMAKE_ARCHIVE_OUTPUT_DIRECTORY": "${sourceDir}/bin/Linux/Debug/static_libs"
             }
         },
         {
             "name": "linux-release-preset",
-            "generator": "Ninja",
+            "inherits": ["linux-base"],
             "binaryDir": "${sourceDir}/build/linux-release",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Release",
                 "CMAKE_RUNTIME_OUTPUT_DIRECTORY": "${sourceDir}/bin/Linux/Release",
                 "CMAKE_LIBRARY_OUTPUT_DIRECTORY": "${sourceDir}/bin/Linux/Release",
-                "CMAKE_ARCHIVE_OUTPUT_DIRECTORY": "${sourceDir}/bin/Linux/Release/static_libs",
-                "CMAKE_CXX_COMPILER": "g++"
-            },
-            "condition": {
-                "type": "equals",
-                "lhs": "${hostSystemName}",
-                "rhs": "Linux"
+                "CMAKE_ARCHIVE_OUTPUT_DIRECTORY": "${sourceDir}/bin/Linux/Release/static_libs"
             }
         }
     ],
