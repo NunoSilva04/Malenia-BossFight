@@ -109,7 +109,6 @@
         {
             "name": "windows-debug-build",
             "configurePreset": "windows-debug-preset",
-            "configuration": "Debug",
             "condition": {
                 "type": "equals",
                 "lhs": "${hostSystemName}",
@@ -119,7 +118,6 @@
         {
             "name": "windows-release-build",
             "configurePreset": "windows-release-preset",
-            "configuration": "Release",
             "condition": {
                 "type": "equals",
                 "lhs": "${hostSystemName}",
@@ -161,6 +159,51 @@
                 "lhs": "${hostSystemName}",
                 "rhs": "Linux"
             }
+        }
+    ],
+
+    "workflowPresets": [
+        {
+            "name": "windows-debug",
+            "steps": [
+                {"type": "configure", "name": "windows-debug-preset"},
+                {"type": "build", "name": "windows-debug-build"}
+            ]
+        },
+        {
+            "name": "windows-release",
+            "steps": [
+                {"type": "configure", "name": "windows-release-preset"},
+                {"type": "build", "name": "windows-release-build"}
+            ]
+        },
+        {
+            "name": "linux-debug",
+            "steps": [
+                {"type": "configure", "name": "linux-debug-preset"},
+                {"type": "build", "name": "linux-debug-build"}
+            ]
+        },
+        {
+            "name": "linux-release",
+            "steps": [
+                {"type": "configure", "name": "linux-release-preset"},
+                {"type": "build", "name": "linux-release-build"}
+            ]
+        },
+        {
+            "name": "macos-debug",
+            "steps": [
+                {"type": "configure", "name": "macos-debug-preset"},
+                {"type": "build", "name": "macos-debug-build"}
+            ]
+        },
+        {
+            "name": "macos-release",
+            "steps": [
+                {"type": "configure", "name": "macos-release-preset"},
+                {"type": "build", "name": "macos-release-build"}
+            ]
         }
     ]
 }
