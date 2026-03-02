@@ -19,7 +19,7 @@ List the presets available by running the command:
 cmake --workflow --list-presets
 ```
 
-And then after choosing the preset for your Operating System, (in this example windows in debug version), run the command:
+Then choose the preset for your Operating System, (in this example, windows in debug version), and run the command:
 ```cmd
 cmake --workflow windows-debug
 ```
