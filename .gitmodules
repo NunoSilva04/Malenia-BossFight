@@ -1,3 +1,3 @@
-[submodule "SDL"]
+[submodule "third-party-libraries/SDL"]
 	path = third-party-libraries/SDL
-	url = https://github.com/libsdl-org/SDL.git
+	url = https://github.com/libsdl-org/SDL

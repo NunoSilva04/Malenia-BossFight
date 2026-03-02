@@ -11,7 +11,7 @@ project(BossFight LANGUAGES C CXX)
 #)
 #FetchContent_MakeAvailable(SDL3)
 
-add_subdirectory(SDL EXCLUDE_FROM_ALL)
+add_subdirectory(third-party-libraries/SDL EXCLUDE_FROM_ALL)
 
 set(SourceFiles src/main.cpp) 
 add_executable(${PROJECT_NAME} ${SourceFiles})
