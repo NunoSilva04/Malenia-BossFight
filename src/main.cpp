@@ -13,6 +13,11 @@ int main(void){
         return 0;
     }
 
+    while(input.get_event()){
+
+    }
+
+    input.test_function();
     input.close_input();
     window.destroy_window();
     return 0;

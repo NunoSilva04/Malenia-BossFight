@@ -21,8 +21,8 @@ bool Input::initalize_input(void){
     SDL_JoystickID *joystick_id = SDL_GetGamepads(&count);
     gamepad = SDL_OpenGamepad(joystick_id[0]);
     if(gamepad == NULL){
-        #if DEBUG
         printf("Couldn't get gamepad\n");
+        #if DEBUG
         return false;
         #endif
     }
@@ -30,6 +30,46 @@ bool Input::initalize_input(void){
     return true;
 }
 
+bool Input::get_event(void){
+    SDL_Event event;
+    SDL_PollEvent(&event);
+
+    switch(event.type){
+        case SDL_EVENT_KEY_DOWN:
+            if(event.key.key == SDLK_ESCAPE){
+                return false;
+            }else if(event.key.key == SDLK_A){
+                event_vector.push_back(Keyboard_A);
+            }else if(event.key.key == SDLK_W){
+                event_vector.push_back(Keyboard_W);
+            }else if(event.key.key == SDLK_S){
+                event_vector.push_back(Keyboard_S);
+            }else if(event.key.key == SDLK_D){
+                event_vector.push_back(Keyboard_D);
+            }
+        break;
+    }
+
+    return true;
+}
+
+void Input::test_function(void){
+    event_vector.print();
+
+    Events e;
+    event_vector.pop_first(&e);
+    std::cout << "Popped: " << e << '\n';
+    event_vector.print();
+
+    event_vector.pop_first(&e);
+    std::cout << "Popped: " << e << '\n';
+    event_vector.print();
+    
+    event_vector.empty_vector();
+    event_vector.print();
+
+    return;
+}
 
 void Input::close_input(void){
     SDL_CloseGamepad(gamepad);
