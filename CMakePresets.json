@@ -88,7 +88,7 @@
         {
             "name": "linux-debug-preset",
             "inherits": ["linux-base"],
-            "binaryDir": "${sourceDir}/build/linux-debug",
+            "binaryDir": "${sourceDir}/build/linux-ninja-debug",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Debug",
                 "CMAKE_RUNTIME_OUTPUT_DIRECTORY": "${sourceDir}/bin/Linux/Debug",
@@ -99,7 +99,7 @@
         {
             "name": "linux-release-preset",
             "inherits": ["linux-base"],
-            "binaryDir": "${sourceDir}/build/linux-release",
+            "binaryDir": "${sourceDir}/build/linux-ninja-release",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Release",
                 "CMAKE_RUNTIME_OUTPUT_DIRECTORY": "${sourceDir}/bin/Linux/Release",
