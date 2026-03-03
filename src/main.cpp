@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "SDL_SubSytem.h"
+#include "SDL_SubSystem.h"
 #include "window.h"
 #include "input.h"
 
