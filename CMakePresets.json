@@ -80,6 +80,9 @@
                 "type": "equals",
                 "lhs": "${hostSystemName}",
                 "rhs": "Linux"
+            },
+            "cacheVariables": {
+                "SDL_X11_XTEST": "OFF"
             }
         },
         {
@@ -178,20 +181,6 @@
             ]
         },
         {
-            "name": "linux-debug",
-            "steps": [
-                {"type": "configure", "name": "linux-debug-preset"},
-                {"type": "build", "name": "linux-debug-build"}
-            ]
-        },
-        {
-            "name": "linux-release",
-            "steps": [
-                {"type": "configure", "name": "linux-release-preset"},
-                {"type": "build", "name": "linux-release-build"}
-            ]
-        },
-        {
             "name": "macos-debug",
             "steps": [
                 {"type": "configure", "name": "macos-debug-preset"},
@@ -203,6 +192,20 @@
             "steps": [
                 {"type": "configure", "name": "macos-release-preset"},
                 {"type": "build", "name": "macos-release-build"}
+            ]
+        },
+        {
+            "name": "linux-debug",
+            "steps": [
+                {"type": "configure", "name": "linux-debug-preset"},
+                {"type": "build", "name": "linux-debug-build"}
+            ]
+        },
+        {
+            "name": "linux-release",
+            "steps": [
+                {"type": "configure", "name": "linux-release-preset"},
+                {"type": "build", "name": "linux-release-build"}
             ]
         }
     ]
