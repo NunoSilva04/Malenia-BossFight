@@ -23,3 +23,7 @@ Then choose the preset for your Operating System, (in this example, windows in d
 ```cmd
 cmake --workflow windows-debug
 ```
+or this command, in case your cmake version is not up to date:
+```cmd
+cmake --workflow --preset windows-debug
+```
