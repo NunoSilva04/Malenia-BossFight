@@ -1,18 +1,19 @@
 #include <stdio.h>
+#include "SDL_SubSytem.h"
 #include "window.h"
+#include "input.h"
 
-int main(int argc, int *argv[]){
+int main(void){
+    SDL_SubSytem sdl;
+
     Window window;
-    
     window.create_window("SDL Window");
-
-    while(window.get_event() == Window::Event::NOTHING){
-        printf("on window\n");
-        if(window.get_event() == Window::Event::ESCAPE){
-            break;
-        }
+    Input input;
+    if(!input.initalize_input()){
+        return 0;
     }
 
+    input.close_input();
     window.destroy_window();
     return 0;
 }

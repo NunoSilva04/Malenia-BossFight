@@ -6,15 +6,9 @@
 
 class Window{
 public:
-    enum class Event{
-        NOTHING,
-        ESCAPE
-    };
-
     Window(void);
     ~Window(void);
     bool create_window(const char *window_name);
-    Event get_event();
     void destroy_window(void);
 
 private:
