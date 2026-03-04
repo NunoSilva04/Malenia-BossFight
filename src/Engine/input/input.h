@@ -2,7 +2,7 @@
 #define __INPUT_H__
 
 #include <SDL3/SDL.h>
-#include "n_vector.h"
+#include "core.h"
 
 typedef enum Events{
     Keyboard_Escape,

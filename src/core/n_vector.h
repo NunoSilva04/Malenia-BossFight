@@ -110,6 +110,14 @@ namespace Core{
                 return;
             }
 
+            bool is_empty(void){
+                if(size <= 0){
+                    return false;
+                }
+
+                return true;
+            }
+
         private:
             T *data;
             size_t size;
