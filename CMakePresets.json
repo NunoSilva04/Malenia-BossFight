@@ -14,6 +14,9 @@
                 "type": "equals",
                 "lhs": "${hostSystemName}",
                 "rhs": "Windows"
+            },
+            "cacheVariables": {
+                "CMAKE_CXX_COMPILER": "clang++"
             }
         },
         {
@@ -47,6 +50,9 @@
                 "type": "equals",
                 "lhs": "${hostSystemName}",
                 "rhs": "Darwin"
+            },
+            "cacheVariables": {
+                "CMAKE_CXX_COMPILER": "clang++"
             }
         },
         {
@@ -82,7 +88,8 @@
                 "rhs": "Linux"
             },
             "cacheVariables": {
-                "SDL_X11_XTEST": "OFF"
+                "SDL_X11_XTEST": "OFF",
+                "CMAKE_CXX_COMPILER": "clang++"
             }
         },
         {

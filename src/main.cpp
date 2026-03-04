@@ -2,6 +2,7 @@
 #include "SDL_SubSystem.h"
 #include "window.h"
 #include "input.h"
+#include <vulkan/vulkan.h>
 
 int main(void){
     SDL_SubSytem sdl;
@@ -17,7 +18,6 @@ int main(void){
 
     }
 
-    input.test_function();
     input.close_input();
     window.destroy_window();
     return 0;

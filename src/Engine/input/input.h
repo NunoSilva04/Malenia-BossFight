@@ -19,7 +19,6 @@ public:
     ~Input();
     bool initalize_input(void);
     bool get_event(void);
-    void test_function(void);
     void close_input(void);
 
 private:

@@ -1,29 +1,15 @@
 # Malenia-BossFight
 
+Recreation Malenia's Bossfight in Elden Ring
+
 ## Disclaimer
-    - **  **
+**This is simply a project with no profit gain, so please, don't come after me FromSoftware.**
 
-## Build The Project
+This project is a non-commercial fan recreation created for educational purposes only.
+All rights to Elden Ring and related assets belong to FromSoftware.
 
-### Step 1
+## Overview
 
-Clone the Repo by using this command:
-```cmd
-git clone --recurse-submodules https://github.com/NunoSilva04/Malenia-BossFight.git
-```
-
-### Step 2
-
-List the presets available by running the command:
-```cmd
-cmake --workflow --list-presets
-```
-
-Then choose the preset for your Operating System, (in this example, windows in debug version), and run the command:
-```cmd
-cmake --workflow windows-debug
-```
-or this command, in case your cmake version is not up to date:
-```cmd
-cmake --workflow --preset windows-debug
-```
+You can choose to:
+- [Build](docs/build.md) the project.
+- Play the [release](docs/release.md) version.

@@ -53,24 +53,6 @@ bool Input::get_event(void){
     return true;
 }
 
-void Input::test_function(void){
-    event_vector.print();
-
-    Events e;
-    event_vector.pop_first(&e);
-    std::cout << "Popped: " << e << '\n';
-    event_vector.print();
-
-    event_vector.pop_first(&e);
-    std::cout << "Popped: " << e << '\n';
-    event_vector.print();
-    
-    event_vector.empty_vector();
-    event_vector.print();
-
-    return;
-}
-
 void Input::close_input(void){
     SDL_CloseGamepad(gamepad);
 }

@@ -1,6 +1,6 @@
-# Core.h
+# Core
 
-Aggregate header that include core libraries. 
+Aggregate header called `core.h` that include core libraries. 
 
 ## Libraries included
 
