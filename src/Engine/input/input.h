@@ -1,3 +1,15 @@
+/**********************************************************************************
+*   File: input.h
+* 
+*   Description: 
+*        Handles certain keyboard input and all controller input. Uses SDL3.
+* 
+*   See: 
+*       docs/Engine/input.md 
+*       for detailed documentation.
+* 
+*************************************************************************************/
+
 #ifndef __INPUT_H__
 #define __INPUT_H__
 
@@ -5,25 +17,31 @@
 #include "core.h"
 
 typedef enum Events{
+    //Keyboard Events
     Keyboard_Escape,
-    Keyboard_A,
-    Keyboard_W,
-    Keyboard_S,
-    Keyboard_D,
+    //Controller Events
     Gamepad_Circle,
-}Events;
+    Gamepad_X,
+    Gamepad_Square,
+    Gamepad_Triangle,
+}Event;
+
+typedef enum Listeners_Id{
+    Window_Id,
+}Listeners_Id;
 
 class Input{
 public:
     Input();
     ~Input();
-    bool initalize_input(void);
-    bool get_event(void);
+    bool initialize_input(void);
+    void update_input(void);
+    static Core::n_vector<Event> dispatch_input(Listeners_Id listener);
     void close_input(void);
 
 private:
     SDL_Gamepad *gamepad;
-    Core::n_vector<Events> event_vector;
+    static Core::n_vector<Event> event_vector;
 };
 
 #endif

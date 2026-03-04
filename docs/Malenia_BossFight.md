@@ -1,7 +1,7 @@
 # MALENIA BOSSFIGHT DOCUMENTATION
 
 This document includes the documentation for this inteire project.  
-The documentation is structured the same as the actual source code.
+The documentation is structured in the same way as the actual source code.
 
 ## Project Structure 
 

@@ -2,6 +2,7 @@
 #include "SDL_SubSystem.h"
 #include "window.h"
 #include "input.h"
+#include <SDL3/SDL_vulkan.h>
 #include <vulkan/vulkan.h>
 
 int main(void){
@@ -10,13 +11,17 @@ int main(void){
     Window window;
     window.create_window("SDL Window");
     Input input;
-    if(!input.initalize_input()){
+    if(!input.initialize_input()){
         return 0;
     }
 
-    while(input.get_event()){
+    float frame_time = 0;
 
+    while(window.should_render_window()){
+        window.update_window(frame_time, &input);
+        window.render_window();
     }
+
 
     input.close_input();
     window.destroy_window();

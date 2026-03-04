@@ -13,3 +13,7 @@ All rights to Elden Ring and related assets belong to FromSoftware.
 You can choose to:
 - [Build](docs/build.md) the project.
 - Play the [release](docs/release.md) version.
+
+## Documentation
+
+The documentation for the inteire project can be found [here](docs/Malenia_BossFight.md).

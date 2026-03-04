@@ -5,11 +5,11 @@
 *       Dynamic array implementation. 
 *                     
 *   Constraints: 
-*       pop_first() is very slow for very big arrays. Uses O(N) complexity
+*       pop_first() is very slow for very big arrays. Uses O(N) complexity.
 * 
 *   See: 
 *       docs/core/n_vector.md 
-*       for full documentation of the header
+*       for detailed documentation.
 * 
 *************************************************************************************/
 
@@ -34,10 +34,33 @@ namespace Core{
                 delete[] data;
             }
 
-            //Disable copy construction
-            n_vector(const n_vector&) = delete;
-            //Disable copy assignment
-            n_vector& operator=(const n_vector&) = delete;
+            //Copy constructor
+            n_vector(const n_vector& other){
+                this->capacity = other.capacity;
+                this->size = other.size;
+                this->data = new T[other.capacity];
+
+                for(size_t i = 0; i < other.size; i++){
+                    this->data[i] = other.data[i];
+                }
+            }
+            
+            //Copy assignment
+            n_vector& operator=(const n_vector& other){
+                if(this == &other) return *this;
+
+                T *this_data = new T[other.capacity];
+                for(size_t i = 0; i < other.size; i++){
+                    this_data[i] = other.data[i];
+                }
+                delete[] this->data;
+
+                this->data = this_data;
+                this->size = other.size;
+                this->capacity = other.capacity;
+
+                return *this;
+            }
             
             void print(void){
                 for(size_t i = 0; i < size; i++){
@@ -83,10 +106,10 @@ namespace Core{
             }
 
             bool pop_first(T *popped_value){
-                *popped_value = data[0];
                 if(size <= 0){
                     return false;
                 }
+                *popped_value = data[0];
 
                 size_t new_size = size - 1;
                 T *temp_data = new T[capacity];
@@ -112,10 +135,24 @@ namespace Core{
 
             bool is_empty(void){
                 if(size <= 0){
-                    return false;
+                    return true;
                 }
 
-                return true;
+                return false;
+            }
+
+            size_t vector_size(void) const{
+                return this->size;
+            }
+
+            size_t vector_capacity(void) const{
+                return this->capacity;
+            }
+
+            T vector_data_id(size_t id) const{
+                if(id >= size) return T{};
+
+                return data[id];
             }
 
         private:
