@@ -1,12 +1,13 @@
 # input.h
 
-Input class that handles specific inputs from the keyboard and controller. Uses the third party library `SDL3`.
+Input class that handles specific inputs from the keyboard and controller.  
+Uses the third party library [SDL3](https://github.com/libsdl-org/SDL).
 
-## enum Events
+## Member Types
 
-Enumerates all events handled:
+### `typedef enum Events Event`
 
-`typedef enum Events Event` 
+Enumerates all events handled: 
 
 | Events         | Description         |
 | ---------------|---------------|
@@ -16,31 +17,29 @@ Enumerates all events handled:
 | Gamepad_Square | Triggered when Controller West Button is pressed|
 | Gamepad_Triangle | Triggered when Controller North Button is pressed|
 
-## enum Listeners_Id
+### `typedef enum Listeners_Id Listeners_Id`
 
 Enumerates all the possible listeners to dispatch message inputs.
-
-`typedef enum Listeners_Id Listeners_Id`
 
 | Listeners_Id  | Description         |
 | ---------------|---------------|
 | Window_Id| Window System  |
 
-## Member Types 
-### Instance Members
+## Member Variables
+### Instance variables
 
 | Members | Type | Description | Default Value |
 |--------|------|-------------|-------------|
 | `gamepad` | `SDL_Gamepad*` |Pointer to SDL_Gamepad| `nullptr` |
 
 
-### Static members
+### Static variables
 
 | Members | Type | Description | Default Value |
 |--------|------|-------------|-------------|
 | `event_vector` | `static Core::n_vector<Event>`| Vector that holds all input events for the current frame | `empty` |
 
-## Function Members
+## Member Functions
 
 ### Instance Functions
 
@@ -74,7 +73,7 @@ Enumerates all the possible listeners to dispatch message inputs.
 #### Function: `Core::n_vector<Event> dispatch_input(Listeners_Id listener)`  
 - **Parameters:**  `Listeners_Id listener`  
 - **Return:**  `Core::n_vector<Event>`   
-- **Description**: Creates a new event queue and fills that event queue with the messages needed for the listener. If there are no messages it simply returns a empty vector.
+- **Description**: Creates a new event queue and fills that event queue with the messages needed for the listener. If there are no messages for the listener or if `event_vector` is empty it simply returns a empty vector.
 
 ## Dependencies
 - [SDL3](https://github.com/libsdl-org/SDL)

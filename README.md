@@ -1,12 +1,19 @@
 # Malenia-BossFight
 
-Recreation Malenia's Bossfight in Elden Ring
+Recreation Malenia's Bossfight in Elden Ring.  
+Supports Windows, MacOS and Linux.
 
 ## Disclaimer
 **This is simply a project with no profit gain, so please, don't come after me FromSoftware.**
 
 This project is a non-commercial fan recreation created for educational purposes only.
-All rights to Elden Ring and related assets belong to FromSoftware.
+
+Elden Ring, Malenia, and all related intellectual property belong to FromSoftware.
+
+This project is not affiliated with or endorsed by FromSoftware.
+
+No original assets from Elden Ring are included in this repository.
+All assets in this project were created by the author unless otherwise stated.
 
 ## Overview
 
@@ -16,4 +23,4 @@ You can choose to:
 
 ## Documentation
 
-The documentation for the inteire project can be found [here](docs/Malenia_BossFight.md).
+The documentation for the entire project can be found [here](docs/Malenia_BossFight.md).

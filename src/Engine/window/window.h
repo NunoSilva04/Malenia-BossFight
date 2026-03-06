@@ -1,3 +1,16 @@
+/**********************************************************************************
+*   File: window.h
+* 
+*   Description: 
+*        Handles all window events such as creation, destruction, rendering and more. 
+*        Uses SDL3.
+* 
+*   See: 
+*       docs/Engine/window.md 
+*       for detailed documentation.
+* 
+*************************************************************************************/
+
 #ifndef __WINDOW_H__
 #define __WINDOW_H__
 
@@ -8,8 +21,8 @@ class Input;
 
 class Window{
 public:
-    Window(void);
-    ~Window(void);
+    Window();
+    ~Window();
     bool create_window(const char *window_name);
     bool should_render_window(void);
     void update_window(float frame_time, Input *input);
@@ -18,6 +31,16 @@ public:
 
 private:
     SDL_Window *window;
+    typedef struct properties_t{
+        uint32_t id;
+        const char *name;
+        SDL_Rect bounds;
+        SDL_Rect usable_bounds;
+        float scale;
+        float pixel_density;
+        float refresh_rate;
+    }properties_t;
+    properties_t display_properties;
 };
 
 #endif

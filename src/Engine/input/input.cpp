@@ -67,6 +67,7 @@ void Input::update_input(void){
 
 Core::n_vector<Event> Input::dispatch_input(Listeners_Id listener){
     Core::n_vector<Event> queue;
+    queue.empty_vector();
     switch(listener){
         case Window_Id:
             for(size_t i = 0; i < event_vector.vector_size(); i++){

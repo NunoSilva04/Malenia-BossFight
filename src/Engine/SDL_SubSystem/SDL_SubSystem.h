@@ -1,3 +1,16 @@
+/**********************************************************************************
+*   File: SDL_SubSystem.h
+* 
+*   Description: 
+*        Initializes SDL and quits SDL. 
+*        Uses SDL3.
+* 
+*   See: 
+*       docs/Engine/SDL_SubSystem.md 
+*       for detailed documentation.
+* 
+*************************************************************************************/
+
 #ifndef __SDL_SUBSYTEM_H__
 #define __SDL_SUBSYTEM_H__
 

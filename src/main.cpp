@@ -4,6 +4,7 @@
 #include "input.h"
 #include <SDL3/SDL_vulkan.h>
 #include <vulkan/vulkan.h>
+#include "Rect.h"
 
 int main(void){
     SDL_SubSytem sdl;
@@ -22,6 +23,9 @@ int main(void){
         window.render_window();
     }
 
+
+    n_math::rect<int, false> a;
+    a.print();
 
     input.close_input();
     window.destroy_window();
