@@ -12,6 +12,7 @@ Enumerates all events handled:
 | Events         | Description         |
 | ---------------|---------------|
 | Keyboard_Escape| Triggered when Keyboard Escape key is pressed  |
+| Keyboard_F11| Triggered when Keyboard F11 key is pressed  |
 | Gamepad_Circle | Triggered when Controller East Button is pressed |
 |    Gamepad_X |Triggered when Controller South Button is pressed|
 | Gamepad_Square | Triggered when Controller West Button is pressed|

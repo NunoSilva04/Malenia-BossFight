@@ -16,8 +16,10 @@
 
 #include <SDL3/SDL.h>
 #include <SDL3/SDL_video.h>
+#include <Rect.h>
 
 class Input;
+class Graphics;
 
 class Window{
 public:
@@ -25,8 +27,6 @@ public:
     ~Window();
     bool create_window(const char *window_name);
     bool should_render_window(void);
-    void update_window(float frame_time, Input *input);
-    void render_window(void);
     void destroy_window(void);
 
 private:
@@ -34,13 +34,16 @@ private:
     typedef struct properties_t{
         uint32_t id;
         const char *name;
-        SDL_Rect bounds;
-        SDL_Rect usable_bounds;
+        n_math::rect<int> bounds;
+        n_math::rect<int> usable_bounds;
         float scale;
         float pixel_density;
         float refresh_rate;
     }properties_t;
     properties_t display_properties;
+
+    //Graphics
+    Graphics *gfx;
 };
 
 #endif

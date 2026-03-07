@@ -19,6 +19,7 @@
 typedef enum Events{
     //Keyboard Events
     Keyboard_Escape,
+    Keyboard_F11,
     //Controller Events
     Gamepad_Circle,
     Gamepad_X,

@@ -22,7 +22,5 @@ set(SourceFiles src/main.cpp)
 add_executable(${PROJECT_NAME} ${SourceFiles})
 
 #Link libraries
-target_link_libraries(${PROJECT_NAME} PRIVATE Vulkan::Vulkan)
 target_link_libraries(${PROJECT_NAME} PUBLIC project_options) 
-target_link_libraries(${PROJECT_NAME} PUBLIC Engine) 
-target_include_directories(${PROJECT_NAME} PUBLIC src/Math_Lib)
+target_link_libraries(${PROJECT_NAME} PUBLIC Engine)

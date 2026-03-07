@@ -42,7 +42,9 @@ void Input::update_input(void){
             case SDL_EVENT_KEY_DOWN:
                 if(event.key.key == SDLK_ESCAPE){
                     event_vector.push_back(Keyboard_Escape);
-                }    
+                }else if(event.key.key == SDLK_F11){
+                    event_vector.push_back(Keyboard_F11);
+                } 
             break;
             //Controller Events
             case SDL_EVENT_GAMEPAD_BUTTON_DOWN:

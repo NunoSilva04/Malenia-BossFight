@@ -1,6 +1,6 @@
 # window.h
 
-Window class responsible for creating and destroying the window, as well as update and rendering the game.  
+Window class responsible for creating and destroying the window, as well as initializing the graphics.  
 The window created is displayed on the main monitor.  
 Uses the third party library [SDL3](https://github.com/libsdl-org/SDL).  
 
@@ -14,8 +14,8 @@ Structure containing the display information.
 |--------|------|-------------|-------------|
 | `id` | `uint32_t` |Window Id| `0` |
 | `name` | `const char *` |Name of the window| `nullptr` |
-| `n_rect` | `bounds` | Bounds of the display | `0` |
-| `n_rect` | `usable_bounds` |Usable bounds of the display. Disregards things like taskbar| `0` |
+| `n_math::rect` | `bounds` | Bounds of the display | `0` |
+| `n_math::rect` | `usable_bounds` |Usable bounds of the display. Disregards things like taskbar| `0` |
 | `scale` | `float` |Scale of the display| `0.0f` |
 | `pixel_density` | `float` |Pixel density of the display| `0.0f` |
 | `refresh_rate` | `float` |Refresh rate of the display| `0.0f` |
@@ -48,24 +48,12 @@ None.
 #### Function: `bool create_window(const char *window_name)`  
 - **Parameters:**  `[in]const char *window_name`  
 - **Return:**  `bool`   
-- **Description**: Gets the main display information for `display_properties` and creates window. 
+- **Description**: Gets the main display information for `display_properties` and creates window. Also initializes the [graphics](Graphics.md)
 
 #### Function: `bool should_render_window(void)`
 - **Parameters:** `void`
 - **Return:**  `bool`   
 - **Description**: Gets a vector of all of the messages related to the window. If any of the messages are of the type [Keyboard_Escape](input.md#typedef-enum-events-event) or [Quit](input.md#typedef-enum-events-event) it returns false. Returns true otherwise.  
-
-#### Function: `void update_window(float frame_time, Input *input)`
-- **Parameters:** 
-    - `float frame_time`
-    - `Input *input` 
-- **Return:**  `void`   
-- **Description**: Updates Window.  
-
-#### Function: `void render_window(void)`
-- **Parameters:** `void` 
-- **Return:**  `void`   
-- **Description**: Renders Window.
 
 #### Function: `void destroy_window(void)`
 - **Parameters:** `void`
@@ -79,3 +67,4 @@ None.
 
 - [SDL3](https://github.com/libsdl-org/SDL)
 - [input.h](input.md)
+- [Graphics.h](Graphics.md)

@@ -7,3 +7,4 @@ The central point for handling all third party libraries used in rendering such 
 - [input](input.md)
 - [SDL_SubSystem](SDL_SubSystem.md)
 - [window](window.md)
+- [Graphics](Graphics.md)

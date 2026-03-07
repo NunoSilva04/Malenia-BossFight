@@ -1,6 +1,7 @@
 #include "window.h"
 #include <stdio.h>
 #include "input.h"
+#include "Graphics.h"
 
 Window::Window(){
     window = nullptr;
@@ -15,7 +16,7 @@ bool Window::create_window(const char *window_name){
     #ifdef DEBUG
     int num_displays = 0;
     SDL_DisplayID *displays = SDL_GetDisplays(&num_displays);
-    if(displays != NULL && &num_displays != NULL){
+    if(displays != NULL){
         printf("Found %d displays\n", num_displays);
         for(int i = 0 ; i < num_displays; i++){
             printf("Display %d:\n", i);
@@ -45,8 +46,17 @@ bool Window::create_window(const char *window_name){
     if(display_properties.id  == NULL) return false;
     display_properties.name = SDL_GetDisplayName(display_properties.id); 
     if(display_properties.name == NULL) return false;
-    if(!SDL_GetDisplayBounds(display_properties.id, &display_properties.bounds)) return false;
-    if(!SDL_GetDisplayUsableBounds(display_properties.id, &display_properties.usable_bounds)) return false;
+    SDL_Rect temp;
+    if(!SDL_GetDisplayBounds(display_properties.id, &temp)) return false;
+    display_properties.bounds.x = temp.x;
+    display_properties.bounds.y = temp.y;
+    display_properties.bounds.width = temp.w;
+    display_properties.bounds.heigth = temp.h;
+    if(!SDL_GetDisplayUsableBounds(display_properties.id, &temp)) return false;
+    display_properties.usable_bounds.x = temp.x;
+    display_properties.usable_bounds.y = temp.y;
+    display_properties.usable_bounds.width = temp.w;
+    display_properties.usable_bounds.heigth = temp.h;
     display_properties.scale = SDL_GetDisplayContentScale(display_properties.id);
     if(display_properties.scale == 0.0f) return false;
     const SDL_DisplayMode *display_mode = SDL_GetCurrentDisplayMode(display_properties.id);
@@ -60,10 +70,10 @@ bool Window::create_window(const char *window_name){
     printf("\tDisplay name: %s\n", display_properties.name); 
     printf("\tNormal bounds:\n");
     printf("\tx = %d\n\ty = %d\n\tw = %d\n\th = %d\n", 
-                    display_properties.bounds.x, display_properties.bounds.y, display_properties.bounds.w, display_properties.bounds.h);
+                    display_properties.bounds.x, display_properties.bounds.y, display_properties.bounds.width, display_properties.bounds.heigth);
     printf("\tUsable Bounds:\n");
     printf("\tx = %d\n\ty = %d\n\tw = %d\n\th = %d\n", 
-            display_properties.usable_bounds.x, display_properties.usable_bounds.y, display_properties.usable_bounds.w, display_properties.usable_bounds.h);
+            display_properties.usable_bounds.x, display_properties.usable_bounds.y, display_properties.usable_bounds.width, display_properties.usable_bounds.heigth);
     printf("\tDisplay scale = %f\n", display_properties.scale);
     printf("\tDisplay mode data:\n");
     printf("\t\tPixel format = 0x%x\n", display_mode->format);
@@ -73,9 +83,21 @@ bool Window::create_window(const char *window_name){
     printf("\t\tRefresh rate numerator = %d, Refresh Rate Denominator = %d\n", display_mode->refresh_rate_numerator, display_mode->refresh_rate_denominator);
     #endif 
 
-    window = SDL_CreateWindow(window_name, 2560, 1550, SDL_WINDOW_VULKAN);
+    window = SDL_CreateWindow(window_name, display_properties.bounds.width, display_properties.bounds.heigth, SDL_WINDOW_VULKAN | SDL_WINDOW_BORDERLESS);
     if(window == NULL){
         printf("Couldn't create window\n");
+        return false;
+    }
+
+    // Graphics
+    gfx = new Graphics;
+
+    uint32_t num_extensions = 0;
+    char const * const * array_extensions = SDL_Vulkan_GetInstanceExtensions(&num_extensions);
+    if(num_extensions == 0) return false;
+
+    if(!gfx->initialize_graphics(array_extensions, num_extensions)){
+        printf("Couldn't initialize graphics\n");
         return false;
     }
 
@@ -97,15 +119,9 @@ bool Window::should_render_window(void){
     return render;
 }
 
-void Window::update_window(float frame_time, Input *input){
-    input->update_input();
-}  
-
-void Window::render_window(void){
-
-}
-
 void Window::destroy_window(void){
+    gfx->close_graphics();
+    delete gfx;
     SDL_DestroyWindow(window);
 
     return;

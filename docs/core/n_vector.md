@@ -2,7 +2,7 @@
 
 Vector Template Class. Implements a dynamically allocated array.  
 
-## Class Parameters
+## Template Parameters
 - `T` - Type of the elements of the vector
 
 ## Member Types

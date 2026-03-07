@@ -1,12 +1,16 @@
 set(SourceFiles window/window.cpp
-                input/input.cpp)
+                input/input.cpp
+                Graphics/Graphics.cpp)
 
 add_library(Engine STATIC ${SourceFiles})
-target_link_libraries(Engine PUBLIC SDL3::SDL3)
 
 set(HeaderFiles ${CMAKE_CURRENT_SOURCE_DIR}/window
                 ${CMAKE_CURRENT_SOURCE_DIR}/SDL_SubSystem
                 ${CMAKE_CURRENT_SOURCE_DIR}/input
-                ${CMAKE_SOURCE_DIR}/src/core)
+                ${CMAKE_SOURCE_DIR}/src/core
+                ${CMAKE_SOURCE_DIR}/src/Math_Lib
+                ${CMAKE_CURRENT_SOURCE_DIR}/Graphics)
 target_include_directories(Engine PUBLIC ${HeaderFiles})
 target_link_libraries(Engine PUBLIC project_options)
+target_link_libraries(Engine PUBLIC SDL3::SDL3)
+target_link_libraries(Engine PRIVATE Vulkan::Vulkan)

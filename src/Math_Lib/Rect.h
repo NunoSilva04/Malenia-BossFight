@@ -16,16 +16,21 @@
 #include <iostream>
 
 namespace n_math{
-    template<typename T, bool test>
+    template<typename T>
     struct rect{
-        T x, y, w, h;
-        bool test_value;
+        static_assert(std::is_same<T, double>::value || std::is_same<T, float>::value || std::is_same<T, int>::value
+            , "Can only be of the type int, float, double.");
+        T x, y, width, heigth;
 
-        rect(): test_value(test), y(20), x(5), h(3), w(1000) { }
-        ~rect(){ }
+        rect(): x(0), y(0), width(20), heigth(10) { }
+        rect(T x, T y, T w, T h){
+            this->x = x;
+            this->y = y;
+            this->width = w;
+            this->heigth = h;
+        }
         void print(void){
-            std::cout << "x = " << x << ", y = " << y << ", w = " << w << ", h = " << h << "\n";
-            std::cout << "Value choosen: " << test_value << "\n";
+            std::cout << "x = " << x << ", y = " << y << ", width = " << width << ", heigth= " << heigth << "\n";            
             return;
         }
     };
