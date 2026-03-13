@@ -26,21 +26,24 @@ None
 
 ### Instance Functions
 
-#### Function: `rect(): x(0), y(0), width(20), heigth(10)`  
+#### Function: `rect(): x(0), y(0), width(20), heigth(10)`
+- **Access:** `Public`  
 - **Parameters:**  `None`  
 - **Return:**  `None`  
 - **Description**: Creates an instance of `rect` and initializes the rect to the values assigned in the initializer list.
 
-#### Function: `rect(T x, T y, T w, T h)`  
+#### Function: `rect(T x, T y, T w, T h)` 
+- **Access:** `Public` 
 - **Parameters:** 
-    - `T x`
-    - `T y`
-    - `T width`
-    - `T heigth`  
+    - `[in]T x` - X position of the rectangle.
+    - `[in]T y` - Y Position of the rectangle.
+    - `[in]T width` - Width of the rectangle.
+    - `[in]T heigth` - Height of the rectangle 
 - **Return:**  `None`  
 - **Description**: Creates an instance of `rect` and assigns each parameter to it's corresponding value.
 
 #### Function: `void print(void)`  
+- **Access:** `Public`
 - **Parameters:**  `void`  
 - **Return:**  `void`  
 - **Description**: Prints the `rect` variables.

@@ -44,27 +44,32 @@ Enumerates all the possible listeners to dispatch message inputs.
 
 ### Instance Functions
 
-#### Function: `Input()`  
+#### Function: `Input()` 
+- **Access:** `Public`  
 - **Parameters:**  `None`  
 - **Return:**  `None`   
 - **Description**: Initializes Input instance and sets `gamepad` to nullptr.
 
-#### Function: `~Input()`  
+#### Function: `~Input()`
+- **Access:** `Public`  
 - **Parameters:**  `None`  
 - **Return:**  `None`   
 - **Description**: Destroys the Input instance.
 
 #### Function: `bool initialize_input(void)`  
+- **Access:** `Public`
 - **Parameters:**  `void`  
 - **Return:**  `bool`   
-- **Description**: Initializes `gamepad`. If Debug is enabled and no Controller is connected, it will automatically return false. Returns true otherwise.
+- **Description**: Initializes `gamepad`. If Debug is enabled and no controller is connected it will continue running, returns false and exits the program otherwise. 
 
-#### Function: `void update_input(void)`  
+#### Function: `void update_input(void)`
+- **Access:** `Public`  
 - **Parameters:**  `void`  
 - **Return:**  `void`   
 - **Description**: Empties the `event_vector` and polls for all other possible events pushing them into `event_vector`.
 
-#### Function: `void close_input(void)`  
+#### Function: `void close_input(void)`
+- **Access:** `Public`  
 - **Parameters:**  `void`  
 - **Return:**  `void`   
 - **Description**: Releases and closes the `gamepad` instance.
@@ -72,10 +77,12 @@ Enumerates all the possible listeners to dispatch message inputs.
 ### Static Functions 
 
 #### Function: `Core::n_vector<Event> dispatch_input(Listeners_Id listener)`  
-- **Parameters:**  `Listeners_Id listener`  
+- **Access:** `Public`
+- **Parameters:**  `[in]Listeners_Id listener` - The type of listener.
 - **Return:**  `Core::n_vector<Event>`   
 - **Description**: Creates a new event queue and fills that event queue with the messages needed for the listener. If there are no messages for the listener or if `event_vector` is empty it simply returns a empty vector.
 
 ## Dependencies
 - [SDL3](https://github.com/libsdl-org/SDL)
 - [n_vector](../core/n_vector.md)
+- [debug_helper](../core/debug_helper.md)

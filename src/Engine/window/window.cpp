@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include "input.h"
 #include "Graphics.h"
+#include "core.h"
 
 Window::Window(){
     window = nullptr;
@@ -85,7 +86,7 @@ bool Window::create_window(const char *window_name){
 
     window = SDL_CreateWindow(window_name, display_properties.bounds.width, display_properties.bounds.heigth, SDL_WINDOW_VULKAN | SDL_WINDOW_BORDERLESS);
     if(window == NULL){
-        printf("Couldn't create window\n");
+        Core::debug::log(Core::debug::Error, "Couldn't create window\n");
         return false;
     }
 
@@ -97,7 +98,7 @@ bool Window::create_window(const char *window_name){
     if(num_extensions == 0) return false;
 
     if(!gfx->initialize_graphics(array_extensions, num_extensions)){
-        printf("Couldn't initialize graphics\n");
+        Core::debug::log(Core::debug::Error, "Couldn't initialize graphics\n");
         return false;
     }
 

@@ -17,6 +17,7 @@ endif()
 add_subdirectory(third-party-libraries/SDL EXCLUDE_FROM_ALL)
 find_package(Vulkan REQUIRED)
 add_subdirectory(src/Engine)
+add_subdirectory(src/core)
 
 set(SourceFiles src/main.cpp) 
 add_executable(${PROJECT_NAME} ${SourceFiles})

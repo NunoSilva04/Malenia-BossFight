@@ -24,6 +24,7 @@ public:
     void close_graphics(void);
 
 private:
+    bool initialize_instance(char const * const * array_extensions, uint32_t num_extensions);
     VkInstance vk_instance;
 };
 

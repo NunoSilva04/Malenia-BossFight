@@ -12,12 +12,14 @@ None
 ## Function Members
 ### Instance Functions
 
-#### Function: `SDL_SubSystem()`  
+#### Function: `SDL_SubSystem()` 
+- **Access:** `Public` 
 - **Parameters:**  `None`  
 - **Return:**  `None`   
 - **Description**: Creates a SDL_SubSystem instance. Initializes SDL with the necessary flags.
 
-#### Function: `~SDL_SubSystem`  
+#### Function: `~SDL_SubSystem()`
+- **Access:** `Public`  
 - **Parameters:**  `None`  
 - **Return:**  `None`   
 - **Description**: Destroys the SDL_SubSystem instance and quits SDL.

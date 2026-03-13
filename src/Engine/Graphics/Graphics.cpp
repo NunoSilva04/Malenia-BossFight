@@ -2,6 +2,7 @@
 #include <cstdio>
 #include <iostream>
 #include <string>
+#include "core.h"
 
 Graphics::Graphics(){
 
@@ -12,6 +13,15 @@ Graphics::~Graphics(){
 }
 
 bool Graphics::initialize_graphics(char const * const * array_extensions, uint32_t num_extensions){
+    if(!initialize_instance(array_extensions, num_extensions)){
+        Core::debug::log(Core::debug::Error, "Couldn't initialize instance\n");
+        return false;
+    }
+
+    return true;
+}
+
+bool Graphics::initialize_instance(char const * const * array_extensions, uint32_t num_extensions){
     VkApplicationInfo application_info {};
     application_info.sType = VK_STRUCTURE_TYPE_APPLICATION_INFO;
     application_info.pNext = NULL;
@@ -33,11 +43,20 @@ bool Graphics::initialize_graphics(char const * const * array_extensions, uint32
 
     VkResult result =  vkCreateInstance(&create_info, nullptr, &vk_instance);
     if(result != VK_SUCCESS){
-        printf("Couldn't create vk_instance\n");
         return false;
     }
+    
+    return true;
+}
 
-    uint32_t num_devices = 0;
+void Graphics::close_graphics(void){
+
+    return;
+}
+
+/*
+
+uint32_t num_devices = 0;
     if(vkEnumeratePhysicalDevices(vk_instance, &num_devices, NULL) != VK_SUCCESS){
         printf("Couldn't enum physical devices\n");
     }
@@ -93,42 +112,44 @@ bool Graphics::initialize_graphics(char const * const * array_extensions, uint32
     printf("Number of queue family properties: %d\n", queue_count);
 
     VkQueueFamilyProperties *family_properties = new VkQueueFamilyProperties[queue_count];
+    uint32_t chosen_family_index = 0, chosen_family_count = 0;
     vkGetPhysicalDeviceQueueFamilyProperties(chosen_device, &queue_count, family_properties);
     for(unsigned int i = 0; i < queue_count; i++){
         printf("Family %d:\n", i);
         std::cout << "Queue number: "  + std::to_string(family_properties[i].queueCount) << "\n";
         std::cout << "Queue flags: " + std::to_string(family_properties[i].queueFlags) << "\n\n\n";
+        if(family_properties[i].queueFlags & VK_QUEUE_GRAPHICS_BIT){
+            chosen_family_index = i;
+            chosen_family_count = family_properties[i].queueCount;
+            printf("Chosen family for now is %d\n", i);
+        }
     }
 
     delete[] family_properties;
 
-    /*
-    * #TODO: finish the create device part. Workflow that i think you are supposed to do:
-    *       queue family -> queue create info -> create device
-    */
+    const float priority = 1.0f;
+    VkDeviceQueueCreateInfo queue_info {};
+    queue_info.sType = VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO;
+    queue_info.pNext = NULL;
+    queue_info.flags = 0;
+    queue_info.queueFamilyIndex = chosen_family_index;
+    queue_info.queueCount = chosen_family_count;
+    queue_info.pQueuePriorities = &priority; 
 
-    //VkDeviceQueueCreateInfo queue_info {};
-    //queue_info.sType = VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO;
-    //queue_info.pNext = NULL;
-    //queue_info.flags = 0;
-    //queue_info.queueFamilyIndex = 
-    //queue_info.queueCount = 
-    //queue_info.pQueuePriorities = 
-//
-    //VkDeviceCreateInfo device_info;
-    //device_info.pNext = &queue_info;
-//
-    //VkDevice dev;
-    //if(vkCreateDevice(chosen_device, &device_info, NULL, &dev) != VK_SUCCESS){
-    //    printf("Couldn't create device\n");
-    //    return false;
-    //}
+    VkDeviceCreateInfo device_info {};
+    device_info.sType = VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO;
+    device_info.pNext = NULL;
+    device_info.queueCreateInfoCount = 1;
+    device_info.pQueueCreateInfos = &queue_info;
+    device_info.enabledExtensionCount = num_extensions;
+    device_info.ppEnabledExtensionNames = array_extensions;
 
-    return true;
-}
+    VkDevice dev;
+    if(vkCreateDevice(chosen_device, &device_info, NULL, &dev) != VK_SUCCESS){
+        printf("Couldn't create device\n");
+        return false;
+    }
 
-void Graphics::close_graphics(void){
-    vkDestroyInstance(vk_instance, nullptr);
-
-    return;
-}
+    printf("Created device\n");
+    vkDestroyDevice(dev, NULL);
+*/

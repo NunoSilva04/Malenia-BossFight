@@ -18,5 +18,6 @@
 #define __CORE_H__
 
 #include "n_vector.h"
+#include "debug_helper.h"
 
 #endif

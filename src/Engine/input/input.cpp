@@ -13,9 +13,9 @@ Input::~Input(){
 
 bool Input::initialize_input(void){
     if(!SDL_HasGamepad()){
-        printf("No gamepad found\n");
-        #if DEBUG
-        return false;
+        Core::debug::log(Core::debug::Error, "No gamepad found\n");
+        #if DEBUG == 0
+            return false;
         #endif
     }
 
@@ -23,9 +23,9 @@ bool Input::initialize_input(void){
     SDL_JoystickID *joystick_id = SDL_GetGamepads(&count);
     gamepad = SDL_OpenGamepad(joystick_id[0]);
     if(gamepad == NULL){
-        printf("Couldn't get gamepad\n");
-        #if DEBUG
-        return false;
+        Core::debug::log(Core::debug::Error, "Couldn't get gamepad\n");
+        #if DEBUG == 0
+            return false;
         #endif
     }
 
