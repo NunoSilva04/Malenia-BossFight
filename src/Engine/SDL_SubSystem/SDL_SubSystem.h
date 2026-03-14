@@ -20,7 +20,7 @@
 class SDL_SubSytem{
 public:
     SDL_SubSytem(){
-        if(!SDL_Init(SDL_INIT_VIDEO | SDL_INIT_GAMEPAD | SDL_INIT_EVENTS | SDL_INIT_AUDIO)){
+        if(!SDL_Init(SDL_INIT_VIDEO | SDL_INIT_GAMEPAD | SDL_INIT_EVENTS)){
             throw std::runtime_error("Couldn't initalize SDL_SubSystem\n");
         }
     }
