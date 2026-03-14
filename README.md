@@ -1,7 +1,6 @@
 # Malenia-BossFight
 
 Recreation Malenia's Bossfight in Elden Ring.  
-Supports Windows, MacOS and Linux.
 
 ## Disclaimer
 **This is simply a project with no profit gain, so please, don't come after me FromSoftware.**
@@ -14,6 +13,12 @@ This project is not affiliated with or endorsed by FromSoftware.
 
 No original assets from Elden Ring are included in this repository.
 All assets in this project were created by the author unless otherwise stated.
+
+## Supported Platforms
+
+- Windows
+- MacOS
+- Linux
 
 ## Overview
 
