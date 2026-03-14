@@ -26,7 +26,7 @@ Open a command prompt and navigate to the directory where you want to have the p
 `git clone https://github.com/NunoSilva04/Malenia-BossFight.git`
 
 ### Step 2
-Download the third party assets zip folder from the git repository [release page](https://github.com/NunoSilva04/Malenia-BossFight/releases/tag/v1.0)
+Download the third party assets zip folder from the git repository [release page](https://github.com/NunoSilva04/Malenia-BossFight/releases/tag/v0.1.0)
 
 
 ### Step 3
