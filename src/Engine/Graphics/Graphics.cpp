@@ -41,7 +41,7 @@ bool Graphics::initialize_instance(char const * const * array_extensions, uint32
     create_info.enabledExtensionCount = num_extensions;
     create_info.ppEnabledExtensionNames = array_extensions;
 
-    VkResult result =  vkCreateInstance(&create_info, nullptr, &vk_instance);
+    VkResult result = vkCreateInstance(&create_info, nullptr, &vk_instance);
     if(result != VK_SUCCESS){
         return false;
     }
@@ -50,6 +50,7 @@ bool Graphics::initialize_instance(char const * const * array_extensions, uint32
 }
 
 void Graphics::close_graphics(void){
+    vkDestroyInstance(vk_instance, nullptr);
 
     return;
 }
