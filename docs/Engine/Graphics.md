@@ -37,10 +37,9 @@ None
 
 #### Function: `bool initialize_graphics(Core::n_vector<const char *> extensions)`  
 - **Access:** `Public`
-- **Parameters:**
-    - `[in]Core::n_vector<const char *> extensions` - Vector that holds [SDL](https://github.com/libsdl-org/SDL) extensions.
+- **Parameters:** `[in]Core::n_vector<const char *> extensions` - Vector that holds [SDL](https://github.com/libsdl-org/SDL) extensions.
 - **Return:**  `bool`   
-- **Description**: Initializes graphics by [initialize_graphics](Graphics.md#). If the project is being build on debug mode, then it will also call 
+- **Description**: Initializes graphics by [initialize_instance](Graphics.md#function-bool-initialize_instancecoren_vectorconst-char--extensions-coren_vectorconst-char--layers). If the project is being build on debug mode, then it will also [get_validation_layers](Graphics.md#function-coren_vectorconst-char--get_validation_layersvoid), [add_debug_extension](Graphics.md#function-void-add_debug_extensioncoren_vectorconst-char--extensions) and [initialize_debug_messenger](Graphics.md#function-bool-initialize_debug_messengervoid).
 
 #### Function: `void close_graphics(void)` 
 - **Access:** `Public` 
@@ -73,7 +72,7 @@ None
 - **Access:** `Private` 
 - **Parameters:** `void` 
 - **Return:**  `bool`   
-- **Description**: Initializes a debug call back function useful for debugging.
+- **Description**: Initializes a debug call back function useful for debugging. Used only **debug** mode.
 
 ### Static Functions 
 None.
