@@ -99,17 +99,23 @@ None.
 - **Return:**  `size_t`   
 - **Description**: Returns the size of the vector.
 
-#### Function: `size_t vector_capacity(void)`
+#### Function: `size_t vector_capacity(void) const`
 - **Access:** `Public`
 - **Parameters:**  `void`   
 - **Return:**  `size_t`   
 - **Description**: Returns the vector capacity.
 
-#### Function: `T vector_data_id(size_t id)`
+#### Function: `T vector_data_id(size_t id) const`
 - **Access:** `Public`
 - **Parameters:**  `[in] size_t id` - Position of the vector.
 - **Return:**  `T`   
 - **Description**: Returns the data of the vector at a specific location. If `id` is bigger or equal to the size of the vector, it will return garbage.
+
+#### Function: `T *vector_data(void) const`
+- **Access:** `Public`
+- **Parameters:**  `void`
+- **Return:**  `T`   
+- **Description**: Returns a pointer to the data of the vector.
 
 ### Static Functions
 None

@@ -15,17 +15,22 @@
 
 #include <SDL3/SDL_vulkan.h>
 #include <vulkan/vulkan.h>
+#include <core.h>
 
 class Graphics{
 public:
     Graphics();
     ~Graphics();
-    bool initialize_graphics(char const * const * array_extensions, uint32_t num_extensions);
+    bool initialize_graphics(Core::n_vector<const char *> extensions);
     void close_graphics(void);
 
 private:
-    bool initialize_instance(char const * const * array_extensions, uint32_t num_extensions);
+    Core::n_vector<const char *> get_validation_layers(void);
+    void add_debug_extension(Core::n_vector<const char *> extensions);
+    bool initialize_instance(Core::n_vector<const char *> extensions, Core::n_vector<const char *> layers);
+    bool initialize_debug_messenger(void);
     VkInstance vk_instance;
+    VkDebugUtilsMessengerEXT messenger;
 };
 
 #endif

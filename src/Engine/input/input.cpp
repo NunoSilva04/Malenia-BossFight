@@ -12,6 +12,10 @@ Input::~Input(){
 }
 
 bool Input::initialize_input(void){
+    /**
+     * !TODO: Update this so it can open the game even there isn't a gamepad at start.
+     */
+
     if(!SDL_HasGamepad()){
         Core::debug::log(Core::debug::Error, "No gamepad found\n");
         #if DEBUG == 0

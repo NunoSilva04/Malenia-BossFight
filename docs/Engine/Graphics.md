@@ -13,6 +13,7 @@ None.
 | Members | Type | Description | Default Value |
 |--------|------|-------------|-------------|
 | `vk_instance` | `VkInstance` |Vulkan instance| `None` |
+|`messenger` | `VkDebugUtilsMessengerEXT` |Messenger instance for the debug callback function| `None` |
 
 
 ### Static variables
@@ -34,13 +35,12 @@ None
 - **Return:**  `None`   
 - **Description**: Destroys the Graphics instance.
 
-#### Function: `bool initialize_graphics(char const * const * array_extensions, uint32_t num_extensions)`  
+#### Function: `bool initialize_graphics(Core::n_vector<const char *> extensions)`  
 - **Access:** `Public`
 - **Parameters:**
-    - `[in]char const * const * array_extensions` - Pointer to an array that holds the names of all of the extensions.
-    - `[in]uint32_t num_extensions` - Number of extensions in the array.
+    - `[in]Core::n_vector<const char *> extensions` - Vector that holds [SDL](https://github.com/libsdl-org/SDL) extensions.
 - **Return:**  `bool`   
-- **Description**: Initializes graphics by [initialize_graphics](Graphics.md#function-bool-initialize_instancechar-const--const--array_extensions-uint32_t-num_extensions).
+- **Description**: Initializes graphics by [initialize_graphics](Graphics.md#). If the project is being build on debug mode, then it will also call 
 
 #### Function: `void close_graphics(void)` 
 - **Access:** `Public` 
@@ -48,13 +48,32 @@ None
 - **Return:**  `void`   
 - **Description**: Closes graphics and frees all of the resources used.
 
-#### Function: `bool initialize_instance(char const * const * array_extensions, uint32_t num_extensions)` 
+#### Function: `Core::n_vector<const char *> get_validation_layers(void)` 
 - **Access:** `Private` 
-- **Parameters:** 
-    - `[in]char const * const * array_extensions` - Pointer to an array that holds the names of all of the extensions.
-    - `[in]uint32_t num_extensions` - Number of extensions in the array. 
+- **Parameters:** `void`
+- **Return:**  `Core::n_vector<const char *>`   
+- **Description**: Returns a vector with the following layer names`VK_LAYER_KHRONOS_validation` and `VK_LAYER_LUNARG_crash_diagnostic`. May return a empty vector is none of these layers are available. Used only in **debug** mode.
+
+#### Function: `void add_debug_extension(Core::n_vector<const char *> extensions)` 
+- **Access:** `Private` 
+- **Parameters:**
+    - `Core::n_vector<const char *> extensions` - Vector that holds necessary extensions. 
+- **Return:**  `void`   
+- **Description**: Adds `VK_EXT_debug_utils` to the vector. Used only in **debug** mode.
+
+#### Function: `bool initialize_instance(Core::n_vector<const char *> extensions, Core::n_vector<const char *> layers)` 
+- **Access:** `Private` 
+- **Parameters:**
+    - `Core::n_vector<const char *> extensions` - Vector that holds necessary extensions.
+    - `Core::n_vector<const char *> layers` - Vector that holds necessary layers. 
 - **Return:**  `bool`   
-- **Description**: Initializes the vulkan instance with the proper extensions.
+- **Description**: Initializes the instance with the extensions and layers provided. Returns `true` in case of success, `false` otherwise.
+
+#### Function: `bool initialize_debug_messenger(void)` 
+- **Access:** `Private` 
+- **Parameters:** `void` 
+- **Return:**  `bool`   
+- **Description**: Initializes a debug call back function useful for debugging.
 
 ### Static Functions 
 None.
@@ -62,3 +81,4 @@ None.
 ## Dependencies
 - [Vulkan SDK](https://vulkan.lunarg.com/sdk/home)
 - [SDL3](https://github.com/libsdl-org/SDL)
+- [n_vector](../core/n_vector.md)

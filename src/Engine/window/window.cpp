@@ -96,8 +96,17 @@ bool Window::create_window(const char *window_name){
     uint32_t num_extensions = 0;
     char const * const * array_extensions = SDL_Vulkan_GetInstanceExtensions(&num_extensions);
     if(num_extensions == 0) return false;
+    #ifdef DEBUG 
+        for(uint32_t i = 0; i < num_extensions; i++){
+            Core::debug::log(Core::debug::Info, "  %s\n", array_extensions[i]);
+        }
+    #endif
 
-    if(!gfx->initialize_graphics(array_extensions, num_extensions)){
+    Core::n_vector<const char *> extensions;
+    for(uint32_t i = 0; i < num_extensions; i++){
+        extensions.push_back(array_extensions[i]);
+    }
+    if(!gfx->initialize_graphics(extensions)){
         Core::debug::log(Core::debug::Error, "Couldn't initialize graphics\n");
         return false;
     }

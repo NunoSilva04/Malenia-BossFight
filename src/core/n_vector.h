@@ -155,6 +155,10 @@ namespace Core{
                 return data[id];
             }
 
+            T *vector_data(void) const{
+                return data;
+            }
+
         private:
             T *data;
             size_t size;

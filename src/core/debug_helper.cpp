@@ -7,12 +7,12 @@ void Core::debug::log(Log_Level level, const char *string, ...){
     #if DEBUG
     switch(level){
         case Fatal:
-            printf("Fatal:\n");
+            printf("Fatal:  ");
         break;
 
         case Error:
             num_errors++;
-            printf("Error:\n");
+            printf("Error:  ");
         break;
 
         case Warning:
@@ -21,12 +21,12 @@ void Core::debug::log(Log_Level level, const char *string, ...){
                 num_warnings = 0;
                 num_errors++;
             }
-            printf("Warning:\n");
+            printf("Warning:  ");
         break;
 
         case Info:
         default:
-            printf("Info:\n");
+            printf("Info:  ");
         break;
     };
 
