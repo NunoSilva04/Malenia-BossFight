@@ -21,16 +21,37 @@ class Graphics{
 public:
     Graphics();
     ~Graphics();
-    bool initialize_graphics(Core::n_vector<const char *> extensions);
+    bool initialize_graphics(SDL_Window *window, Core::n_vector<const char *> extensions);
     void close_graphics(void);
 
 private:
+    //Debug utilities needed
     Core::n_vector<const char *> get_validation_layers(void);
-    void add_debug_extension(Core::n_vector<const char *> extensions);
+    void add_debug_extension(Core::n_vector<const char *> &extensions);
+    
+    //Instance
     bool initialize_instance(Core::n_vector<const char *> extensions, Core::n_vector<const char *> layers);
+
+    // Debug initializer
     bool initialize_debug_messenger(void);
+    
+    //Surface
+    bool initialize_surface(SDL_Window *window);
+    
+    //Device
+    VkPhysicalDevice get_best_device(void);
+    void choose_queue_family(const VkPhysicalDevice device, uint32_t *chosen_index, uint32_t *chosen_count);
+    bool get_device_extensions(const VkPhysicalDevice device, Core::n_vector<const char *> *extensions, uint32_t *num_extensions);
+    bool validate_device_surface(const VkPhysicalDevice device);
+    bool initialize_device(void);
+    
+    /*Close Graphics*/
+    void destroy_surface(void);
+    void close_debug_messenger(void);
+    
     VkInstance vk_instance;
     VkDebugUtilsMessengerEXT messenger;
+    VkSurfaceKHR vk_surface;
 };
 
 #endif

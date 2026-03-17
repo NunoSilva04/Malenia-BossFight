@@ -34,14 +34,192 @@ static const char *severity_to_str(VkDebugUtilsMessageSeverityFlagBitsEXT severi
     return message;
 }
 
+static const char *msg_type_to_str(const VkDebugUtilsMessageTypeFlagsEXT message_types){
+    const char *message;
+    switch(message_types){
+        case VK_DEBUG_UTILS_MESSAGE_TYPE_VALIDATION_BIT_EXT:
+            message = "Validation";
+        break;
+
+        case VK_DEBUG_UTILS_MESSAGE_TYPE_PERFORMANCE_BIT_EXT:
+            message = "Performance";
+        break;
+
+        case VK_DEBUG_UTILS_MESSAGE_TYPE_DEVICE_ADDRESS_BINDING_BIT_EXT:
+            message = "Address Binding";
+        break;
+
+        case VK_DEBUG_UTILS_MESSAGE_TYPE_GENERAL_BIT_EXT: 
+        default:
+            message = "General";
+        break;
+    }
+
+    return message;
+}
+
+static void version_to_str(uint32_t version, char *out_string, size_t string_size){
+    uint32_t major = (version >> 22) & ((1u << 7) - 1);
+    uint32_t minor = (version >> 12) & ((1u << 10) - 1);
+    uint32_t patch = version & ((1u << 12) - 1);
+    snprintf(out_string, string_size, "%d.%d.%d", major, minor, patch);
+
+    return;
+}
+
+static const char *device_type_to_str(VkPhysicalDeviceType type){
+    const char *message = nullptr;
+
+    switch(type){
+        case VK_PHYSICAL_DEVICE_TYPE_INTEGRATED_GPU:
+            message = "Integrated GPU";
+        break;
+
+        case VK_PHYSICAL_DEVICE_TYPE_DISCRETE_GPU:
+            message = "Discrete GPU";
+        break;
+
+        case VK_PHYSICAL_DEVICE_TYPE_VIRTUAL_GPU:
+            message = "Virtual GPU";
+        break;
+
+        case VK_PHYSICAL_DEVICE_TYPE_CPU:
+            message = "CPU";
+        break;
+
+        case VK_PHYSICAL_DEVICE_TYPE_OTHER:
+        default:
+            message = "Other";
+        break;
+    }
+
+    return message;
+}
+
+static void queue_flags_to_str(const VkQueueFlags flags, char *out_string, size_t string_size, int * const num_flags){
+    snprintf(out_string, string_size, "");
+    if(flags & VK_QUEUE_GRAPHICS_BIT){
+        strcat(out_string, "Graphics, ");
+        (*num_flags)++;
+    }
+    if(flags & VK_QUEUE_COMPUTE_BIT){
+        strcat(out_string, "Compute, ");
+        (*num_flags)++;
+    }
+    if(flags & VK_QUEUE_TRANSFER_BIT){
+        strcat(out_string, "Transfer, ");
+        (*num_flags)++;
+    }
+    if(flags & VK_QUEUE_SPARSE_BINDING_BIT){
+        strcat(out_string, "Sparse Binding, ");
+        (*num_flags)++;
+    }
+    if(flags & VK_QUEUE_PROTECTED_BIT){
+        strcat(out_string, "Protected, ");
+        (*num_flags)++;
+    }
+    if(flags & VK_QUEUE_VIDEO_DECODE_BIT_KHR){
+        strcat(out_string, "Video Decode, ");
+        (*num_flags)++;
+    }
+    if(flags & VK_QUEUE_VIDEO_ENCODE_BIT_KHR){
+        strcat(out_string, "Video Encode, ");
+        (*num_flags)++;
+    }
+    if(flags & VK_QUEUE_OPTICAL_FLOW_BIT_NV){
+        strcat(out_string, "Optical Flow, ");
+        (*num_flags)++;
+    }  
+
+    return;
+}
+
+static void transform_flags_to_str(const VkSurfaceTransformFlagsKHR flags, char *out_string, size_t string_size){
+    memset(out_string, 0, string_size);
+
+    if(flags & VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR) strcat(out_string, "Identity, ");
+    if(flags & VK_SURFACE_TRANSFORM_ROTATE_90_BIT_KHR) strcat(out_string, "Rotate 90, ");
+    if(flags & VK_SURFACE_TRANSFORM_ROTATE_180_BIT_KHR) strcat(out_string, "Rotate 180, ");
+    if(flags & VK_SURFACE_TRANSFORM_ROTATE_270_BIT_KHR) strcat(out_string, "Rotate 270, ");
+    if(flags & VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_BIT_KHR) strcat(out_string, "Horizontal Mirror, ");
+    if(flags & VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_ROTATE_90_BIT_KHR) strcat(out_string, "Horizontal mirror rotate 90, ");
+    if(flags & VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_ROTATE_180_BIT_KHR) strcat(out_string, "Horizontal mirror rotate 180, ");
+    if(flags & VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_ROTATE_270_BIT_KHR ) strcat(out_string, "Horizontal mirror rotate 270, ");
+    if(flags & VK_SURFACE_TRANSFORM_INHERIT_BIT_KHR) strcat(out_string, "Inherit, ");
+
+    return;
+}
+
+static const char *get_current_transform_flag(const VkSurfaceTransformFlagBitsKHR flag){
+    if(flag & VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR) return "Identity, ";
+    if(flag & VK_SURFACE_TRANSFORM_ROTATE_90_BIT_KHR) return "Rotate 90, ";
+    if(flag & VK_SURFACE_TRANSFORM_ROTATE_180_BIT_KHR) return "Rotate 180, ";
+    if(flag & VK_SURFACE_TRANSFORM_ROTATE_270_BIT_KHR) return "Rotate 270, ";
+    if(flag & VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_BIT_KHR) return "Horizontal Mirror, ";
+    if(flag & VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_ROTATE_90_BIT_KHR) return "Horizontal mirror rotate 90, ";
+    if(flag & VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_ROTATE_180_BIT_KHR) return "Horizontal mirror rotate 180, ";
+    if(flag & VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_ROTATE_270_BIT_KHR ) return "Horizontal mirror rotate 270, ";
+    if(flag & VK_SURFACE_TRANSFORM_INHERIT_BIT_KHR) return "Inherit, ";
+
+    return "";
+}
+
+static void alpha_flags_to_str(const VkCompositeAlphaFlagsKHR flags, char *out_string, size_t string_size){
+    memset(out_string, 0, string_size);
+    
+    if(flags & VK_COMPOSITE_ALPHA_OPAQUE_BIT_KHR) strcat(out_string, "Opaque, ");
+    if(flags & VK_COMPOSITE_ALPHA_PRE_MULTIPLIED_BIT_KHR) strcat(out_string, "Pre Multiplied, ");
+    if(flags & VK_COMPOSITE_ALPHA_POST_MULTIPLIED_BIT_KHR) strcat(out_string, "Post Multipled, ");
+    if(flags & VK_COMPOSITE_ALPHA_INHERIT_BIT_KHR) strcat(out_string, "Inherit, ");
+
+    return;
+}
+
+static void usage_flags_to_str(const VkImageUsageFlags flags, char *out_string, size_t string_size){
+    memset(out_string, 0, string_size);
+
+    if(flags & VK_IMAGE_USAGE_TRANSFER_SRC_BIT) strcat(out_string, "Transfer Source, ");
+    if(flags & VK_IMAGE_USAGE_TRANSFER_DST_BIT) strcat(out_string, "Transfer Destination, ");
+    if(flags & VK_IMAGE_USAGE_SAMPLED_BIT) strcat(out_string, "Sampled, ");
+    if(flags & VK_IMAGE_USAGE_STORAGE_BIT) strcat(out_string, "Storage, ");
+    if(flags & VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT) strcat(out_string, "Color Attachment, ");
+    if(flags & VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT) strcat(out_string, "Depth Stencil, ");
+    if(flags & VK_IMAGE_USAGE_TRANSIENT_ATTACHMENT_BIT) strcat(out_string, "Transient Attachment, ");
+    if(flags & VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT) strcat(out_string, "Input Attachment, ");
+    if(flags & VK_IMAGE_USAGE_HOST_TRANSFER_BIT) strcat(out_string, "Host transfer, ");
+    if(flags & VK_IMAGE_USAGE_VIDEO_DECODE_DST_BIT_KHR) strcat(out_string, "Video Decode Destination, ");
+    if(flags & VK_IMAGE_USAGE_VIDEO_DECODE_SRC_BIT_KHR) strcat(out_string, "Video Decode Source, ");
+    if(flags & VK_IMAGE_USAGE_VIDEO_DECODE_DPB_BIT_KHR) strcat(out_string, "Video Decode DPB(Decode Picture Buffer), ");
+    if(flags & VK_IMAGE_USAGE_FRAGMENT_DENSITY_MAP_BIT_EXT) strcat(out_string, "Fragment Density, ");
+    if(flags & VK_IMAGE_USAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR) strcat(out_string, "Fragment Shading, ");
+    if(flags & VK_IMAGE_USAGE_VIDEO_ENCODE_DST_BIT_KHR) strcat(out_string, "Video Encode Destination, ");
+    if(flags & VK_IMAGE_USAGE_VIDEO_ENCODE_SRC_BIT_KHR) strcat(out_string, "Video Encode Source, ");
+    if(flags & VK_IMAGE_USAGE_VIDEO_ENCODE_DPB_BIT_KHR) strcat(out_string, "Video Encode DPB(Decode Picture Buffer), ");
+    if(flags & VK_IMAGE_USAGE_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT) strcat(out_string, "Attachment FeedBack Loop, ");
+    if(flags & VK_IMAGE_USAGE_INVOCATION_MASK_BIT_HUAWEI) strcat(out_string, "Invocation Mask Huawei, ");
+    if(flags & VK_IMAGE_USAGE_SAMPLE_WEIGHT_BIT_QCOM) strcat(out_string, "Sample Weight, ");
+    if(flags & VK_IMAGE_USAGE_SAMPLE_BLOCK_MATCH_BIT_QCOM) strcat(out_string, "Sample Block Match, ");
+    if(flags & VK_IMAGE_USAGE_TENSOR_ALIASING_BIT_ARM) strcat(out_string, "Tensor Aliasing ARM, ");
+    if(flags & VK_IMAGE_USAGE_TILE_MEMORY_BIT_QCOM) strcat(out_string, "Tile Memory, ");
+    if(flags & VK_IMAGE_USAGE_VIDEO_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR) strcat(out_string, "Video Encode Quantization, ");
+    if(flags & VK_IMAGE_USAGE_VIDEO_ENCODE_EMPHASIS_MAP_BIT_KHR) strcat(out_string, "Video Encode Emphasis, ");
+    if(flags & VK_IMAGE_USAGE_SHADING_RATE_IMAGE_BIT_NV) strcat(out_string, "Fragment Shading (From NV), ");
+    if(flags & VK_IMAGE_USAGE_HOST_TRANSFER_BIT_EXT) strcat(out_string, "Host transfer (From EXT), ");
+
+    return;
+}
+
 static VKAPI_ATTR VkBool32 VKAPI_CALL debug_callback(
-    VkDebugUtilsMessageSeverityFlagBitsEXT      messageSeverity,
-    VkDebugUtilsMessageTypeFlagsEXT             messageTypes,
+    VkDebugUtilsMessageSeverityFlagBitsEXT      message_severity,
+    VkDebugUtilsMessageTypeFlagsEXT             message_types,
     const VkDebugUtilsMessengerCallbackDataEXT* pCallbackData,
     void*                                       pUserData)
 {
-    printf("Severity: %s\n", severity_to_str(messageSeverity));
+    printf("Severity: %s\n", severity_to_str(message_severity));
+    printf("Type: %s\n", msg_type_to_str(message_types));
+    printf("Message Id: %d\n", pCallbackData->messageIdNumber);
     printf("Message: %s\n", pCallbackData->pMessage);
+    
     return VK_FALSE;
 }
 
@@ -53,7 +231,7 @@ Graphics::~Graphics(){
 
 }
 
-bool Graphics::initialize_graphics(Core::n_vector<const char *> extensions){
+bool Graphics::initialize_graphics(SDL_Window *window, Core::n_vector<const char *> extensions){
     Core::n_vector<const char *> layers;
     #ifdef DEBUG
         layers = get_validation_layers();
@@ -64,12 +242,20 @@ bool Graphics::initialize_graphics(Core::n_vector<const char *> extensions){
         Core::debug::log(Core::debug::Error, "Couldn't initialize instance\n");
         return false;
     } 
-    //#ifdef DEBUG
-    //    if(!initialize_debug_messenger()){
-    //        Core::debug::log(Core::debug::Error, "Couldn't initialize debug messenger\n");
-    //        return false;
-    //    }
-    //#endif
+    #ifdef DEBUG
+        if(!initialize_debug_messenger()){
+            Core::debug::log(Core::debug::Error, "Couldn't initialize debug messenger\n");
+            return false;
+        }
+    #endif
+    if(!initialize_surface(window)){
+        Core::debug::log(Core::debug::Fatal, "Couldn't initialize surface\n");
+        return false;
+    }
+    if(!initialize_device()){
+        Core::debug::log(Core::debug::Fatal, "Couldn't initialize device\n");
+        return false;
+    }
 
     return true;
 }
@@ -95,7 +281,7 @@ Core::n_vector<const char *> Graphics::get_validation_layers(void){
     return layers;
 }
 
-void Graphics::add_debug_extension(Core::n_vector<const char *> extensions){
+void Graphics::add_debug_extension(Core::n_vector<const char *> &extensions){
     extensions.push_back("VK_EXT_debug_utils");
     
     return;
@@ -160,7 +346,7 @@ bool Graphics::initialize_debug_messenger(void){
     submit_debug_message = (PFN_vkSubmitDebugUtilsMessageEXT)vkGetInstanceProcAddr(vk_instance, "vkSubmitDebugUtilsMessageEXT");
     
     if(submit_debug_message){
-        VkDebugUtilsMessengerCallbackDataEXT data;
+        VkDebugUtilsMessengerCallbackDataEXT data {};
         data.sType = VK_STRUCTURE_TYPE_DEBUG_UTILS_MESSENGER_CALLBACK_DATA_EXT;
         data.pNext = NULL;
         data.flags = 0;
@@ -173,94 +359,178 @@ bool Graphics::initialize_debug_messenger(void){
     return true;
 }
 
-void Graphics::close_graphics(void){
-    //#ifdef DEBUG
-    //    PFN_vkDestroyDebugUtilsMessengerEXT destroy_debug_messenger = nullptr;
-    //    destroy_debug_messenger = (PFN_vkDestroyDebugUtilsMessengerEXT)vkGetInstanceProcAddr(vk_instance, "vkDestroyDebugUtilsMessengerEXT");
-    //    if(!destroy_debug_messenger){
-    //        Core::debug::log(Core::debug::Fatal, "Couldn't create destroy debug messenger\n");
-    //    }
-    //    destroy_debug_messenger(vk_instance, messenger, nullptr);
-    //#endif
+bool Graphics::initialize_surface(SDL_Window *window){
+    if(!SDL_Vulkan_CreateSurface(window, vk_instance, nullptr, &vk_surface)) return false;
 
+    return true;
+}
+
+VkPhysicalDevice Graphics::get_best_device(void){
+    VkPhysicalDevice chosen_device = nullptr;
+
+    uint32_t num_devices = 0;
+    if(vkEnumeratePhysicalDevices(vk_instance, &num_devices, NULL) != VK_SUCCESS) return nullptr;
+    VkPhysicalDevice *devices = new VkPhysicalDevice[num_devices];
+    if(vkEnumeratePhysicalDevices(vk_instance, &num_devices, devices) == VK_SUCCESS){
+        VkPhysicalDeviceProperties properties;
+        uint64_t max_vram = 0;
+        bool has_dpgu = false;
+        for(size_t i = 0; i < num_devices; i++){
+            vkGetPhysicalDeviceProperties(devices[i], &properties);
+
+            char version_string[30] = {};
+            version_to_str(properties.apiVersion, version_string, 30 * sizeof(char));
+            Core::debug::log(Core::debug::Info, "API Version: %s\n", version_string);
+            Core::debug::log(Core::debug::Info, "Driver Version: %d\n", properties.driverVersion);
+            Core::debug::log(Core::debug::Info, "Vendor ID: %d\n", properties.vendorID);
+            Core::debug::log(Core::debug::Info, "Device ID: %d\n", properties.deviceID);
+            Core::debug::log(Core::debug::Info, "Device type: %s\n", device_type_to_str(properties.deviceType));
+            Core::debug::log(Core::debug::Info, "Device Name: %s\n", properties.deviceName);
+
+            VkPhysicalDeviceMemoryProperties mem_properties;
+            vkGetPhysicalDeviceMemoryProperties(devices[i], &mem_properties);
+            Core::debug::log(Core::debug::Info, "Memory type count: %d\n", mem_properties.memoryTypeCount);
+            Core::debug::log(Core::debug::Info, "Memory heap count: %d\n", mem_properties.memoryHeapCount);
+            Core::debug::log(Core::debug::Info, "Memory heap size: %llu\n\n\n", mem_properties.memoryHeaps->size / (1024 * 1024));
+
+            if(properties.deviceType == VK_PHYSICAL_DEVICE_TYPE_DISCRETE_GPU){
+                has_dpgu = true;
+                if(mem_properties.memoryHeaps->size > max_vram){
+                    chosen_device = devices[i];
+                    max_vram = mem_properties.memoryHeaps->size;
+                }
+            }else{
+                if(has_dpgu) continue;
+                else{
+                    chosen_device = devices[i];
+                }
+            }
+        }
+    }
+    delete[] devices;
+
+    return chosen_device;
+}
+
+void Graphics::choose_queue_family(const VkPhysicalDevice device, uint32_t *chosen_index, uint32_t *chosen_count){
+    uint32_t num_queues = 0;
+    vkGetPhysicalDeviceQueueFamilyProperties(device, &num_queues, NULL);
+    if(num_queues > 0){
+        VkQueueFamilyProperties *properties = new VkQueueFamilyProperties[num_queues];
+        vkGetPhysicalDeviceQueueFamilyProperties(device, &num_queues, properties);
+
+        for(uint32_t i = 0; i < num_queues; i++){
+            Core::debug::log(Core::debug::Info, "Family %d\n", i);
+            char flag_string[64] = {};
+            int num_flags = 0;
+            queue_flags_to_str(properties[i].queueFlags, flag_string, 64 * sizeof(char), &num_flags);
+            Core::debug::log(Core::debug::Info, "Number of flags: %d\nFlags: %s\n", num_flags, flag_string);
+            Core::debug::log(Core::debug::Info, "Queue count: %d\n\n\n", properties[i].queueCount);
+
+            bool has_flag = [&](const VkQueueFlags flag){
+                if(properties[i].queueFlags & flag) return true;
+                return false;
+            }(VK_QUEUE_GRAPHICS_BIT);
+            if(has_flag){
+                *chosen_index = i;
+                *chosen_count = properties[i].queueCount;
+            }
+        }
+
+        delete[] properties;
+    }
+    
+    return;
+}
+
+bool Graphics::get_device_extensions(const VkPhysicalDevice device, Core::n_vector<const char *> *extensions, uint32_t *num_extensions){
+    bool found_extension = false;
+
+    uint32_t total_extensions = 0;
+    if(vkEnumerateDeviceExtensionProperties(device, NULL, &total_extensions, NULL) != VK_SUCCESS) return false;
+    VkExtensionProperties *properties = new VkExtensionProperties[total_extensions];
+    if(vkEnumerateDeviceExtensionProperties(device, NULL, &total_extensions, properties) == VK_SUCCESS){
+        for(uint32_t i = 0; i < total_extensions; i++){
+            if(strcmp(properties[i].extensionName, "VK_KHR_swapchain") == 0){
+                extensions->push_back(properties[i].extensionName);
+                (*num_extensions)++;
+                found_extension = true;
+                break;
+            } 
+        }
+    }
+
+    if(found_extension == false) return false;
+    
+    delete[] properties;
+    return true;
+}
+
+bool Graphics::validate_device_surface(const VkPhysicalDevice device){
+    //Validate Device and Surface capabilites
+    VkSurfaceCapabilitiesKHR capabilities;
+    if(vkGetPhysicalDeviceSurfaceCapabilitiesKHR(device, vk_surface, &capabilities) == VK_SUCCESS){
+        Core::debug::log(Core::debug::Info, "Min Image count: %d\n", capabilities.minImageCount);
+        Core::debug::log(Core::debug::Info, "Max Image count: %d\n", capabilities.maxImageCount);
+        Core::debug::log(Core::debug::Info, "Current Image Extent: (width = %d, height %d)\n", capabilities.currentExtent.width, capabilities.currentExtent.height);
+        Core::debug::log(Core::debug::Info, "Min Image Extent: (width = %d, height %d)\n", capabilities.minImageExtent.width, capabilities.minImageExtent.height);
+        Core::debug::log(Core::debug::Info, "Max Image Extent: (width = %d, height %d)\n", capabilities.maxImageExtent.width, capabilities.maxImageExtent.height);
+        Core::debug::log(Core::debug::Info, "Max Image Layers: %d\n", capabilities.maxImageArrayLayers);
+        char string[1024] = {};
+        transform_flags_to_str(capabilities.supportedTransforms, string, 1024 * sizeof(char));
+        Core::debug::log(Core::debug::Info, "Transform flags: %s\n", string);
+        Core::debug::log(Core::debug::Info, "Current flag: %s\n", get_current_transform_flag(capabilities.currentTransform));
+        alpha_flags_to_str(capabilities.supportedCompositeAlpha, string, 1024 * sizeof(char));
+        Core::debug::log(Core::debug::Info, "Alpha flags: %s\n", string);
+        usage_flags_to_str(capabilities.supportedUsageFlags, string, 1024 * sizeof(char));
+        Core::debug::log(Core::debug::Info, "Usage flags: %s\n", string);
+    }else{
+        Core::debug::log(Core::debug::Error, "Couldn't get physical device surface capabilites\n");
+        return false;
+    }
+
+    return true;
+}
+
+bool Graphics::initialize_device(void){
+    VkPhysicalDevice chosen_device = get_best_device();
+    uint32_t chosen_queue_index = 0, chosen_queue_count = 0;
+    choose_queue_family(chosen_device, &chosen_queue_index, &chosen_queue_count);
+    Core::n_vector<const char *> device_extensions;
+    uint32_t num_extensions = 0;
+    get_device_extensions(chosen_device, &device_extensions, &num_extensions);
+    validate_device_surface(chosen_device);
+
+    return true;
+}
+
+void Graphics::destroy_surface(void){
+    SDL_Vulkan_DestroySurface(vk_instance, vk_surface, nullptr);
+
+    return;
+}
+
+void Graphics::close_debug_messenger(void){
+    #ifdef DEBUG
+        PFN_vkDestroyDebugUtilsMessengerEXT destroy_debug_messenger = nullptr;
+        destroy_debug_messenger = (PFN_vkDestroyDebugUtilsMessengerEXT)vkGetInstanceProcAddr(vk_instance, "vkDestroyDebugUtilsMessengerEXT");
+        if(!destroy_debug_messenger){
+            Core::debug::log(Core::debug::Fatal, "Couldn't create destroy debug messenger\n");
+        }
+        destroy_debug_messenger(vk_instance, messenger, nullptr);
+    #endif
+    return;
+}
+
+void Graphics::close_graphics(void){
+    destroy_surface();
+    close_debug_messenger();
     vkDestroyInstance(vk_instance, nullptr);
 
     return;
 }
 
-/*
-
-uint32_t num_devices = 0;
-    if(vkEnumeratePhysicalDevices(vk_instance, &num_devices, NULL) != VK_SUCCESS){
-        printf("Couldn't enum physical devices\n");
-    }
-    printf("Num of physical devices: %d\n", num_devices);
-    VkPhysicalDevice *physical_devices = new VkPhysicalDevice[num_devices]; 
-    vkEnumeratePhysicalDevices(vk_instance, &num_devices, physical_devices);
-
-
-    VkPhysicalDevice chosen_device;
-    uint64_t max_vram = 0;
-    bool has_dpgu = false;
-    for(unsigned int i = 0; i < num_devices; i++){
-        VkPhysicalDeviceProperties properties;
-        vkGetPhysicalDeviceProperties(physical_devices[i], &properties);
-        printf("API Version: %d\n", properties.apiVersion);
-        printf("Driver Version: %d\n", properties.driverVersion);
-        printf("Vendor ID: %d\n", properties.vendorID);
-        printf("Device ID: %d\n", properties.deviceID);
-        printf("Device type: %d\n", properties.deviceType);
-        printf("Device Name: %s\n", properties.deviceName);
-
-        VkPhysicalDeviceMemoryProperties mem_properties;
-        vkGetPhysicalDeviceMemoryProperties(physical_devices[i], &mem_properties);
-        printf("Memory type count: %d\n", mem_properties.memoryTypeCount);
-        printf("Memory heap count: %d\n", mem_properties.memoryHeapCount);
-        printf("Memory heap size: %llu\n", mem_properties.memoryHeaps->size / (1024 * 1024));
-
-        printf("\n\n\n");
-
-        if(properties.deviceType == VK_PHYSICAL_DEVICE_TYPE_DISCRETE_GPU){
-            has_dpgu = true;
-            if(mem_properties.memoryHeaps->size > max_vram){
-                chosen_device = physical_devices[i];
-                max_vram = mem_properties.memoryHeaps->size;
-            }
-        }else{
-            if(has_dpgu) continue;
-            else{
-                chosen_device = physical_devices[i];
-            }
-        }
-    }
-
-    delete[] physical_devices;
-
-    VkPhysicalDeviceProperties properties;
-    vkGetPhysicalDeviceProperties(chosen_device, &properties);
-    printf("Device chosen: %s\n", properties.deviceName);
-
-    
-    uint32_t queue_count = 0;
-    vkGetPhysicalDeviceQueueFamilyProperties(chosen_device, &queue_count, NULL);
-    printf("Number of queue family properties: %d\n", queue_count);
-
-    VkQueueFamilyProperties *family_properties = new VkQueueFamilyProperties[queue_count];
-    uint32_t chosen_family_index = 0, chosen_family_count = 0;
-    vkGetPhysicalDeviceQueueFamilyProperties(chosen_device, &queue_count, family_properties);
-    for(unsigned int i = 0; i < queue_count; i++){
-        printf("Family %d:\n", i);
-        std::cout << "Queue number: "  + std::to_string(family_properties[i].queueCount) << "\n";
-        std::cout << "Queue flags: " + std::to_string(family_properties[i].queueFlags) << "\n\n\n";
-        if(family_properties[i].queueFlags & VK_QUEUE_GRAPHICS_BIT){
-            chosen_family_index = i;
-            chosen_family_count = family_properties[i].queueCount;
-            printf("Chosen family for now is %d\n", i);
-        }
-    }
-
-    delete[] family_properties;
-
+/*    
     const float priority = 1.0f;
     VkDeviceQueueCreateInfo queue_info {};
     queue_info.sType = VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO;

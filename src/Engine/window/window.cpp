@@ -106,7 +106,7 @@ bool Window::create_window(const char *window_name){
     for(uint32_t i = 0; i < num_extensions; i++){
         extensions.push_back(array_extensions[i]);
     }
-    if(!gfx->initialize_graphics(extensions)){
+    if(!gfx->initialize_graphics(window, extensions)){
         Core::debug::log(Core::debug::Error, "Couldn't initialize graphics\n");
         return false;
     }
