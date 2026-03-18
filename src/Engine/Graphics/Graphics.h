@@ -42,16 +42,19 @@ private:
     VkPhysicalDevice get_best_device(void);
     void choose_queue_family(const VkPhysicalDevice device, uint32_t *chosen_index, uint32_t *chosen_count);
     bool get_device_extensions(const VkPhysicalDevice device, Core::n_vector<const char *> *extensions, uint32_t *num_extensions);
-    bool validate_device_surface(const VkPhysicalDevice device);
+    bool validate_device_surface(const VkPhysicalDevice device, const uint32_t family_index);
+    bool add_device_features(VkPhysicalDeviceFeatures *features, const VkPhysicalDevice device, uint32_t num_features, ...);
     bool initialize_device(void);
     
     /*Close Graphics*/
+    void destroy_device(void);
     void destroy_surface(void);
     void close_debug_messenger(void);
     
     VkInstance vk_instance;
     VkDebugUtilsMessengerEXT messenger;
     VkSurfaceKHR vk_surface;
+    VkDevice logical_device;
 };
 
 #endif

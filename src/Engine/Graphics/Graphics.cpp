@@ -2,6 +2,7 @@
 #include <cstdio>
 #include <iostream>
 #include <string>
+#include <cstdarg>
 #include "core.h"
 
 //Layers i am interested in:
@@ -9,6 +10,17 @@ static const char *layer_names[] = {
     "VK_LAYER_KHRONOS_validation",
     "VK_LAYER_LUNARG_crash_diagnostic"
 };
+
+//Features enabled of the device
+enum CoreFeatures{
+    Geometry_Shader,
+    Tesselation_Shader,
+};
+
+static const char *vulkan_boolean_to_str(VkBool32 value){
+    if(value == VK_TRUE) return "True";
+    else return "False";
+}
 
 static const char *severity_to_str(VkDebugUtilsMessageSeverityFlagBitsEXT severity){
     const char *message;
@@ -209,6 +221,135 @@ static void usage_flags_to_str(const VkImageUsageFlags flags, char *out_string, 
     return;
 }
 
+static const char *present_mode_to_str(const VkPresentModeKHR flag){
+    switch(flag){
+        case VK_PRESENT_MODE_MAILBOX_KHR:
+            return "MailBox";
+        break;
+
+        case VK_PRESENT_MODE_FIFO_KHR:
+            return "FIFO";
+        break;
+
+        case VK_PRESENT_MODE_FIFO_RELAXED_KHR:
+            return "FIFO Relaxed";
+        break;
+
+        case VK_PRESENT_MODE_SHARED_DEMAND_REFRESH_KHR:
+            return "Shared Demand";
+        break;
+
+        case VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR:
+            return "Shared Continuos";
+        break;
+
+        case VK_PRESENT_MODE_FIFO_LATEST_READY_KHR:
+            return "FIFO Latest Ready";
+        break;
+
+        case VK_PRESENT_MODE_IMMEDIATE_KHR:
+        default:
+            return "Immediate";
+        break;
+    }
+}
+
+static void enumerate_available_features(const VkPhysicalDeviceFeatures features){
+    Core::debug::log(Core::debug::Info, "Robust Buffer Access: %s\n", vulkan_boolean_to_str(features.robustBufferAccess));
+    Core::debug::log(Core::debug::Info, "Full Draw Index Uint32: %s\n", vulkan_boolean_to_str(features.fullDrawIndexUint32));
+    Core::debug::log(Core::debug::Info, "Image Cube Array: %s\n", vulkan_boolean_to_str(features.imageCubeArray));
+    Core::debug::log(Core::debug::Info, "Independent Blend: %s\n", vulkan_boolean_to_str(features.independentBlend));
+    Core::debug::log(Core::debug::Info, "Geometry Shader: %s\n", vulkan_boolean_to_str(features.geometryShader));
+    Core::debug::log(Core::debug::Info, "Tesselation Shader: %s\n", vulkan_boolean_to_str(features.tessellationShader));
+    Core::debug::log(Core::debug::Info, "Sample Rate Shading: %s\n", vulkan_boolean_to_str(features.sampleRateShading));
+    Core::debug::log(Core::debug::Info, "Dual Source Blend: %s\n", vulkan_boolean_to_str(features.dualSrcBlend));
+    Core::debug::log(Core::debug::Info, "Logic Op: %s\n", vulkan_boolean_to_str(features.logicOp));
+    Core::debug::log(Core::debug::Info, "Multi Draw Inderect: %s\n", vulkan_boolean_to_str(features.multiDrawIndirect));
+    Core::debug::log(Core::debug::Info, "Draw Indirect First Instance: %s\n", vulkan_boolean_to_str(features.drawIndirectFirstInstance));
+    Core::debug::log(Core::debug::Info, "Depth Clamp: %s\n", vulkan_boolean_to_str(features.depthClamp));
+    Core::debug::log(Core::debug::Info, "Depth Bias Clamp: %s\n", vulkan_boolean_to_str(features.depthBiasClamp));
+    Core::debug::log(Core::debug::Info, "Fill Mode None Solid: %s\n", vulkan_boolean_to_str(features.fillModeNonSolid));
+    Core::debug::log(Core::debug::Info, "Depth Bounds: %s\n", vulkan_boolean_to_str(features.depthBounds));
+    Core::debug::log(Core::debug::Info, "Wide Lines: %s\n", vulkan_boolean_to_str(features.wideLines));
+    Core::debug::log(Core::debug::Info, "Large Points: %s\n", vulkan_boolean_to_str(features.largePoints));
+    Core::debug::log(Core::debug::Info, "Alpha To One: %s\n", vulkan_boolean_to_str(features.alphaToOne));
+    Core::debug::log(Core::debug::Info, "Multi Viewport: %s\n", vulkan_boolean_to_str(features.multiViewport));
+    Core::debug::log(Core::debug::Info, "Sampler Anisotropy: %s\n", vulkan_boolean_to_str(features.samplerAnisotropy));
+    Core::debug::log(Core::debug::Info, "Texture Compression ETC2: %s\n", vulkan_boolean_to_str(features.textureCompressionETC2));
+    Core::debug::log(Core::debug::Info, "Texture Compression ASTC_LDR: %s\n", vulkan_boolean_to_str(features.textureCompressionASTC_LDR));
+    Core::debug::log(Core::debug::Info, "Texture Compression BC: %s\n", vulkan_boolean_to_str(features.textureCompressionBC));
+    Core::debug::log(Core::debug::Info, "Occlusin Query Precise: %s\n", vulkan_boolean_to_str(features.occlusionQueryPrecise));
+    Core::debug::log(Core::debug::Info, "Pipeline Statistics Query: %s\n", vulkan_boolean_to_str(features.pipelineStatisticsQuery));
+    Core::debug::log(Core::debug::Info, "Vertex Pipeline Stores and Atomics: %s\n", vulkan_boolean_to_str(features.vertexPipelineStoresAndAtomics));
+    Core::debug::log(Core::debug::Info, "Fragment Stores and Atomics: %s\n", vulkan_boolean_to_str(features.fragmentStoresAndAtomics));
+    Core::debug::log(Core::debug::Info, "Shader Tessellation and Geometry Point Size: %s\n", vulkan_boolean_to_str(features.shaderTessellationAndGeometryPointSize));
+    Core::debug::log(Core::debug::Info, "Shader Image Gather Extended: %s\n", vulkan_boolean_to_str(features.shaderImageGatherExtended));
+    Core::debug::log(Core::debug::Info, "Shader Storage Image Extended Format: %s\n", vulkan_boolean_to_str(features.shaderStorageImageExtendedFormats));
+    Core::debug::log(Core::debug::Info, "Shader Storage Image Multisample: %s\n", vulkan_boolean_to_str(features.shaderStorageImageMultisample));
+    Core::debug::log(Core::debug::Info, "Shader Storage Image Read Without Format: %s\n", vulkan_boolean_to_str(features.shaderStorageImageReadWithoutFormat));
+    Core::debug::log(Core::debug::Info, "Shader Storage Image Write Without Format: %s\n", vulkan_boolean_to_str(features.shaderStorageImageWriteWithoutFormat));
+    Core::debug::log(Core::debug::Info, "Shader Uniform Buffer Array Dynamic Indexing: %s\n", vulkan_boolean_to_str(features.shaderUniformBufferArrayDynamicIndexing));
+    Core::debug::log(Core::debug::Info, "Shader Sampled Image Array Dynamic Indexing: %s\n", vulkan_boolean_to_str(features.shaderSampledImageArrayDynamicIndexing));
+    Core::debug::log(Core::debug::Info, "Shader Storage Buffer Array Dynamic Indexing: %s\n", vulkan_boolean_to_str(features.shaderStorageBufferArrayDynamicIndexing));
+    Core::debug::log(Core::debug::Info, "Shader Storage Image Array Dynamic Indexing: %s\n", vulkan_boolean_to_str(features.shaderStorageImageArrayDynamicIndexing));
+    Core::debug::log(Core::debug::Info, "Shader Clip Distance: %s\n", vulkan_boolean_to_str(features.shaderClipDistance));
+    Core::debug::log(Core::debug::Info, "Shader Cull Distance: %s\n", vulkan_boolean_to_str(features.shaderCullDistance));
+    Core::debug::log(Core::debug::Info, "Shader Float64: %s\n", vulkan_boolean_to_str(features.shaderFloat64));
+    Core::debug::log(Core::debug::Info, "Shader Int64: %s\n", vulkan_boolean_to_str(features.shaderInt64));
+    Core::debug::log(Core::debug::Info, "Shader Int16: %s\n", vulkan_boolean_to_str(features.shaderInt16));
+    Core::debug::log(Core::debug::Info, "Shader Resource Residency: %s\n", vulkan_boolean_to_str(features.shaderResourceResidency));
+    Core::debug::log(Core::debug::Info, "Shader Resource Min LOD: %s\n", vulkan_boolean_to_str(features.shaderResourceMinLod));
+    Core::debug::log(Core::debug::Info, "Sparse Binding: %s\n", vulkan_boolean_to_str(features.sparseBinding));
+    Core::debug::log(Core::debug::Info, "Sparse Residency Buffer: %s\n", vulkan_boolean_to_str(features.sparseResidencyBuffer));
+    Core::debug::log(Core::debug::Info, "Sparse Residency Imagade 2D: %s\n", vulkan_boolean_to_str(features.sparseResidencyImage2D));
+    Core::debug::log(Core::debug::Info, "Sparse Residency Image 3D: %s\n", vulkan_boolean_to_str(features.sparseResidencyImage3D));
+    Core::debug::log(Core::debug::Info, "Sparse Residency 2 Samples: %s\n", vulkan_boolean_to_str(features.sparseResidency2Samples));
+    Core::debug::log(Core::debug::Info, "Sparse Residency 4 Samples: %s\n", vulkan_boolean_to_str(features.sparseResidency4Samples));
+    Core::debug::log(Core::debug::Info, "Sparse Residency 8 Samples: %s\n", vulkan_boolean_to_str(features.sparseResidency8Samples));
+    Core::debug::log(Core::debug::Info, "Sparse Residency 16 Samples: %s\n", vulkan_boolean_to_str(features.sparseResidency16Samples));
+    Core::debug::log(Core::debug::Info, "Sparse Residency Aliased: %s\n", vulkan_boolean_to_str(features.sparseResidencyAliased));
+    Core::debug::log(Core::debug::Info, "Variable Multisample Rate: %s\n", vulkan_boolean_to_str(features.variableMultisampleRate));
+    Core::debug::log(Core::debug::Info, "Inherited Queries: %s\n", vulkan_boolean_to_str(features.inheritedQueries));
+
+    return;
+}
+
+static bool device_has_feature(const VkPhysicalDeviceFeatures available_features, const CoreFeatures current_feature){
+    switch(current_feature){
+        case Geometry_Shader:
+            if(available_features.geometryShader == VK_TRUE) return true;
+        break;
+
+        case Tesselation_Shader:
+            if(available_features.tessellationShader == VK_TRUE) return true;
+        break;
+
+        default:
+            return false;
+        break;
+    }
+
+    return false;
+}
+
+static void device_enable_feature(VkPhysicalDeviceFeatures *features, const CoreFeatures feature_to_enable){
+    switch(feature_to_enable){
+        case Geometry_Shader:
+            features->geometryShader = VK_TRUE;
+        break;
+
+        case Tesselation_Shader:
+            features->tessellationShader = VK_TRUE;
+        break;
+
+        default:
+            return;
+        break;
+    }
+
+    return;
+}
+
 static VKAPI_ATTR VkBool32 VKAPI_CALL debug_callback(
     VkDebugUtilsMessageSeverityFlagBitsEXT      message_severity,
     VkDebugUtilsMessageTypeFlagsEXT             message_types,
@@ -218,7 +359,7 @@ static VKAPI_ATTR VkBool32 VKAPI_CALL debug_callback(
     printf("Severity: %s\n", severity_to_str(message_severity));
     printf("Type: %s\n", msg_type_to_str(message_types));
     printf("Message Id: %d\n", pCallbackData->messageIdNumber);
-    printf("Message: %s\n", pCallbackData->pMessage);
+    printf("Message: %s\n\n", pCallbackData->pMessage);
     
     return VK_FALSE;
 }
@@ -323,9 +464,9 @@ bool Graphics::initialize_debug_messenger(void){
     messenger_info.pNext = NULL;
     messenger_info.flags = 0;
     messenger_info.messageSeverity = VK_DEBUG_UTILS_MESSAGE_SEVERITY_VERBOSE_BIT_EXT |
-                                     VK_DEBUG_UTILS_MESSAGE_SEVERITY_INFO_BIT_EXT | 
+                                     VK_DEBUG_UTILS_MESSAGE_SEVERITY_INFO_BIT_EXT |
                                      VK_DEBUG_UTILS_MESSAGE_SEVERITY_WARNING_BIT_EXT |
-                                     VK_DEBUG_UTILS_MESSAGE_SEVERITY_ERROR_BIT_EXT; 
+                                     VK_DEBUG_UTILS_MESSAGE_SEVERITY_ERROR_BIT_EXT ; 
     messenger_info.messageType = VK_DEBUG_UTILS_MESSAGE_TYPE_GENERAL_BIT_EXT |
                                  VK_DEBUG_UTILS_MESSAGE_TYPE_VALIDATION_BIT_EXT |
                                  VK_DEBUG_UTILS_MESSAGE_TYPE_PERFORMANCE_BIT_EXT |
@@ -452,7 +593,7 @@ bool Graphics::get_device_extensions(const VkPhysicalDevice device, Core::n_vect
     if(vkEnumerateDeviceExtensionProperties(device, NULL, &total_extensions, properties) == VK_SUCCESS){
         for(uint32_t i = 0; i < total_extensions; i++){
             if(strcmp(properties[i].extensionName, "VK_KHR_swapchain") == 0){
-                extensions->push_back(properties[i].extensionName);
+                extensions->push_back("VK_KHR_swapchain");
                 (*num_extensions)++;
                 found_extension = true;
                 break;
@@ -466,8 +607,16 @@ bool Graphics::get_device_extensions(const VkPhysicalDevice device, Core::n_vect
     return true;
 }
 
-bool Graphics::validate_device_surface(const VkPhysicalDevice device){
-    //Validate Device and Surface capabilites
+bool Graphics::validate_device_surface(const VkPhysicalDevice device, const uint32_t family_index){
+    // Validate Device and Surface Support
+    VkBool32 is_supported;
+    if(vkGetPhysicalDeviceSurfaceSupportKHR(device, family_index, vk_surface, &is_supported) != VK_SUCCESS) return false;
+    if(is_supported == VK_FALSE){
+        Core::debug::log(Core::debug::Fatal, "Device is not supported for the presentation");
+        return false;
+    } 
+
+    // Validate Device and Surface capabilites (The height and widht of course change depending on the screen)
     VkSurfaceCapabilitiesKHR capabilities;
     if(vkGetPhysicalDeviceSurfaceCapabilitiesKHR(device, vk_surface, &capabilities) == VK_SUCCESS){
         Core::debug::log(Core::debug::Info, "Min Image count: %d\n", capabilities.minImageCount);
@@ -489,6 +638,53 @@ bool Graphics::validate_device_surface(const VkPhysicalDevice device){
         return false;
     }
 
+    // Validate Device and Surface formats (The number of formats change depending on the screen that is used)
+    uint32_t num_formats = 0;
+    if(vkGetPhysicalDeviceSurfaceFormatsKHR(device, vk_surface, &num_formats, NULL) != VK_SUCCESS) return false;
+    VkSurfaceFormatKHR *surface_formats = new VkSurfaceFormatKHR[num_formats];
+    
+    if(vkGetPhysicalDeviceSurfaceFormatsKHR(device, vk_surface, &num_formats, surface_formats) == VK_SUCCESS){
+        for(uint32_t i = 0; i < num_formats; i++){
+            Core::debug::log(Core::debug::Info, "Surface %d\n", i);
+            Core::debug::log(Core::debug::Info, "Format = %d\n", surface_formats[i].format);
+            Core::debug::log(Core::debug::Info, "Color = %d\n\n\n", surface_formats[i].colorSpace);
+        }
+    }
+    delete[] surface_formats;
+    
+    // Validate Device and Surface Present modes
+    uint32_t num_present_modes = 0;
+    if(vkGetPhysicalDeviceSurfacePresentModesKHR(device, vk_surface, &num_present_modes, NULL) != VK_SUCCESS) return false;
+    VkPresentModeKHR *present_modes = new VkPresentModeKHR[num_present_modes];
+    if(vkGetPhysicalDeviceSurfacePresentModesKHR(device, vk_surface, &num_present_modes, present_modes) == VK_SUCCESS){
+        for(uint32_t i = 0; i < num_present_modes; i++){
+            Core::debug::log(Core::debug::Info, "Preset %d\n", i);
+            Core::debug::log(Core::debug::Info, "Mode: %s\n\n\n", present_mode_to_str(present_modes[i]));
+        }
+    }
+    delete[] present_modes;
+
+    return true;
+}
+
+bool Graphics::add_device_features(VkPhysicalDeviceFeatures *features, const VkPhysicalDevice device, uint32_t num_features, ...){
+    VkPhysicalDeviceFeatures available_features {};
+    vkGetPhysicalDeviceFeatures(device, &available_features);
+    enumerate_available_features(available_features);
+    
+    va_list args;
+    va_start(args, num_features);
+    for(uint32_t i = 0; i < num_features; i++){
+        CoreFeatures retreived_feature = va_arg(args, CoreFeatures);
+        if(device_has_feature(available_features, retreived_feature) == true){
+            device_enable_feature(features, retreived_feature);
+        }else{
+            va_end(args);
+            return false;
+        }
+    }
+    va_end(args);
+
     return true;
 }
 
@@ -498,10 +694,42 @@ bool Graphics::initialize_device(void){
     choose_queue_family(chosen_device, &chosen_queue_index, &chosen_queue_count);
     Core::n_vector<const char *> device_extensions;
     uint32_t num_extensions = 0;
-    get_device_extensions(chosen_device, &device_extensions, &num_extensions);
-    validate_device_surface(chosen_device);
+    if(!get_device_extensions(chosen_device, &device_extensions, &num_extensions)) return false;
+    if(!validate_device_surface(chosen_device, chosen_queue_index)) return false;
+    VkPhysicalDeviceFeatures device_features {};
+    if(!add_device_features(&device_features, chosen_device, 2, Geometry_Shader, Tesselation_Shader)) return false;
+
+    float priority = 1.0f;
+    VkDeviceQueueCreateInfo queue_create_info {};
+    queue_create_info.sType = VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO;
+    queue_create_info.pNext = NULL;
+    queue_create_info.flags = 0;
+    queue_create_info.queueFamilyIndex = chosen_queue_index;
+    queue_create_info.queueCount = chosen_queue_count;
+    queue_create_info.pQueuePriorities = &priority; 
+
+    VkDeviceCreateInfo device_create_info {};
+    device_create_info.sType = VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO;
+    device_create_info.pNext = NULL;
+    device_create_info.flags = 0;
+    device_create_info.queueCreateInfoCount = 1;
+    device_create_info.pQueueCreateInfos = &queue_create_info;
+    device_create_info.enabledLayerCount = 0;
+    device_create_info.ppEnabledLayerNames = NULL;
+    device_create_info.enabledExtensionCount = num_extensions;
+    device_create_info.ppEnabledExtensionNames = device_extensions.vector_data();
+    device_create_info.pEnabledFeatures = &device_features;
+
+
+    if(vkCreateDevice(chosen_device, &device_create_info, NULL, &logical_device) != VK_SUCCESS) return false;
 
     return true;
+}
+
+void Graphics::destroy_device(void){
+    vkDestroyDevice(logical_device, NULL);
+
+    return;
 }
 
 void Graphics::destroy_surface(void){
@@ -523,37 +751,10 @@ void Graphics::close_debug_messenger(void){
 }
 
 void Graphics::close_graphics(void){
+    destroy_device();
     destroy_surface();
     close_debug_messenger();
     vkDestroyInstance(vk_instance, nullptr);
 
     return;
 }
-
-/*    
-    const float priority = 1.0f;
-    VkDeviceQueueCreateInfo queue_info {};
-    queue_info.sType = VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO;
-    queue_info.pNext = NULL;
-    queue_info.flags = 0;
-    queue_info.queueFamilyIndex = chosen_family_index;
-    queue_info.queueCount = chosen_family_count;
-    queue_info.pQueuePriorities = &priority; 
-
-    VkDeviceCreateInfo device_info {};
-    device_info.sType = VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO;
-    device_info.pNext = NULL;
-    device_info.queueCreateInfoCount = 1;
-    device_info.pQueueCreateInfos = &queue_info;
-    device_info.enabledExtensionCount = num_extensions;
-    device_info.ppEnabledExtensionNames = array_extensions;
-
-    VkDevice dev;
-    if(vkCreateDevice(chosen_device, &device_info, NULL, &dev) != VK_SUCCESS){
-        printf("Couldn't create device\n");
-        return false;
-    }
-
-    printf("Created device\n");
-    vkDestroyDevice(dev, NULL);
-*/

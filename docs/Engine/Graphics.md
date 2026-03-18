@@ -15,6 +15,7 @@ None.
 | `vk_instance` | `VkInstance` |Vulkan instance| `None` |
 |`messenger` | `VkDebugUtilsMessengerEXT` |Messenger instance for the debug callback function| `None` |
 |`vk_surface` | `VkSurfaceKHR` |Surface instance| `None` |
+|`logical_device` | `VkDevice` |Vulkan  logical device instance| `None` |
 
 ### Static variables
 None
@@ -107,17 +108,35 @@ If the project is being build on debug mode, then it will also [get_validation_l
 - **Return:**  `bool`   
 - **Description**: Enumerates all of the chosen `device` extensions. If the `VK_KHR_swapchain` is present then it add the extension to the vector, increment the number of extensions and returns true. Returns false if this extension is not present. 
 
-#### Function: `bool validate_device_surface(const VkPhysicalDevice device)` 
+#### Function: `bool validate_device_surface(const VkPhysicalDevice device, const uint32_t family_index)` 
 - **Access:** `Private` 
-- **Parameters:** `[in]const VkPhysicalDevice device` - the chosen device from [get_best_device](Graphics.md#function-vkphysicaldevice-get_best_devicevoid).
+- **Parameters:** 
+    - `[in]const VkPhysicalDevice device` - The chosen device from [get_best_device](Graphics.md#function-vkphysicaldevice-get_best_devicevoid).
+    - `[in]const uint32_t family_index` - Chosen queue family index retreived from [choose_queue_family](Graphics.md#function-void-choose_queue_familyconst-vkphysicaldevice-device-uint32_t-chosen_index-uint32_t-chosen_count).
 - **Return:**  `bool`   
-- **Description**: Validates the chosen `device` by getting the capabilities and more. Returns true if all of the validations are true. Returns false otherwise.
+- **Description**: Validates the chosen `device` by checking the support, capabilities, format and present modes of the surface created. Returns true if all of the validations are true. Returns false otherwise.
+
+#### Function: `bool add_device_features(VkPhysicalDeviceFeatures *features, const VkPhysicalDevice device, uint32_t num_features, ...)` 
+- **Access:** `Private` 
+- **Parameters:** 
+    - `[out]VkPhysicalDeviceFeatures *features` - Pointer to the device features. 
+    - `[in]const VkPhysicalDevice device` - The chosen device retreived from [get_best_device](Graphics.md#function-vkphysicaldevice-get_best_devicevoid).
+    - `[in]uint32_t num_features` - The number of featers to add.
+    - `[in]...` - Name of the features to be added. The number of features inputed **must** match the number of features declared in `num_features`.
+- **Return:**  `bool`   
+- **Description**: Queries all of the available features of the `chosen_device` and if the features requested are available then it will enable the requested features and return true. Returns false if at least one of the features requested is not available in the `chosen_device`. 
 
 #### Function: `bool initialize_device(void)` 
 - **Access:** `Private` 
 - **Parameters:** `void`
 - **Return:**  `bool`   
-- **Description**: Initializes the device by choosing the best device, choosing the appropriate family and validating the surface. Returns true if the initialization was successful. Returns false otherwise.
+- **Description**: Initializes the device by choosing the best device, choosing the appropriate queue family, validating the surface and adding the necessary features. Returns true if the initialization was successful. Returns false otherwise.
+
+#### Function: `void destroy_device(void)` 
+- **Access:** `Private` 
+- **Parameters:** `void`
+- **Return:**  `void`   
+- **Description**: Destroys the vulkan logical device.
 
 #### Function: `void destroy_surface(void)` 
 - **Access:** `Private` 
