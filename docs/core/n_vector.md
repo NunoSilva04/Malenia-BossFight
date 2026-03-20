@@ -111,11 +111,27 @@ None.
 - **Return:**  `T`   
 - **Description**: Returns the data of the vector at a specific location. If `id` is bigger or equal to the size of the vector, it will return garbage.
 
-#### Function: `T *vector_data(void) const`
+#### Function: `vector_data`
+- **Description:** Retreives the data of the vector at a specific location of the vector.
+
+##### Overloads
+`T *vector_data(void) const`
 - **Access:** `Public`
 - **Parameters:**  `void`
-- **Return:**  `T`   
-- **Description**: Returns a pointer to the data of the vector.
+- **Return:**  `T*`   
+- **Description:** Returns a pointer to the first element of the vector.
+
+`T *vector_data(const size_t id)`
+- **Access:** `Public`
+- **Parameters:**  `const size_t id`
+- **Return:**  `T*`   
+- **Description:** Returns a pointer to the data of the vector at a specific location. Returns nullptr if the location specified is larger than the size of the vector.
+
+#### Function: `void vector_resize(const size_t i)`
+- **Access:** `Public`
+- **Parameters:**  `const size_t i`
+- **Return:**  `void`   
+- **Description:** Resizes the vector size to the desired number inputed. If `i` is 0, it will empty the vector. If `i` is bigger than the capacity it will reallocate a new vector 2 times the value inputed. 
 
 ### Static Functions
 None

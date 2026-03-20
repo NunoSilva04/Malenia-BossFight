@@ -159,6 +159,38 @@ namespace Core{
                 return data;
             }
 
+            T *vector_data(const size_t id){
+                if(id >= size) return nullptr;
+
+                return &data[id];
+            }
+
+            void vector_resize(const size_t i){
+                if(i == 0){    
+                    this->empty_vector();
+
+                }else if(0 < i &&  i < this->size){  // 0 < i < size (shrinking)
+                    this->size = i;
+
+                }else if(this->size < i && i < this->capacity){      // size < i < capacity (expanding)
+                    this->size = i;
+
+                }else if(i >= capacity){     // i >= capacity (expanding)
+                    size_t new_capacity = i * 2;
+                    T *new_data = new T[new_capacity];
+                    for(size_t j = 0; j < size; j++){
+                        new_data[j] = this->data[j];
+                    }
+                    delete[] this->data;
+                    this->data = new_data;
+                    this->size = i;
+                    this->capacity = new_capacity;
+
+                }
+
+                return;
+            }
+
         private:
             T *data;
             size_t size;

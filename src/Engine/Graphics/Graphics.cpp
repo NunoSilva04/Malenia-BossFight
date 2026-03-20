@@ -5,16 +5,29 @@
 #include <cstdarg>
 #include "core.h"
 
-//Layers i am interested in:
+// Layers i am interested in:
 static const char *layer_names[] = {
     "VK_LAYER_KHRONOS_validation",
     "VK_LAYER_LUNARG_crash_diagnostic"
 };
 
-//Features enabled of the device
+// Features enabled of the device
 enum CoreFeatures{
     Geometry_Shader,
     Tesselation_Shader,
+};
+
+// Usage Flags wanted
+enum Usage_Flags{
+    COLOR_ATTACHMENT,
+    TRANSFER_DESTINATION,
+};
+
+enum Alpha_Flags{
+    OPAQUE, 
+    PRE_MULTIPLED,
+    POST_MULTIPLED,
+    INHERITED,
 };
 
 static const char *vulkan_boolean_to_str(VkBool32 value){
@@ -350,12 +363,128 @@ static void device_enable_feature(VkPhysicalDeviceFeatures *features, const Core
     return;
 }
 
+static void enumerate_device_capabilities(const VkSurfaceCapabilitiesKHR capabilities){
+    Core::debug::log(Core::debug::Info, "Min Image count: %d\n", capabilities.minImageCount);
+    Core::debug::log(Core::debug::Info, "Max Image count: %d\n", capabilities.maxImageCount);
+    Core::debug::log(Core::debug::Info, "Current Image Extent: (width = %d, height %d)\n", capabilities.currentExtent.width, capabilities.currentExtent.height);
+    Core::debug::log(Core::debug::Info, "Min Image Extent: (width = %d, height %d)\n", capabilities.minImageExtent.width, capabilities.minImageExtent.height);
+    Core::debug::log(Core::debug::Info, "Max Image Extent: (width = %d, height %d)\n", capabilities.maxImageExtent.width, capabilities.maxImageExtent.height);
+    Core::debug::log(Core::debug::Info, "Max Image Layers: %d\n", capabilities.maxImageArrayLayers);
+    char string[1024] = {};
+    transform_flags_to_str(capabilities.supportedTransforms, string, 1024 * sizeof(char));
+    Core::debug::log(Core::debug::Info, "Transform flags: %s\n", string);
+    Core::debug::log(Core::debug::Info, "Current flag: %s\n", get_current_transform_flag(capabilities.currentTransform));
+    alpha_flags_to_str(capabilities.supportedCompositeAlpha, string, 1024 * sizeof(char));
+    Core::debug::log(Core::debug::Info, "Alpha flags: %s\n", string);
+    usage_flags_to_str(capabilities.supportedUsageFlags, string, 1024 * sizeof(char));
+    Core::debug::log(Core::debug::Info, "Usage flags: %s\n", string);
+
+    return;
+}
+
+static VkImageUsageFlags get_swapchain_usage_flags(const VkImageUsageFlags flags, const uint32_t num_flags, ...){
+    VkImageUsageFlags swapchain_flags = 0;
+
+    va_list args;
+    va_start(args, num_flags);
+    for(uint32_t i = 0; i < num_flags; i++){
+        Usage_Flags asked_flag = va_arg(args, Usage_Flags);
+        switch(asked_flag){
+            case COLOR_ATTACHMENT:
+                if(flags & VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT) swapchain_flags |= VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT;
+            break;
+
+            case TRANSFER_DESTINATION:
+                if(flags & VK_IMAGE_USAGE_TRANSFER_DST_BIT) swapchain_flags |= VK_IMAGE_USAGE_TRANSFER_DST_BIT;
+            break;
+
+            default:
+                Core::debug::log(Core::debug::Error, "Flag not specified or not an available flag\n");
+            break;
+        }
+    }
+    va_end(args);
+
+    return swapchain_flags ;
+}
+
+static VkCompositeAlphaFlagBitsKHR get_swapchain_alpha_flag(Alpha_Flags desired_flag){
+    VkCompositeAlphaFlagBitsKHR chosen_flag;
+    switch(desired_flag){
+        case OPAQUE:
+            chosen_flag = VK_COMPOSITE_ALPHA_OPAQUE_BIT_KHR;
+        break;
+
+        case PRE_MULTIPLED:
+        case POST_MULTIPLED:
+        case INHERITED:
+        default:
+            Core::debug::log(Core::debug::Error, "Flag has not been implemented or the flag is not valid. Default: Opaque flag chosen\n");
+            chosen_flag = VK_COMPOSITE_ALPHA_OPAQUE_BIT_KHR;
+        break;
+    }
+
+    return chosen_flag;
+}
+
+static void enumerate_device_formats(VkSurfaceFormatKHR *surface_formats, uint32_t num_formats){
+    for(uint32_t i = 0; i < num_formats; i++){
+        Core::debug::log(Core::debug::Info, "Surface %d\n", i);
+        Core::debug::log(Core::debug::Info, "Format = %d\n", surface_formats[i].format);
+        Core::debug::log(Core::debug::Info, "Color = %d\n\n\n", surface_formats[i].colorSpace);
+    }
+
+    return;
+}
+
+bool get_device_format_color_space(VkSurfaceFormatKHR *surface_formats, uint32_t num_formats, VkFormat desired_format, Graphics::Swapchain_Info *swapchain_info){
+    bool found_format = false;
+
+    for(uint32_t i = 0; i < num_formats; i++){
+        if(desired_format == surface_formats[i].format){
+            found_format = true;
+            swapchain_info->format = surface_formats[i].format;
+            swapchain_info->color_space = surface_formats[i].colorSpace;
+            break;
+        }
+    }
+
+    return found_format;
+}
+
+static void enumerate_device_present_modes(const VkPresentModeKHR *present_modes, const uint32_t num_present_modes){
+    for(uint32_t i = 0; i < num_present_modes; i++){
+        Core::debug::log(Core::debug::Info, "Preset %d\n", i);
+        Core::debug::log(Core::debug::Info, "Mode: %s\n\n\n", present_mode_to_str(present_modes[i]));
+    }
+
+    return;
+}
+
+static VkPresentModeKHR get_present_mode(const VkPresentModeKHR *present_modes, const uint32_t num_present_modes, VkPresentModeKHR desired_preset){
+    VkPresentModeKHR chosen_present;
+    bool has_present = false;
+    for(uint32_t i = 0; i < num_present_modes; i++){
+        if(present_modes[i] == desired_preset){
+            chosen_present = desired_preset;
+            has_present = true;
+            break;
+        }
+    }
+    if(!has_present){
+        Core::debug::log(Core::debug::Error, "Couldn't get the desired preset. Default: Immediate present chosen\n");
+        chosen_present = VK_PRESENT_MODE_IMMEDIATE_KHR;
+        return chosen_present;
+    }else return chosen_present;
+}
+
 static VKAPI_ATTR VkBool32 VKAPI_CALL debug_callback(
     VkDebugUtilsMessageSeverityFlagBitsEXT      message_severity,
     VkDebugUtilsMessageTypeFlagsEXT             message_types,
     const VkDebugUtilsMessengerCallbackDataEXT* pCallbackData,
     void*                                       pUserData)
 {
+    (void) pUserData;  // This is just because i am getting annoyed at the warning generated when compiled for the unused parameter
     printf("Severity: %s\n", severity_to_str(message_severity));
     printf("Type: %s\n", msg_type_to_str(message_types));
     printf("Message Id: %d\n", pCallbackData->messageIdNumber);
@@ -365,7 +494,14 @@ static VKAPI_ATTR VkBool32 VKAPI_CALL debug_callback(
 }
 
 Graphics::Graphics(){
-
+    vk_instance = nullptr;
+    messenger = nullptr;
+    vk_surface = nullptr;
+    physical_device_info = {};
+    logical_device = nullptr;
+    logical_device_queue = nullptr;
+    swapchain_info = {};
+    swapchain = nullptr;
 }
 
 Graphics::~Graphics(){
@@ -393,8 +529,24 @@ bool Graphics::initialize_graphics(SDL_Window *window, Core::n_vector<const char
         Core::debug::log(Core::debug::Fatal, "Couldn't initialize surface\n");
         return false;
     }
-    if(!initialize_device()){
+    if(!initialize_device_get_queue_handle()){
         Core::debug::log(Core::debug::Fatal, "Couldn't initialize device\n");
+        return false;
+    }
+    if(!create_swapchain()){
+        Core::debug::log(Core::debug::Fatal, "Couldn't create Swap Chain\n");
+        return false;
+    }
+    if(!create_images_and_image_views()){
+        Core::debug::log(Core::debug::Fatal, "Couldn't create images and image views\n");
+        return false;
+    }
+    if(!create_command_pool()){
+        Core::debug::log(Core::debug::Fatal, "Couldn't create command pool\n");
+        return false;
+    }
+    if(!create_command_buffer()){
+        Core::debug::log(Core::debug::Fatal, "Couldn't create command buffer\n");
         return false;
     }
 
@@ -506,11 +658,10 @@ bool Graphics::initialize_surface(SDL_Window *window){
     return true;
 }
 
-VkPhysicalDevice Graphics::get_best_device(void){
-    VkPhysicalDevice chosen_device = nullptr;
-
+bool Graphics::get_best_device(void){
+    VkPhysicalDevice temp_device = nullptr;
     uint32_t num_devices = 0;
-    if(vkEnumeratePhysicalDevices(vk_instance, &num_devices, NULL) != VK_SUCCESS) return nullptr;
+    if(vkEnumeratePhysicalDevices(vk_instance, &num_devices, NULL) != VK_SUCCESS) return false;
     VkPhysicalDevice *devices = new VkPhysicalDevice[num_devices];
     if(vkEnumeratePhysicalDevices(vk_instance, &num_devices, devices) == VK_SUCCESS){
         VkPhysicalDeviceProperties properties;
@@ -537,28 +688,29 @@ VkPhysicalDevice Graphics::get_best_device(void){
             if(properties.deviceType == VK_PHYSICAL_DEVICE_TYPE_DISCRETE_GPU){
                 has_dpgu = true;
                 if(mem_properties.memoryHeaps->size > max_vram){
-                    chosen_device = devices[i];
+                    temp_device = devices[i];
                     max_vram = mem_properties.memoryHeaps->size;
                 }
             }else{
                 if(has_dpgu) continue;
                 else{
-                    chosen_device = devices[i];
+                    temp_device = devices[i];
                 }
             }
         }
     }
     delete[] devices;
 
-    return chosen_device;
+    physical_device_info.device = temp_device;
+    return true;
 }
 
-void Graphics::choose_queue_family(const VkPhysicalDevice device, uint32_t *chosen_index, uint32_t *chosen_count){
+bool Graphics::choose_queue_family(void){
     uint32_t num_queues = 0;
-    vkGetPhysicalDeviceQueueFamilyProperties(device, &num_queues, NULL);
+    vkGetPhysicalDeviceQueueFamilyProperties(physical_device_info.device, &num_queues, NULL);
     if(num_queues > 0){
         VkQueueFamilyProperties *properties = new VkQueueFamilyProperties[num_queues];
-        vkGetPhysicalDeviceQueueFamilyProperties(device, &num_queues, properties);
+        vkGetPhysicalDeviceQueueFamilyProperties(physical_device_info.device, &num_queues, properties);
 
         for(uint32_t i = 0; i < num_queues; i++){
             Core::debug::log(Core::debug::Info, "Family %d\n", i);
@@ -573,28 +725,31 @@ void Graphics::choose_queue_family(const VkPhysicalDevice device, uint32_t *chos
                 return false;
             }(VK_QUEUE_GRAPHICS_BIT);
             if(has_flag){
-                *chosen_index = i;
-                *chosen_count = properties[i].queueCount;
+                physical_device_info.queue_index = i;
+                physical_device_info.queue_count = properties[i].queueCount;
+                physical_device_info.queue_count_used = 1;
             }
         }
 
         delete[] properties;
+    }else{
+        Core::debug::log(Core::debug::Fatal, "Couldn't get number of queues of the device\n");
     }
     
-    return;
+    return true;
 }
 
-bool Graphics::get_device_extensions(const VkPhysicalDevice device, Core::n_vector<const char *> *extensions, uint32_t *num_extensions){
+bool Graphics::get_device_extensions(void){
     bool found_extension = false;
 
     uint32_t total_extensions = 0;
-    if(vkEnumerateDeviceExtensionProperties(device, NULL, &total_extensions, NULL) != VK_SUCCESS) return false;
+    if(vkEnumerateDeviceExtensionProperties(physical_device_info.device, NULL, &total_extensions, NULL) != VK_SUCCESS) return false;
     VkExtensionProperties *properties = new VkExtensionProperties[total_extensions];
-    if(vkEnumerateDeviceExtensionProperties(device, NULL, &total_extensions, properties) == VK_SUCCESS){
+    if(vkEnumerateDeviceExtensionProperties(physical_device_info.device, NULL, &total_extensions, properties) == VK_SUCCESS){
         for(uint32_t i = 0; i < total_extensions; i++){
             if(strcmp(properties[i].extensionName, "VK_KHR_swapchain") == 0){
-                extensions->push_back("VK_KHR_swapchain");
-                (*num_extensions)++;
+                physical_device_info.extensions_names.push_back("VK_KHR_swapchain");
+                physical_device_info.extension_count++;
                 found_extension = true;
                 break;
             } 
@@ -607,69 +762,21 @@ bool Graphics::get_device_extensions(const VkPhysicalDevice device, Core::n_vect
     return true;
 }
 
-bool Graphics::validate_device_surface(const VkPhysicalDevice device, const uint32_t family_index){
-    // Validate Device and Surface Support
+bool Graphics::is_device_supported(void){
     VkBool32 is_supported;
-    if(vkGetPhysicalDeviceSurfaceSupportKHR(device, family_index, vk_surface, &is_supported) != VK_SUCCESS) return false;
+    if(vkGetPhysicalDeviceSurfaceSupportKHR(physical_device_info.device, physical_device_info.queue_index, vk_surface, &is_supported) != VK_SUCCESS) return false;
     if(is_supported == VK_FALSE){
         Core::debug::log(Core::debug::Fatal, "Device is not supported for the presentation");
         return false;
     } 
 
-    // Validate Device and Surface capabilites (The height and widht of course change depending on the screen)
-    VkSurfaceCapabilitiesKHR capabilities;
-    if(vkGetPhysicalDeviceSurfaceCapabilitiesKHR(device, vk_surface, &capabilities) == VK_SUCCESS){
-        Core::debug::log(Core::debug::Info, "Min Image count: %d\n", capabilities.minImageCount);
-        Core::debug::log(Core::debug::Info, "Max Image count: %d\n", capabilities.maxImageCount);
-        Core::debug::log(Core::debug::Info, "Current Image Extent: (width = %d, height %d)\n", capabilities.currentExtent.width, capabilities.currentExtent.height);
-        Core::debug::log(Core::debug::Info, "Min Image Extent: (width = %d, height %d)\n", capabilities.minImageExtent.width, capabilities.minImageExtent.height);
-        Core::debug::log(Core::debug::Info, "Max Image Extent: (width = %d, height %d)\n", capabilities.maxImageExtent.width, capabilities.maxImageExtent.height);
-        Core::debug::log(Core::debug::Info, "Max Image Layers: %d\n", capabilities.maxImageArrayLayers);
-        char string[1024] = {};
-        transform_flags_to_str(capabilities.supportedTransforms, string, 1024 * sizeof(char));
-        Core::debug::log(Core::debug::Info, "Transform flags: %s\n", string);
-        Core::debug::log(Core::debug::Info, "Current flag: %s\n", get_current_transform_flag(capabilities.currentTransform));
-        alpha_flags_to_str(capabilities.supportedCompositeAlpha, string, 1024 * sizeof(char));
-        Core::debug::log(Core::debug::Info, "Alpha flags: %s\n", string);
-        usage_flags_to_str(capabilities.supportedUsageFlags, string, 1024 * sizeof(char));
-        Core::debug::log(Core::debug::Info, "Usage flags: %s\n", string);
-    }else{
-        Core::debug::log(Core::debug::Error, "Couldn't get physical device surface capabilites\n");
-        return false;
-    }
-
-    // Validate Device and Surface formats (The number of formats change depending on the screen that is used)
-    uint32_t num_formats = 0;
-    if(vkGetPhysicalDeviceSurfaceFormatsKHR(device, vk_surface, &num_formats, NULL) != VK_SUCCESS) return false;
-    VkSurfaceFormatKHR *surface_formats = new VkSurfaceFormatKHR[num_formats];
-    
-    if(vkGetPhysicalDeviceSurfaceFormatsKHR(device, vk_surface, &num_formats, surface_formats) == VK_SUCCESS){
-        for(uint32_t i = 0; i < num_formats; i++){
-            Core::debug::log(Core::debug::Info, "Surface %d\n", i);
-            Core::debug::log(Core::debug::Info, "Format = %d\n", surface_formats[i].format);
-            Core::debug::log(Core::debug::Info, "Color = %d\n\n\n", surface_formats[i].colorSpace);
-        }
-    }
-    delete[] surface_formats;
-    
-    // Validate Device and Surface Present modes
-    uint32_t num_present_modes = 0;
-    if(vkGetPhysicalDeviceSurfacePresentModesKHR(device, vk_surface, &num_present_modes, NULL) != VK_SUCCESS) return false;
-    VkPresentModeKHR *present_modes = new VkPresentModeKHR[num_present_modes];
-    if(vkGetPhysicalDeviceSurfacePresentModesKHR(device, vk_surface, &num_present_modes, present_modes) == VK_SUCCESS){
-        for(uint32_t i = 0; i < num_present_modes; i++){
-            Core::debug::log(Core::debug::Info, "Preset %d\n", i);
-            Core::debug::log(Core::debug::Info, "Mode: %s\n\n\n", present_mode_to_str(present_modes[i]));
-        }
-    }
-    delete[] present_modes;
-
     return true;
 }
 
-bool Graphics::add_device_features(VkPhysicalDeviceFeatures *features, const VkPhysicalDevice device, uint32_t num_features, ...){
+bool Graphics::add_device_features(uint32_t num_features, ...){
     VkPhysicalDeviceFeatures available_features {};
-    vkGetPhysicalDeviceFeatures(device, &available_features);
+    vkGetPhysicalDeviceFeatures(physical_device_info.device, &available_features);
+    Core::debug::log(Core::debug::Info, "Features: \n");
     enumerate_available_features(available_features);
     
     va_list args;
@@ -677,7 +784,7 @@ bool Graphics::add_device_features(VkPhysicalDeviceFeatures *features, const VkP
     for(uint32_t i = 0; i < num_features; i++){
         CoreFeatures retreived_feature = va_arg(args, CoreFeatures);
         if(device_has_feature(available_features, retreived_feature) == true){
-            device_enable_feature(features, retreived_feature);
+            device_enable_feature(&physical_device_info.features, retreived_feature);
         }else{
             va_end(args);
             return false;
@@ -688,24 +795,20 @@ bool Graphics::add_device_features(VkPhysicalDeviceFeatures *features, const VkP
     return true;
 }
 
-bool Graphics::initialize_device(void){
-    VkPhysicalDevice chosen_device = get_best_device();
-    uint32_t chosen_queue_index = 0, chosen_queue_count = 0;
-    choose_queue_family(chosen_device, &chosen_queue_index, &chosen_queue_count);
-    Core::n_vector<const char *> device_extensions;
-    uint32_t num_extensions = 0;
-    if(!get_device_extensions(chosen_device, &device_extensions, &num_extensions)) return false;
-    if(!validate_device_surface(chosen_device, chosen_queue_index)) return false;
-    VkPhysicalDeviceFeatures device_features {};
-    if(!add_device_features(&device_features, chosen_device, 2, Geometry_Shader, Tesselation_Shader)) return false;
+bool Graphics::initialize_device_get_queue_handle(void){
+    if(!get_best_device()) return false;
+    if(!choose_queue_family()) return false;
+    if(!get_device_extensions()) return false;
+    if(!is_device_supported()) return false;
+    if(!add_device_features(2, Geometry_Shader, Tesselation_Shader)) return false;
 
     float priority = 1.0f;
     VkDeviceQueueCreateInfo queue_create_info {};
     queue_create_info.sType = VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO;
     queue_create_info.pNext = NULL;
     queue_create_info.flags = 0;
-    queue_create_info.queueFamilyIndex = chosen_queue_index;
-    queue_create_info.queueCount = chosen_queue_count;
+    queue_create_info.queueFamilyIndex = physical_device_info.queue_index;
+    queue_create_info.queueCount = physical_device_info.queue_count_used;
     queue_create_info.pQueuePriorities = &priority; 
 
     VkDeviceCreateInfo device_create_info {};
@@ -716,14 +819,164 @@ bool Graphics::initialize_device(void){
     device_create_info.pQueueCreateInfos = &queue_create_info;
     device_create_info.enabledLayerCount = 0;
     device_create_info.ppEnabledLayerNames = NULL;
-    device_create_info.enabledExtensionCount = num_extensions;
-    device_create_info.ppEnabledExtensionNames = device_extensions.vector_data();
-    device_create_info.pEnabledFeatures = &device_features;
+    device_create_info.enabledExtensionCount = physical_device_info.extension_count;
+    device_create_info.ppEnabledExtensionNames = physical_device_info.extensions_names.vector_data();
+    device_create_info.pEnabledFeatures = &physical_device_info.features;
 
-
-    if(vkCreateDevice(chosen_device, &device_create_info, NULL, &logical_device) != VK_SUCCESS) return false;
+    if(vkCreateDevice(physical_device_info.device, &device_create_info, NULL, &logical_device) != VK_SUCCESS) return false;
+    vkGetDeviceQueue(logical_device, physical_device_info.queue_index, 0, &logical_device_queue);
 
     return true;
+}
+
+bool Graphics::get_swapchain_info(void){
+    // Device and Surface capabilites (The height and widht of course change depending on the screen)
+    VkSurfaceCapabilitiesKHR capabilities;
+    if(vkGetPhysicalDeviceSurfaceCapabilitiesKHR(physical_device_info.device, vk_surface, &capabilities) == VK_SUCCESS){
+        enumerate_device_capabilities(capabilities);
+        swapchain_info.min_image_count = capabilities.minImageCount;
+        swapchain_info.max_image_count = capabilities.maxImageCount;
+        swapchain_info.curr_image_extent = capabilities.currentExtent;
+        swapchain_info.max_image_array_layers = capabilities.maxImageArrayLayers;
+        swapchain_info.defined_image_array_layers = 1;
+        swapchain_info.image_usage_flags = get_swapchain_usage_flags(capabilities.supportedUsageFlags, 2, COLOR_ATTACHMENT, TRANSFER_DESTINATION);
+        swapchain_info.surface_transform = capabilities.currentTransform;
+        swapchain_info.alpha_flags = get_swapchain_alpha_flag(OPAQUE);
+    }else{
+        Core::debug::log(Core::debug::Error, "Couldn't get physical device surface capabilites\n");
+        return false;
+    }
+
+    // Device and Surface formats (The number of formats change depending on the screen that is used)
+    uint32_t num_formats = 0;
+    if(vkGetPhysicalDeviceSurfaceFormatsKHR(physical_device_info.device, vk_surface, &num_formats, NULL) != VK_SUCCESS) return false;
+    VkSurfaceFormatKHR *surface_formats = new VkSurfaceFormatKHR[num_formats];
+    
+    if(vkGetPhysicalDeviceSurfaceFormatsKHR(physical_device_info.device, vk_surface, &num_formats, surface_formats) == VK_SUCCESS){
+        enumerate_device_formats(surface_formats, num_formats);
+        get_device_format_color_space(surface_formats, num_formats, VK_FORMAT_R8G8B8A8_UNORM, &swapchain_info);
+    }else{
+        Core::debug::log(Core::debug::Error, "Couldn't get physical device surface formats\n");
+        return false;
+    }
+    delete[] surface_formats;
+    
+    // Device and Surface Present modes
+    uint32_t num_present_modes = 0;
+    if(vkGetPhysicalDeviceSurfacePresentModesKHR(physical_device_info.device, vk_surface, &num_present_modes, NULL) != VK_SUCCESS) return false;
+    VkPresentModeKHR *present_modes = new VkPresentModeKHR[num_present_modes];
+    if(vkGetPhysicalDeviceSurfacePresentModesKHR(physical_device_info.device, vk_surface, &num_present_modes, present_modes) == VK_SUCCESS){
+        enumerate_device_present_modes(present_modes, num_present_modes);
+        swapchain_info.present_mode = get_present_mode(present_modes, num_present_modes, VK_PRESENT_MODE_FIFO_KHR);
+    }else{
+        Core::debug::log(Core::debug::Error, "Couldn't get physical device surface present modes\n");
+        return false;
+    }
+    delete[] present_modes;
+
+    // Missing information not obtainable through vulkan queries used above.
+    swapchain_info.queue_family_index = physical_device_info.queue_index;
+    swapchain_info.queue_family_count_used = physical_device_info.queue_count_used;
+    swapchain_info.is_clipped = VK_TRUE;
+
+    return true;
+}
+
+bool Graphics::create_swapchain(void){
+    if(!get_swapchain_info()) return false;
+
+    VkSwapchainCreateInfoKHR swapchain_create_info {};
+    swapchain_create_info.sType = VK_STRUCTURE_TYPE_SWAPCHAIN_CREATE_INFO_KHR;
+    swapchain_create_info.pNext = NULL;
+    swapchain_create_info.flags = 0;
+    swapchain_create_info.surface = vk_surface;
+    if(swapchain_info.min_image_count < 2) swapchain_create_info.minImageCount = 2;     // Just to ensure i only use double buffering
+    else swapchain_create_info.minImageCount = 2;                                       // Just to ensure i only use double buffering
+    swapchain_create_info.imageFormat = swapchain_info.format;
+    swapchain_create_info.imageColorSpace = swapchain_info.color_space;
+    swapchain_create_info.imageExtent = swapchain_info.curr_image_extent;
+    swapchain_create_info.imageArrayLayers = swapchain_info.defined_image_array_layers;
+    swapchain_create_info.imageUsage = swapchain_info.image_usage_flags;
+    swapchain_create_info.imageSharingMode = VK_SHARING_MODE_EXCLUSIVE;
+    swapchain_create_info.queueFamilyIndexCount = swapchain_info.queue_family_count_used;
+    swapchain_create_info.pQueueFamilyIndices = &swapchain_info.queue_family_index;
+    swapchain_create_info.preTransform = swapchain_info.surface_transform;
+    swapchain_create_info.compositeAlpha = swapchain_info.alpha_flags;
+    swapchain_create_info.presentMode = swapchain_info.present_mode;
+    swapchain_create_info.clipped = swapchain_info.is_clipped;
+    swapchain_create_info.oldSwapchain = NULL;
+
+    if(vkCreateSwapchainKHR(logical_device, &swapchain_create_info, NULL, &swapchain) != VK_SUCCESS) return false;
+
+    return true;
+}
+
+bool Graphics::create_images_and_image_views(void){
+    uint32_t num_images = 0;
+    if(vkGetSwapchainImagesKHR(logical_device, swapchain, &num_images, NULL) != VK_SUCCESS) return false;
+    if(num_images != 2) return false;
+
+    images.vector_resize(num_images);
+    image_views.vector_resize(num_images);
+
+    if(vkGetSwapchainImagesKHR(logical_device, swapchain, &num_images, images.vector_data()) == VK_SUCCESS){
+        for(uint32_t i = 0; i < num_images; i++){
+            VkImageViewCreateInfo image_view_create_info {};
+            image_view_create_info.sType = VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO;
+            image_view_create_info.pNext = NULL;
+            image_view_create_info.flags = 0;
+            image_view_create_info.image = images.vector_data_id(i);
+            image_view_create_info.viewType = VK_IMAGE_VIEW_TYPE_2D;
+            image_view_create_info.format = swapchain_info.format;
+            image_view_create_info.components.r = VK_COMPONENT_SWIZZLE_IDENTITY;
+            image_view_create_info.components.g = VK_COMPONENT_SWIZZLE_IDENTITY;
+            image_view_create_info.components.b = VK_COMPONENT_SWIZZLE_IDENTITY;
+            image_view_create_info.components.a = VK_COMPONENT_SWIZZLE_IDENTITY;
+            image_view_create_info.subresourceRange.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT;
+            image_view_create_info.subresourceRange.baseMipLevel = 0;
+            image_view_create_info.subresourceRange.levelCount = 1;
+            image_view_create_info.subresourceRange.baseArrayLayer = 0;
+            image_view_create_info.subresourceRange.layerCount = 1;
+
+            if(vkCreateImageView(logical_device, &image_view_create_info, NULL, image_views.vector_data(i)) != VK_SUCCESS) return false;
+        }
+    }
+
+    return true;
+}
+
+bool Graphics::create_command_pool(void){
+
+
+    return true;
+}
+
+bool Graphics::create_command_buffer(void){
+
+
+    return true;
+}
+
+void Graphics::destroy_command_pool(void){
+
+
+    return;
+}
+
+void Graphics::destroy_images_and_image_views(void){
+    for(size_t i = 0; i < image_views.vector_size(); i++){
+        vkDestroyImageView(logical_device, image_views.vector_data_id(i), NULL);
+    }
+    image_views.empty_vector();
+    images.empty_vector();
+
+    return;
+}
+
+void Graphics::destroy_swapchain(void){
+    vkDestroySwapchainKHR(logical_device, swapchain, NULL);
+
+    return;
 }
 
 void Graphics::destroy_device(void){
@@ -751,6 +1004,9 @@ void Graphics::close_debug_messenger(void){
 }
 
 void Graphics::close_graphics(void){
+    destroy_command_pool();
+    destroy_images_and_image_views();
+    destroy_swapchain();
     destroy_device();
     destroy_surface();
     close_debug_messenger();
