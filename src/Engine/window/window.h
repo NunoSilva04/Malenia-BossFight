@@ -27,6 +27,7 @@ public:
     ~Window();
     bool create_window(const char *window_name);
     bool should_render_window(void);
+    void temp_render_func(void);
     void destroy_window(void);
 
 private:

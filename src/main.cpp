@@ -16,6 +16,7 @@ int main(void){
     while(window.should_render_window()){
         input.update_input();
         //Game to be rendered here 
+        window.temp_render_func();
     }
 
     input.close_input();

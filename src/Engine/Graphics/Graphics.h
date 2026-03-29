@@ -22,6 +22,7 @@ public:
     Graphics();
     ~Graphics();
     bool initialize_graphics(SDL_Window *window, Core::n_vector<const char *> extensions);
+    void temp_render_func(void);
     void close_graphics(void);
 
 private:
@@ -84,13 +85,27 @@ private:
     bool create_swapchain(void);
     bool create_images_and_image_views(void);
 
-    // Command Pools and Bufffers
-    bool create_command_pool(void);
-    bool create_command_buffer(void);
+    // Graphics Pipeline
+    friend VkPipelineViewportStateCreateInfo create_viewport_state_info(const Graphics::Swapchain_Info swapchain_info);
+    bool create_pipeline_layout(void);
+    bool create_render_pass(void);
+    bool create_graphics_pipeline(void);
 
+    // Frame Buffers
+    bool create_frame_buffers(void);
+
+    // Command Pool and Buffers
+    bool create_command_pool_and_buffer(void);
+    void record_command_buffer(VkCommandBuffer command_buffer, uint32_t image_index);
+
+    // Sync Objects
+    bool create_sync_objects(void);
 
     // Close Graphics 
+    void destroy_sync_objects(void);
     void destroy_command_pool(void);
+    void destroy_frame_buffers(void);
+    void destroy_graphics_pipeline_and_layout(void);
     void destroy_images_and_image_views(void);
     void destroy_swapchain(void);
     void destroy_device(void);
@@ -117,6 +132,25 @@ private:
     VkSwapchainKHR swapchain;
     Core::n_vector<VkImage> images;
     Core::n_vector<VkImageView> image_views;
+
+    // Pipeline Creation
+    VkShaderModule vertex_shader_module;
+    VkShaderModule fragment_shader_module;
+    VkPipelineLayout pipeline_layout;
+    VkRenderPass render_pass;
+    VkPipeline graphics_pipeline;
+
+    // Frame Buffers
+    Core::n_vector<VkFramebuffer> frame_buffers;
+
+    // Command Pool and Buffers
+    VkCommandPool command_pool;
+    VkCommandBuffer command_buffer;
+
+    // Sync Objects
+    VkSemaphore image_available_semaphore;
+    VkSemaphore render_finished_semaphore;
+    VkFence init_flight_fence;
 };
 
 #endif

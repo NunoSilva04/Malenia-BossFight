@@ -129,6 +129,12 @@ bool Window::should_render_window(void){
     return render;
 }
 
+void Window::temp_render_func(void){
+    gfx->temp_render_func();
+
+    return;
+}
+
 void Window::destroy_window(void){
     gfx->close_graphics();
     delete gfx;
