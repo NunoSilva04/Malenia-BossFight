@@ -35,12 +35,15 @@ class Input{
 public:
     Input();
     ~Input();
-    bool initialize_input(void);
+    void initialize_input(void);
     void update_input(void);
     static Core::n_vector<Event> dispatch_input(Listeners_Id listener);
     void close_input(void);
 
 private:
+    void open_gamepad(void);
+
+    bool has_gamepad;
     SDL_Gamepad *gamepad;
     static Core::n_vector<Event> event_vector;
 };

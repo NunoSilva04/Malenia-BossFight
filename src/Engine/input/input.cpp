@@ -4,6 +4,7 @@
 Core::n_vector<Event> Input::event_vector;
 
 Input::Input(){
+    has_gamepad = false;
     gamepad = nullptr;
 }
 
@@ -11,29 +12,25 @@ Input::~Input(){
 
 }
 
-bool Input::initialize_input(void){
-    /**
-     * !TODO: Update this so it can open the game even there isn't a gamepad at start.
-     */
-
+void Input::initialize_input(void){
     if(!SDL_HasGamepad()){
-        Core::debug::log(Core::debug::Error, "No gamepad found\n");
-        #if DEBUG == 0
-            return false;
-        #endif
+        Core::debug::log(Core::debug::Info, "No gamepad found\n");
+        return;
     }
+    open_gamepad();
 
+    return;
+}
+
+void Input::open_gamepad(void){
     int count = 0;
     SDL_JoystickID *joystick_id = SDL_GetGamepads(&count);
     gamepad = SDL_OpenGamepad(joystick_id[0]);
-    if(gamepad == NULL){
-        Core::debug::log(Core::debug::Error, "Couldn't get gamepad\n");
-        #if DEBUG == 0
-            return false;
-        #endif
-    }
+    if(gamepad == NULL)
+        Core::debug::log(Core::debug::Error, "Couldn't open gamepad\n");
+    has_gamepad = true;
 
-    return true;
+    return;
 }
 
 void Input::update_input(void){
@@ -42,7 +39,7 @@ void Input::update_input(void){
     SDL_Event event;
     while(SDL_PollEvent(&event)){
         switch(event.type){
-            //Keyboard Events
+            // Keyboard Events
             case SDL_EVENT_KEY_DOWN:
                 if(event.key.key == SDLK_ESCAPE){
                     event_vector.push_back(Keyboard_Escape);
@@ -50,7 +47,20 @@ void Input::update_input(void){
                     event_vector.push_back(Keyboard_F11);
                 } 
             break;
-            //Controller Events
+
+            // Controller Events
+            case SDL_EVENT_JOYSTICK_ADDED:
+                printf("added joystick\n");
+                if(!has_gamepad)
+                    open_gamepad();
+            break;
+
+            case SDL_EVENT_JOYSTICK_REMOVED:
+                printf("removed joystick\n");
+                if(has_gamepad) 
+                    close_input();
+            break;
+
             case SDL_EVENT_GAMEPAD_BUTTON_DOWN:
                 if(event.key.key == SDL_GAMEPAD_BUTTON_EAST){
                     event_vector.push_back(Gamepad_Circle);

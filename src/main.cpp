@@ -9,9 +9,7 @@ int main(void){
     Window window;
     if(!window.create_window("SDL Window")) return 0;
     Input input;
-    if(!input.initialize_input()){
-        return 0;
-    }
+    input.initialize_input();
 
     while(window.should_render_window()){
         input.update_input();
