@@ -1,6 +1,7 @@
 set(SourceFiles window/window.cpp
                 input/input.cpp
-                Graphics/Graphics.cpp)
+                Graphics/Graphics.cpp
+                Graphics/Graphics_Helper.cpp)
 add_library(Engine STATIC ${SourceFiles})
 
 set(HeaderFiles ${CMAKE_CURRENT_SOURCE_DIR}/window

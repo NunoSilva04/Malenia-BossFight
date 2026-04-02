@@ -58,15 +58,8 @@ private:
     }Swapchain_Info;
 
 private:
-    //Debug utilities needed
-    Core::n_vector<const char *> get_validation_layers(void);
-    void add_debug_extension(Core::n_vector<const char *> &extensions);
-    
     //Instance
     bool initialize_instance(Core::n_vector<const char *> extensions, Core::n_vector<const char *> layers);
-
-    // Debug initializer
-    bool initialize_debug_messenger(void);
     
     //Surface
     bool initialize_surface(SDL_Window *window);
@@ -80,13 +73,11 @@ private:
     bool initialize_device_get_queue_handle(void);
     
     //Swapchain and Image Views
-    friend bool get_device_format_color_space(VkSurfaceFormatKHR *surface_formats, uint32_t num_formats, VkFormat desired_format, Graphics::Swapchain_Info *swapchain_info);
     bool get_swapchain_info(void);
     bool create_swapchain(void);
     bool create_images_and_image_views(void);
 
     // Graphics Pipeline
-    friend VkPipelineViewportStateCreateInfo create_viewport_state_info(const Graphics::Swapchain_Info swapchain_info);
     bool create_pipeline_layout(void);
     bool create_render_pass(void);
     bool create_graphics_pipeline(void);
@@ -110,14 +101,10 @@ private:
     void destroy_swapchain(void);
     void destroy_device(void);
     void destroy_surface(void);
-    void close_debug_messenger(void);
 
 private:
     // Instance
     VkInstance vk_instance;
-    
-    // Debug
-    VkDebugUtilsMessengerEXT messenger;
     
     // Surface
     VkSurfaceKHR vk_surface;
