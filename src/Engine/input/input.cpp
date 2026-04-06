@@ -29,6 +29,7 @@ void Input::open_gamepad(void){
     if(gamepad == NULL)
         Core::debug::log(Core::debug::Error, "Couldn't open gamepad\n");
     has_gamepad = true;
+    Core::debug::log(Core::debug::Info, "Opened gamepad\n");
 
     return;
 }
@@ -50,28 +51,29 @@ void Input::update_input(void){
 
             // Controller Events
             case SDL_EVENT_JOYSTICK_ADDED:
-                printf("added joystick\n");
+                Core::debug::log(Core::debug::Info, "added joystick\n");
                 if(!has_gamepad)
                     open_gamepad();
             break;
 
             case SDL_EVENT_JOYSTICK_REMOVED:
-                printf("removed joystick\n");
+                Core::debug::log(Core::debug::Info, "removed joystick\n");
                 if(has_gamepad) 
                     close_input();
             break;
 
             case SDL_EVENT_GAMEPAD_BUTTON_DOWN:
-                if(event.key.key == SDL_GAMEPAD_BUTTON_EAST){
+                if(event.gbutton.button == SDL_GAMEPAD_BUTTON_EAST){
+                    Core::debug::log(Core::debug::Info, "Pressed circle\n");
                     event_vector.push_back(Gamepad_Circle);
                 }
-                else if(event.key.key == SDL_GAMEPAD_BUTTON_SOUTH){
+                else if(event.gbutton.button == SDL_GAMEPAD_BUTTON_SOUTH){
                     event_vector.push_back(Gamepad_X);
                 }
-                else if(event.key.key == SDL_GAMEPAD_BUTTON_WEST){
+                else if(event.gbutton.button == SDL_GAMEPAD_BUTTON_WEST){
                     event_vector.push_back(Gamepad_Square);
                 }
-                else if(event.key.key == SDL_GAMEPAD_BUTTON_NORTH){
+                else if(event.gbutton.button == SDL_GAMEPAD_BUTTON_NORTH){
                     event_vector.push_back(Gamepad_Triangle);
                 }
             break;
@@ -99,4 +101,5 @@ Core::n_vector<Event> Input::dispatch_input(Listeners_Id listener){
 
 void Input::close_input(void){
     SDL_CloseGamepad(gamepad);
+    has_gamepad = false;
 }

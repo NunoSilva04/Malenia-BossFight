@@ -698,9 +698,7 @@ VkCompositeAlphaFlagBitsKHR vk_helper::get_swapchain_alpha_flag(Alpha_Flags desi
 
 void vk_helper::enumerate_device_formats(VkSurfaceFormatKHR *surface_formats, uint32_t num_formats){
     for(uint32_t i = 0; i < num_formats; i++){
-        Core::debug::log(Core::debug::Info, "Surface %d\n", i);
-        Core::debug::log(Core::debug::Info, "Format = %d\n", surface_formats[i].format);
-        Core::debug::log(Core::debug::Info, "Color = %d\n\n\n", surface_formats[i].colorSpace);
+        Core::debug::log(Core::debug::Info, "Surface[%d]: Format = %d, Color = %d\n", i, surface_formats[i].format, surface_formats[i].colorSpace);
     }
 
     return;
@@ -723,8 +721,7 @@ bool vk_helper::get_device_format_color_space(VkSurfaceFormatKHR *surface_format
 
 void vk_helper::enumerate_device_present_modes(const VkPresentModeKHR *present_modes, const uint32_t num_present_modes){
     for(uint32_t i = 0; i < num_present_modes; i++){
-        Core::debug::log(Core::debug::Info, "Preset %d\n", i);
-        Core::debug::log(Core::debug::Info, "Mode: %s\n\n\n", vk_helper::present_mode_to_str(present_modes[i]));
+        Core::debug::log(Core::debug::Info, "Preset[%d]: Mode : %s\n", i, vk_helper::present_mode_to_str(present_modes[i]));
     }
 
     return;

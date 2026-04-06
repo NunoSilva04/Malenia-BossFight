@@ -41,9 +41,18 @@ set(Shader_Output_List "")
 foreach(SHADER IN LISTS Shader_Source_Dir)
     get_filename_component(SHADER_NAME "${SHADER}" NAME_WE)
     set(Out_File "${Shader_Output_Dir}/${SHADER_NAME}.spv")
+    
+    if(WIN32)
+        set(GLSLC "$ENV{VULKAN_SDK}/Bin/glslc.exe")
+    elseif(UNIX)
+        set(GLSLC "$ENV{VULKAN_SDK}/bin/glslc")
+    elseif(APPLE)
+        # MISSING THIS PART
+    endif()
+    
     add_custom_command(
         OUTPUT "${Out_File}"
-        COMMAND "$ENV{VULKAN_SDK}/Bin/glslc.exe" "${SHADER}" -o "${Out_File}"
+        COMMAND ${GLSLC} "${SHADER}" -o "${Out_File}"
         DEPENDS "${SHADER}"
     )
     list(APPEND Shader_Output_List "${Out_File}")

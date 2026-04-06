@@ -306,7 +306,7 @@ bool Graphics::get_swapchain_info(void){
     
     if(vkGetPhysicalDeviceSurfaceFormatsKHR(physical_device_info.device, vk_surface, &num_formats, surface_formats) == VK_SUCCESS){
         vk_helper::enumerate_device_formats(surface_formats, num_formats);
-        vk_helper::get_device_format_color_space(surface_formats, num_formats, VK_FORMAT_R8G8B8A8_UNORM, swapchain_info.format, swapchain_info.color_space);
+        vk_helper::get_device_format_color_space(surface_formats, num_formats, VK_FORMAT_B8G8R8A8_UNORM, swapchain_info.format, swapchain_info.color_space);
     }else{
         Core::debug::log(Core::debug::Error, "Couldn't get physical device surface formats\n");
         return false;

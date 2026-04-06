@@ -84,7 +84,7 @@ bool Window::create_window(const char *window_name){
     printf("\t\tRefresh rate numerator = %d, Refresh Rate Denominator = %d\n", display_mode->refresh_rate_numerator, display_mode->refresh_rate_denominator);
     #endif 
 
-    window = SDL_CreateWindow(window_name, display_properties.bounds.width, display_properties.bounds.heigth, SDL_WINDOW_VULKAN | SDL_WINDOW_BORDERLESS);
+    window = SDL_CreateWindow(window_name, display_properties.bounds.width, display_properties.bounds.heigth, SDL_WINDOW_VULKAN | SDL_WINDOW_FULLSCREEN);
     if(window == NULL){
         Core::debug::log(Core::debug::Error, "Couldn't create window\n");
         return false;
