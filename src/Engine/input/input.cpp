@@ -15,10 +15,7 @@ Input::~Input(){
 void Input::initialize_input(void){
     if(!SDL_HasGamepad()){
         Core::debug::log(Core::debug::Info, "No gamepad found\n");
-<<<<<<< HEAD
-=======
         SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION, "Information", "No controllger detected. Please connect a controller.", NULL);
->>>>>>> 5f8d152 (Updated README.md. Added-Doc.)
         return;
     }
     open_gamepad();
@@ -62,10 +59,7 @@ void Input::update_input(void){
 
             case SDL_EVENT_JOYSTICK_REMOVED:
                 Core::debug::log(Core::debug::Info, "removed joystick\n");
-<<<<<<< HEAD
-=======
                 SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION, "Information", "No controllger detected. Please connect a controller.", NULL);
->>>>>>> 5f8d152 (Updated README.md. Added-Doc.)
                 if(has_gamepad) 
                     close_input();
             break;
