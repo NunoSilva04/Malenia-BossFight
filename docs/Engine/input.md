@@ -1,6 +1,6 @@
 # input.h
 
-Input class that handles specific inputs from the keyboard and controller.  
+Input class that handles specific inputs from the keyboard and controller. At the moment only controller inputs are taken into consideration.  
 Uses the third party library [SDL3](https://github.com/libsdl-org/SDL).
 
 ## Member Types
@@ -32,7 +32,7 @@ Enumerates all the possible listeners to dispatch message inputs.
 | Members | Type | Description | Default Value |
 |--------|------|-------------|-------------|
 | `gamepad` | `SDL_Gamepad*` |Pointer to SDL_Gamepad| `nullptr` |
-
+| `has_gamepad` | `bool` |Boolean value that specifies if a gamepad is connected | `false` |
 
 ### Static variables
 
@@ -56,11 +56,11 @@ Enumerates all the possible listeners to dispatch message inputs.
 - **Return:**  `None`   
 - **Description**: Destroys the Input instance.
 
-#### Function: `bool initialize_input(void)`  
+#### Function: `void initialize_input(void)`  
 - **Access:** `Public`
 - **Parameters:**  `void`  
 - **Return:**  `bool`   
-- **Description**: Initializes `gamepad`. If Debug is enabled and no controller is connected it will continue running, returns false and exits the program otherwise. 
+- **Description**: Initializes `gamepad` if there is an available gamepad. If no gamepad is available it will display a message box.  
 
 #### Function: `void update_input(void)`
 - **Access:** `Public`  
@@ -73,6 +73,12 @@ Enumerates all the possible listeners to dispatch message inputs.
 - **Parameters:**  `void`  
 - **Return:**  `void`   
 - **Description**: Releases and closes the `gamepad` instance.
+
+#### Function: `void open_gamepad(void)`  
+- **Access:** `Private`
+- **Parameters:**  `void`.
+- **Return:**  `void`   
+- **Description**: Opens the first gamepad that was connected.
 
 ### Static Functions 
 

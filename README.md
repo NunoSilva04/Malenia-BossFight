@@ -26,6 +26,9 @@ You can choose to:
 - [Build](docs/build.md) the project.
 - Play the [release](docs/release.md) version.
 
+### Requirements
+Only supports game controllers (PS5 controller, XBOX controller) as of this moment. No keyboard or mouse input is supported.
+
 ## Documentation
 
 The documentation for the entire project can be found [here](docs/Malenia_BossFight.md).

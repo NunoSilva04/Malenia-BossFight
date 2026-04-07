@@ -46,7 +46,6 @@ Structure that holds all of the necessary information for the creation of the sw
 | Members | Type | Description | Default Value |
 |--------|------|-------------|-------------|
 | `vk_instance` | `VkInstance` |Vulkan instance| `None` |
-|`messenger` | `VkDebugUtilsMessengerEXT` |Messenger instance for the debug callback function| `None` |
 |`vk_surface` | `VkSurfaceKHR` |Surface instance| `None` |
 |`physical_device_info` | `Physical_Device_Info` |Instance of the struct `physical_device_info`| `None` |
 |`logical_device` | `VkDevice` |Vulkan  logical device instance| `None` |
@@ -82,26 +81,13 @@ None
     - `[in]SDL_Window *window` - pointer to the [window](window.md#instance-variables).
 - **Return:**  `bool`   
 - **Description**: Initializes the graphics class by initializing the instance, surface, device, swapchain and command pools/buffers.  
-If the project is being build on debug mode, then it will also [get_validation_layers](Graphics.md#function-coren_vectorconst-char--get_validation_layersvoid), [add_debug_extension](Graphics.md#function-void-add_debug_extensioncoren_vectorconst-char--extensions) and [initialize_debug_messenger](Graphics.md#function-bool-initialize_debug_messengervoid).
+If the project is being build on debug mode, then it will also initialize the debug messenger through [Graphics_Helper](Graphics_Helper.md).
 
 #### Function: `void close_graphics(void)` 
 - **Access:** `Public` 
 - **Parameters:**  `void`  
 - **Return:**  `void`   
 - **Description**: Closes graphics and frees all of the resources used.
-
-#### Function: `Core::n_vector<const char *> get_validation_layers(void)` 
-- **Access:** `Private` 
-- **Parameters:** `void`
-- **Return:**  `[in]Core::n_vector<const char *>`   
-- **Description**: Returns a vector with the following layer names`VK_LAYER_KHRONOS_validation` and `VK_LAYER_LUNARG_crash_diagnostic`. May return a empty vector is none of these layers are available. Used only in **debug** mode.
-
-#### Function: `void add_debug_extension(Core::n_vector<const char *> &extensions)` 
-- **Access:** `Private` 
-- **Parameters:**
-    - `[out]Core::n_vector<const char *> &extensions` - Reference to the vector that holds necessary extensions. 
-- **Return:**  `void`   
-- **Description**: Adds `VK_EXT_debug_utils` to the vector. Used only in **debug** mode.
 
 #### Function: `bool initialize_instance(Core::n_vector<const char *> extensions, Core::n_vector<const char *> layers)` 
 - **Access:** `Private` 
@@ -110,12 +96,6 @@ If the project is being build on debug mode, then it will also [get_validation_l
     - `[in]Core::n_vector<const char *> layers` - Vector that holds necessary layers. 
 - **Return:**  `bool`   
 - **Description**: Initializes the instance with the extensions and layers provided. Returns `true` in case of success, `false` otherwise.
-
-#### Function: `bool initialize_debug_messenger(void)` 
-- **Access:** `Private` 
-- **Parameters:** `void` 
-- **Return:**  `bool`   
-- **Description**: Initializes a debug call back function useful for debugging. Used only **debug** mode.
 
 #### Function: `bool initialize_surface(SDL_Window *window)` 
 - **Access:** `Private` 
@@ -162,16 +142,6 @@ If the project is being build on debug mode, then it will also [get_validation_l
 - **Return:**  `bool`   
 - **Description:** Initializes the logical device and retreives the corresponding queue handle. Returns true if the logical device was successfully created. Returns false otherwise.
 
-#### Function: `friend bool get_device_format_color_space(VkSurfaceFormatKHR *surface_formats, uint32_t num_formats, VkFormat desired_format, Graphics::Swapchain_Info *swapchain_info)` 
-- **Access:** `None (Friend function, non-member function with access to private members)`
-- **Parameters:** 
-    - `[in]VkSurfaceFormatKHR *surface_formats` - Pointer to an array holding all of the available formats of the chosen physical device.
-    - `[in]uint32_t num_formats` - The number of formats of the array. 
-    - `[in]VkFormat desired_format` - The desired format.
-    - `[out]Graphics::Swapchain_Info *swapchain_info` - Pointer to the Graphics class instance `swapchain_info`.
-- **Return:**  `bool`   
-- **Description:** Queries all of the available formats of the chosen physical device and if one of them matches the desired format, it will fill `swapchain_info` with the format and the corresponding color space and will return true. Returns false if the desired format doesn't match any of the avaible formats.
-
 #### Function: `bool get_swapchain_info(void)` 
 - **Access:** `Private` 
 - **Parameters:** `void`
@@ -191,29 +161,79 @@ If the project is being build on debug mode, then it will also [get_validation_l
 - **Return:**  `bool`   
 - **Description:** Creates the appropriate number of image views and returns true if it was successful. The number of image views created must match the number of minimum image count when creating the swapchain otherwise it will return false. Will also return false if at least one of the image views couldn't be created.
 
-#### Function: `bool create_command_pool(void)` 
+#### Function: `bool create_pipeline_layout(void)` 
 - **Access:** `Private` 
 - **Parameters:** `void`
 - **Return:**  `bool`   
-- **Description:** TODOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO.
+- **Description:** Creates the pipeline layout and returns true if it succeeded. Returns false otherwise.
 
-#### Function: `void create_command_buffer(void)` 
+#### Function: `bool create_render_pass(void)` 
 - **Access:** `Private` 
 - **Parameters:** `void`
 - **Return:**  `bool`   
-- **Description:** TODOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO.
+- **Description:** Creates the render pass and returns true if it succeeded. Returns false otherwise.
+
+#### Function: `bool create_graphics_pipeline(void)` 
+- **Access:** `Private` 
+- **Parameters:** `void`
+- **Return:**  `bool`   
+- **Description:** Creates the graphics pipeline and returns true if it succeeded. Returns false otherwise.
+
+#### Function: `bool create_frame_buffers(void)` 
+- **Access:** `Private` 
+- **Parameters:** `void`
+- **Return:**  `bool`   
+- **Description:** Creates the frame buffers and returns true if it succeeded. Returns false otherwise. The number of frame buffers created is the same as the number of image views.
+
+#### Function: `bool create_command_pool_and_buffer(void)` 
+- **Access:** `Private` 
+- **Parameters:** `void`
+- **Return:**  `bool`   
+- **Description:** Creates a command pool and a command buffer and returns true if it succeeded. Returns false otherwise.
+
+#### Function: `void record_command_buffer(VkCommandBuffer command_buffer, uint32_t image_index)` 
+- **Access:** `Private` 
+- **Parameters:** 
+    - `[in]VkCommandBuffer command_buffer` - The command buffer handle.
+    - `[in]uint32_t image_index` - The current image index of the swapchain.
+- **Return:**  `void`   
+- **Description:** Command to be recorded every frame.
+
+#### Function: `bool create_sync_objects(void)` 
+- **Access:** `Private` 
+- **Parameters:** `void`
+- **Return:**  `bool`   
+- **Description:** Creates the synchronization objects, such as the semaphores and fences, and returns true if it succeeded. Returns false otherwise.
+
+#### Function: `void destroy_sync_objects(void)` 
+- **Access:** `Private` 
+- **Parameters:** `void`
+- **Return:**  `void`   
+- **Description:** Destroys the synchronization objects, such as the semaphores and fences.
 
 #### Function: `void destroy_command_pool(void)` 
 - **Access:** `Private` 
 - **Parameters:** `void`
 - **Return:**  `void`   
-- **Description:** TODOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO.
+- **Description:** Destroys the command pool.
+
+#### Function: `void destroy_frame_buffers(void)` 
+- **Access:** `Private` 
+- **Parameters:** `void`
+- **Return:**  `void`   
+- **Description:** Destroys the frame buffers.
+
+#### Function: `void destroy_graphics_pipeline_and_layout(void)` 
+- **Access:** `Private` 
+- **Parameters:** `void`
+- **Return:**  `void`   
+- **Description:** Destroys the graphics pipeline, pipeline layout, and the shader modules.
 
 #### Function: `void destroy_images_and_image_views(void)` 
 - **Access:** `Private` 
 - **Parameters:** `void`
 - **Return:**  `void`   
-- **Description:** TODOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO.
+- **Description:** Destroys the image views.
 
 #### Function: `void destroy_swapchain(void)` 
 - **Access:** `Private` 
@@ -233,12 +253,6 @@ If the project is being build on debug mode, then it will also [get_validation_l
 - **Return:**  `void`   
 - **Description**: Destroys the vulkan surface.
 
-#### Function: `void close_debug_messenger(void)` 
-- **Access:** `Private` 
-- **Parameters:** `void`
-- **Return:**  `void`   
-- **Description**: Closes the debug messenger. Used only in **debug** mode.
-
 ### Static Functions 
 None.
 
@@ -246,3 +260,4 @@ None.
 - [Vulkan SDK](https://vulkan.lunarg.com/sdk/home)
 - [SDL3](https://github.com/libsdl-org/SDL)
 - [n_vector](../core/n_vector.md)
+- [Graphics_Helper](Graphics_Helper.md)
