@@ -18,6 +18,7 @@ add_subdirectory(third-party-libraries/SDL EXCLUDE_FROM_ALL)
 find_package(Vulkan REQUIRED)
 add_subdirectory(src/Engine)
 add_subdirectory(src/core)
+add_subdirectory(src/Game)
 
 set(SourceFiles src/main.cpp) 
 add_executable(${PROJECT_NAME} ${SourceFiles})
@@ -25,6 +26,7 @@ add_executable(${PROJECT_NAME} ${SourceFiles})
 #Link libraries
 target_link_libraries(${PROJECT_NAME} PUBLIC project_options) 
 target_link_libraries(${PROJECT_NAME} PUBLIC Engine)
+target_link_libraries(${PROJECT_NAME} PUBLIC Game)
 
 
 #Shaders
@@ -33,8 +35,8 @@ set(Shader_Output_Dir ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/Shaders)
 
 set(
     Shader_Source_Dir
-    ${CMAKE_SOURCE_DIR}/assets/Shaders/VertexShader.vert
-    ${CMAKE_SOURCE_DIR}/assets/Shaders/FragmentShader.frag
+    ${CMAKE_SOURCE_DIR}/src/assets/Shaders/VertexShader.vert
+    ${CMAKE_SOURCE_DIR}/src/assets/Shaders/FragmentShader.frag
 )
 
 set(Shader_Output_List "")

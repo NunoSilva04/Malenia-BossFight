@@ -96,6 +96,14 @@ Core::n_vector<Event> Input::dispatch_input(Listeners_Id listener){
                 }
             }
         break;
+            
+        case Game_Id:
+            for(size_t i = 0; i < event_vector.vector_size(); i++){
+                if(event_vector.vector_data_id(i) == Keyboard_Escape){
+                    queue.push_back(event_vector.vector_data_id(i));
+                }
+            }
+        break;
     }
 
     return queue;

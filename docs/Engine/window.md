@@ -23,11 +23,11 @@ Structure containing the display information.
 ## Member Variables
 ### Instance variables
 
-| Members | Type | Description | Default Value |
-|--------|------|-------------|-------------|
-| `window` | `SDL_Window*` |Pointer to SDL_Window| `nullptr` |
-| `display_properties` | `propeties_t` |Containts essential display properties| `Zero` |
-| `gfx` | `Graphics*` | Pointer to the [Graphics](Graphics.md) instance. | `nullptr` |
+| Members | Type | Access | Description | Default Value |
+|--------|------|---------|-------------|-------------|
+| `window` | `SDL_Window*` | Private |Pointer to SDL_Window| `nullptr` |
+| `display_properties` | `propeties_t` | Private |Containts essential display properties| `Zero` |
+| `gfx` | `Graphics*` | Private |Pointer to the [Graphics](Graphics.md) instance. | `nullptr` |
 
 ### Static variables
 None.
@@ -40,31 +40,37 @@ None.
 - **Access:** `Public`
 - **Parameters:**  `None`  
 - **Return:**  `None`   
-- **Description**: Initializes Window instance along with all of it's variables.
+- **Description:** Initializes Window instance along with all of it's variables.
 
 #### Function: `~Window()`
 - **Access:** `Public`  
 - **Parameters:**  `None`  
 - **Return:**  `None`   
-- **Description**: Destroys the Window instance.
+- **Description:** Destroys the Window instance.
 
 #### Function: `bool create_window(const char *window_name)`  
 - **Access:** `Public`
 - **Parameters:**  `[in]const char *window_name` - Name of the window.
 - **Return:**  `bool`   
-- **Description**: Gets the main display information for `display_properties` and creates window. Also initializes the [graphics](Graphics.md)
+- **Description:** Gets the main display information for `display_properties` and creates window. Also initializes the [graphics](Graphics.md)
 
-#### Function: `bool should_render_window(void)`
+#### Function: `Core::n_vector<const char *> get_extensions(void)`
 - **Access:** `Public`
 - **Parameters:** `void`
-- **Return:**  `bool`   
-- **Description**: Gets a vector of all of the messages related to the window. If any of the messages are of the type [Keyboard_Escape](input.md#typedef-enum-events-event) or [Quit](input.md#typedef-enum-events-event) it returns false. Returns true otherwise.  
+- **Return:**  `Core::n_vector<const char *>`   
+- **Description:** Gets the appropriate Vulkan extensions and returns a vector of strings.  
+
+#### Function: `SDL_Window *get_window_handle(void) const`
+- **Access:** `Public`
+- **Parameters:** `void`
+- **Return:**  `SDL_Window *`   
+- **Description:** Returns a pointer to the SDL window handle.  
 
 #### Function: `void destroy_window(void)`
 - **Access:** `Public`
 - **Parameters:** `void`
 - **Return:**  `void`   
-- **Description**: Destroys the window and frees the `window` variable. 
+- **Description:** Destroys the window and frees the `window` variable. 
 
 ### Static Functions
 None.
@@ -72,6 +78,5 @@ None.
 ## Dependencies
 
 - [SDL3](https://github.com/libsdl-org/SDL)
-- [input.h](input.md)
-- [Graphics.h](Graphics.md)
 - [debug_helper](../core/debug_helper.md)
+- [rect](../Math_Lib/Rect.md)
