@@ -12,7 +12,17 @@
     // TODO
 
 #elif defined(__linux__)
-    // TODO
+    #ifdef _POSIX_C_SOURCE
+        #define NS_OLD_POSIX_C_SOURCE _POSIX_C_SOURCE
+        #undef _POSIX_C_SOURCE
+    #endif
+    #define _POSIX_C_SOURCE 199309L
+    
+    #include <time.h>
+
+    typedef struct os_struct{
+        timespec time;
+    }os_data;
 #endif
 
 struct Core::n_time::Time_Data_t{
@@ -33,8 +43,9 @@ Core::n_time::Time_Data *Core::n_time::time_start(void){
     QueryPerformanceFrequency(&time_data->data.frequency);
 #elif defined(__APPLE__)
     // TODO
-elif defined(__linux__)
-    // TODO
+#elif defined(__linux__)
+    time_data->data.time.tv_sec = 0;
+    time_data->data.time.tv_nsec = 0;   
 #endif    
 
     return time_data;
@@ -46,8 +57,7 @@ void Core::n_time::get_time(Time_Data *time_data){
 #elif defined(__APPLE__)
     // TODO
 #elif defined(__linux__)
-    // TODO
-
+    clock_gettime(CLOCK_MONOTONIC, &time_data->data.time);
 #endif
 
     return;
@@ -60,7 +70,8 @@ double Core::n_time::time_diff(Time_Data *start_time, Time_Data *end_time){
 #elif defined(__APPLE__)
     //TODO
 #elif defined(__linux__)
-    // TODO
+    result = static_cast<double>(end_time->data.time.tv_sec - start_time->data.time.tv_sec) +
+         static_cast<double>((end_time->data.time.tv_nsec - start_time->data.time.tv_nsec)) / 1e9;
 #endif
 
     return result;
