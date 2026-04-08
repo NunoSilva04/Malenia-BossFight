@@ -29,12 +29,12 @@ bool Game::should_render_game(void){
     return render;
 }
 
-void Game::update_game(void){
+void Game::update_game(double frame_time){
 
     return;
 }
 
-void Game::render_game(void){
+void Game::render_game(int fps){
     gfx.temp_render_func();
 
     return;

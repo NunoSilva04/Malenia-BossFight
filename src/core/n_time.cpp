@@ -17,7 +17,6 @@
         #undef _POSIX_C_SOURCE
     #endif
     #define _POSIX_C_SOURCE 199309L
-    
     #include <time.h>
 
     typedef struct os_struct{

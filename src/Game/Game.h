@@ -30,8 +30,8 @@ public:
 public:
     bool initialize_game(void);
     bool should_render_game(void);
-    void update_game(void);
-    void render_game(void);
+    void update_game(double frame_time);
+    void render_game(int fps);
     void close_game(void);
 
 private:

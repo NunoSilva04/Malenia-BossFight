@@ -68,15 +68,15 @@ None.
 - **Return:**  `bool`   
 - **Description**: Gets a vector of all of the messages related to the Game. If any of the messages are of the type [Keyboard_Escape](../Engine/input.md#typedef-enum-events-event) it will return false and stops rendering the game. Returns true and continues rendering the game otherwise.
 
-#### Function: `void update_game(void)` 
+#### Function: `void update_game(double frame_time)` 
 - **Access:** `Public` 
-- **Parameters:**  `void`  
+- **Parameters:**  `double frame_time` - The time of the frame in seconds.  
 - **Return:**  `void`   
 - **Description**: Updates the game.
 
-#### Function: `void render_game(void)` 
+#### Function: `void render_game(int fps)` 
 - **Access:** `Public` 
-- **Parameters:**  `void`  
+- **Parameters:**  `int fps` - Number of frames per second.  
 - **Return:**  `void`   
 - **Description**: Renders the game along with all of it's assets.
 

@@ -15,25 +15,34 @@ int main(void){
     Input input;
     input.initialize_input();
 
-    Core::n_time::Time_Data *start_time = nullptr, *end_time = nullptr;
-    start_time = Core::n_time::time_start();
-    end_time = Core::n_time::time_start();
-
-    Core::n_time::get_time(start_time);
     Game bossfight(&input, &window);
     if(!bossfight.initialize_game())
         return 0;
-    Core::n_time::get_time(end_time);
-    double diff = Core::n_time::time_diff(start_time, end_time);
-    printf("Time diff: %lf\n\n\n", diff);
+    
+    Core::n_time::Time_Data *start_frame = nullptr, *end_frame = nullptr;
+    start_frame = Core::n_time::time_start();
+    end_frame = Core::n_time::time_start();
+    int fps = 0;
+    double timer = 0.0f, frame_time = 0.0f;
 
     while(bossfight.should_render_game()){
+        if(timer > 1.0f){
+            timer = 0.0f;
+            fps = 0;
+        }
+
+        Core::n_time::get_time(start_frame);
         input.update_input();
-        bossfight.update_game();
-        bossfight.render_game();
+        bossfight.update_game(frame_time);
+        bossfight.render_game(fps);
+        Core::n_time::get_time(end_frame);
+        frame_time = Core::n_time::time_diff(start_frame, end_frame);
+        timer += frame_time;
+        fps += 1;
     }
 
-
+    Core::n_time::time_end(start_frame);
+    Core::n_time::time_end(end_frame);
     bossfight.close_game();
     input.close_input();
     window.destroy_window();
