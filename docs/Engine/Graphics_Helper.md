@@ -1,9 +1,9 @@
 # Graphics_Helper.h
 
-Aggregate of namespaces with complementary functions and debugging tools useful for vulkan.
+Aggregate of namespaces with complementary functions and debugging tools useful for vulkan.    
 Uses the third party library [Vulkan SDK](https://vulkan.lunarg.com/sdk/home).
 
-# vk_debug
+# vk_debug namespace
 Responsible for creating, enabling and destroying the vulkan validation layers. These functions only do what is required of them if debug mode is enabled at compile time.
 
 ## Member Types
@@ -52,7 +52,7 @@ None.
 - **Description:** Destroys the debug messenger.
 
 
-# vk_helper
+# vk_helper namespace
 Library of functions used to print and modify vulkan variables.
 
 ## Member Types
@@ -120,7 +120,7 @@ None.
     - `[out]char *out_string` - Output string.
     - `[in]size_t string_size` - Size of the output string.
 - **Return:**  `void`   
-- **Description:** Transforms the vulkan version provided into a string. It follows the version number specification provided by [vulkan](https://docs.vulkan.org/spec/latest/chapters/extensions.html#extendingvulkan-coreversions-versionnumbers). 
+- **Description:** Transforms the vulkan version provided into a string. It follows the version number specification provided by [vulkan](https://docs.vulkan.org/spec/latest/chapters/extensions.html#extendingvulkan-coreversions-versionnumbers).    
 *Note:* This function assumes the output string to be of sufficient size.
 
 #### Function: `const char *device_type_to_str(VkPhysicalDeviceType type)`
