@@ -29,6 +29,7 @@ typedef enum Events{
 
 typedef enum Listeners_Id{
     Window_Id,
+    Game_Id
 }Listeners_Id;
 
 class Input{

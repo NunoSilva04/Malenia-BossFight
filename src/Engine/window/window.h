@@ -15,19 +15,16 @@
 #define __WINDOW_H__
 
 #include <SDL3/SDL.h>
-#include <SDL3/SDL_video.h>
-#include <Rect.h>
-
-class Input;
-class Graphics;
+#include "Rect.h"
+#include "core.h"
 
 class Window{
 public:
     Window();
     ~Window();
     bool create_window(const char *window_name);
-    bool should_render_window(void);
-    void temp_render_func(void);
+    Core::n_vector<const char *> get_extensions(void);
+    SDL_Window *get_window_handle(void) const;
     void destroy_window(void);
 
 private:
@@ -42,9 +39,6 @@ private:
         float refresh_rate;
     }properties_t;
     properties_t display_properties;
-
-    //Graphics
-    Graphics *gfx;
 };
 
 #endif

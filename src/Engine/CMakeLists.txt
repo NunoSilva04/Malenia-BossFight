@@ -14,5 +14,5 @@ target_include_directories(Engine PUBLIC ${HeaderFiles})
 
 target_link_libraries(Engine PUBLIC project_options)
 target_link_libraries(Engine PUBLIC SDL3::SDL3)
-target_link_libraries(Engine PRIVATE Vulkan::Vulkan)
+target_link_libraries(Engine PUBLIC Vulkan::Vulkan)
 target_link_libraries(Engine PUBLIC core)

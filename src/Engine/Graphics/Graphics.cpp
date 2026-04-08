@@ -22,7 +22,8 @@ Graphics::~Graphics(){
 
 bool Graphics::initialize_graphics(SDL_Window *window, Core::n_vector<const char *> extensions){
     Core::n_vector<const char *> layers;
-    if(vk_debug::get_validation_layers(layers)) vk_debug::add_debug_extension(extensions);
+    if(vk_debug::get_validation_layers(layers)) 
+        vk_debug::add_debug_extension(extensions);
     else{
         Core::debug::log(Core::debug::Fatal, "Couldn't get validation layers\n");
         return false;

@@ -1,8 +1,6 @@
 #include "window.h"
 #include <stdio.h>
-#include "input.h"
-#include "Graphics.h"
-#include "core.h"
+#include <SDL3/SDL_vulkan.h>
 
 Window::Window(){
     window = nullptr;
@@ -84,60 +82,37 @@ bool Window::create_window(const char *window_name){
     printf("\t\tRefresh rate numerator = %d, Refresh Rate Denominator = %d\n", display_mode->refresh_rate_numerator, display_mode->refresh_rate_denominator);
     #endif 
 
-    window = SDL_CreateWindow(window_name, display_properties.bounds.width, display_properties.bounds.heigth, SDL_WINDOW_VULKAN | SDL_WINDOW_FULLSCREEN);
+    window = SDL_CreateWindow(window_name, display_properties.bounds.width, display_properties.bounds.heigth, SDL_WINDOW_FULLSCREEN);
     if(window == NULL){
         Core::debug::log(Core::debug::Error, "Couldn't create window\n");
-        return false;
-    }
-
-    // Graphics
-    gfx = new Graphics;
-
-    uint32_t num_extensions = 0;
-    char const * const * array_extensions = SDL_Vulkan_GetInstanceExtensions(&num_extensions);
-    if(num_extensions == 0) return false;
-    #ifdef DEBUG 
-        for(uint32_t i = 0; i < num_extensions; i++){
-            Core::debug::log(Core::debug::Info, "  %s\n", array_extensions[i]);
-        }
-    #endif
-
-    Core::n_vector<const char *> extensions;
-    for(uint32_t i = 0; i < num_extensions; i++){
-        extensions.push_back(array_extensions[i]);
-    }
-    if(!gfx->initialize_graphics(window, extensions)){
-        Core::debug::log(Core::debug::Error, "Couldn't initialize graphics\n");
         return false;
     }
 
     return true;
 }
 
-bool Window::should_render_window(void){
-    static bool render = true;
-
-    Core::n_vector<Event> queue = Input::dispatch_input(Window_Id);
-    for(size_t i = 0; i < queue.vector_size(); i++){
-        Event e;
-        queue.pop_first(&e);
-        if(e == Keyboard_Escape){
-            render = false;
-        }
+Core::n_vector<const char *> Window::get_extensions(void){
+    Core::n_vector<const char *> extensions;
+    
+    uint32_t num_extensions = 0;
+    char const * const * array_extensions = SDL_Vulkan_GetInstanceExtensions(&num_extensions);
+    if(num_extensions == 0) return extensions; 
+    for(uint32_t i = 0; i < num_extensions; i++){
+        Core::debug::log(Core::debug::Info, "  %s\n", array_extensions[i]);
     }
 
-    return render;
+    for(uint32_t i = 0; i < num_extensions; i++){
+        extensions.push_back(array_extensions[i]);
+    }
+
+    return extensions;
 }
 
-void Window::temp_render_func(void){
-    gfx->temp_render_func();
-
-    return;
+SDL_Window *Window::get_window_handle(void) const{
+    return window;
 }
 
 void Window::destroy_window(void){
-    gfx->close_graphics();
-    delete gfx;
     SDL_DestroyWindow(window);
 
     return;

@@ -25,20 +25,21 @@ Enumerates all the possible listeners to dispatch message inputs.
 | Listeners_Id  | Description         |
 | ---------------|---------------|
 | Window_Id| Window System  |
+| Game_Id | Game System |
 
 ## Member Variables
 ### Instance variables
 
-| Members | Type | Description | Default Value |
-|--------|------|-------------|-------------|
-| `gamepad` | `SDL_Gamepad*` |Pointer to SDL_Gamepad| `nullptr` |
-| `has_gamepad` | `bool` |Boolean value that specifies if a gamepad is connected | `false` |
+| Members | Type | Access | Description | Default Value |
+|--------|------| --- |-------------|-------------|
+| `gamepad` | `SDL_Gamepad*` | Private |Pointer to SDL_Gamepad| `nullptr` |
+| `has_gamepad` | `bool` | Private | Boolean value that specifies if a gamepad is connected | `false` |
 
 ### Static variables
 
-| Members | Type | Description | Default Value |
-|--------|------|-------------|-------------|
-| `event_vector` | `static Core::n_vector<Event>`| Vector that holds all input events for the current frame | `empty` |
+| Members | Type | Access | Description | Default Value |
+|--------|------| ------ |-------------|-------------|
+| `event_vector` | `static Core::n_vector<Event>`| Private | Vector that holds all input events for the current frame | `empty` |
 
 ## Member Functions
 
@@ -48,25 +49,25 @@ Enumerates all the possible listeners to dispatch message inputs.
 - **Access:** `Public`  
 - **Parameters:**  `None`  
 - **Return:**  `None`   
-- **Description**: Initializes Input instance and sets `gamepad` to nullptr.
+- **Description:** Initializes Input instance and sets `gamepad` to nullptr.
 
 #### Function: `~Input()`
 - **Access:** `Public`  
 - **Parameters:**  `None`  
 - **Return:**  `None`   
-- **Description**: Destroys the Input instance.
+- **Description:** Destroys the Input instance.
 
 #### Function: `void initialize_input(void)`  
 - **Access:** `Public`
 - **Parameters:**  `void`  
 - **Return:**  `bool`   
-- **Description**: Initializes `gamepad` if there is an available gamepad. If no gamepad is available it will display a message box.  
+- **Description:** Initializes `gamepad` if there is an available gamepad. If no gamepad is available it will display a message box.  
 
 #### Function: `void update_input(void)`
 - **Access:** `Public`  
 - **Parameters:**  `void`  
 - **Return:**  `void`   
-- **Description**: Empties the `event_vector` and polls for all other possible events pushing them into `event_vector`.
+- **Description:** Empties the `event_vector` and polls for all other possible events pushing them into `event_vector`.
 
 #### Function: `void close_input(void)`
 - **Access:** `Public`  
@@ -78,7 +79,7 @@ Enumerates all the possible listeners to dispatch message inputs.
 - **Access:** `Private`
 - **Parameters:**  `void`.
 - **Return:**  `void`   
-- **Description**: Opens the first gamepad that was connected.
+- **Description:** Opens the first gamepad that was connected.
 
 ### Static Functions 
 
