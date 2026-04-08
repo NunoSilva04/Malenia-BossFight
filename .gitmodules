@@ -1,3 +1,7 @@
 [submodule "third-party-libraries/SDL"]
 	path = third-party-libraries/SDL
 	url = https://github.com/libsdl-org/SDL
+
+[submodule "third-party-libraries/glTF"]
+	path = third-party-libraries/glTF
+	url = https://github.com/jkuhlmann/cgltf
