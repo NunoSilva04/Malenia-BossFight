@@ -5,3 +5,4 @@ Math Library that handles geometry, vectors and math operations.
 ## SubFolders
 
 - [Rect](Rect.md)
+- [Vertex](Vertex.md)

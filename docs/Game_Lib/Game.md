@@ -1,5 +1,5 @@
 # Game.h
-Class responsible for all of the game logic, creation of assets and creation of graphics.
+Class responsible for all of the game logic, creation/destruction of assets and creation/destruction of graphics.
 
 ## Member Types
 None.
@@ -11,6 +11,7 @@ None.
 | `input ` | `Input *` | Private | Pointer to [Input](../Engine/input.md) class. | `None` |
 |`window` | `Window *` | Private | Pointer to [Window](../Engine/window.md.md) class. | `None` |
 |`gfx` | `Graphics` | Private |Instance of [Graphics](../Engine/Graphics.md)s class. | `None` |
+|`player` | `Player *` | Private |Instance of [Player](../Game/Player.md)s structure. | `None` |
 
 ### Static Variables
 None.
@@ -93,3 +94,4 @@ None.
 - [Graphics](../Engine/Graphics.md)
 - [input](../Engine/input.md.md)
 - [window](../Engine/window.md.md)
+- [Player](../Game/Player.md)

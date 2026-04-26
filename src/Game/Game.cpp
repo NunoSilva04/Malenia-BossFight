@@ -10,6 +10,9 @@ Game::~Game() {}
 bool Game::initialize_game(void){
     Core::n_vector<const char *> extensions = window->get_extensions();
     gfx.initialize_graphics(window->get_window_handle(), extensions);
+    
+    player = create_player();
+    destroy_player(player);
 
     return true;
 }

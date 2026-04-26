@@ -460,8 +460,8 @@ bool Graphics::create_render_pass(void){
 }
 
 bool Graphics::create_graphics_pipeline(void){
-    if(!vk_helper::create_shader_module(logical_device, &vertex_shader_module, "Shaders/VertexShader.spv")) return false;
-    if(!vk_helper::create_shader_module(logical_device, &fragment_shader_module, "Shaders/FragmentShader.spv")) return false;
+    if(!vk_helper::create_shader_module(logical_device, &vertex_shader_module, "assets/Shaders/VertexShader.spv")) return false;
+    if(!vk_helper::create_shader_module(logical_device, &fragment_shader_module, "assets/Shaders/FragmentShader.spv")) return false;
     Core::n_vector<VkPipelineShaderStageCreateInfo> shader_stage_info;
     shader_stage_info.push_back(vk_helper::create_shader_stage_info(VK_SHADER_STAGE_VERTEX_BIT, vertex_shader_module));
     shader_stage_info.push_back(vk_helper::create_shader_stage_info(VK_SHADER_STAGE_FRAGMENT_BIT, fragment_shader_module));

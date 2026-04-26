@@ -9,3 +9,5 @@ The documentation is structured in the same way as the actual source code.
 - [Engine](Engine/Engine.md)
 - [core](core/core.md)
 - [Math_Lib](Math_Lib/Math_Lib.md)
+- [Game](Game_Lib/Game_Lib.md)
+- [assets](assets/assets.md)

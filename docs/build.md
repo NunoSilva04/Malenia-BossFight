@@ -63,3 +63,4 @@ Third party libraries used in this project are already included as a submodule a
 
 Submodules dependencies: 
 - [SDL3](https://github.com/libsdl-org/SDL)
+- [glTF](https://github.com/jkuhlmann/cgltf/tree/master)

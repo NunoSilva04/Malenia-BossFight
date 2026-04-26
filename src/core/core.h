@@ -21,5 +21,6 @@
 #include "debug_helper.h"
 #include "file_system.h"
 #include "n_time.h"
+#include "n_dir.h"
 
 #endif

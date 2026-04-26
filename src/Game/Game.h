@@ -14,6 +14,7 @@
 #define __GAME_H__   
 
 #include "Graphics.h"
+#include "Player.h"
 
 class Input;
 class Window;
@@ -38,6 +39,7 @@ private:
     Input *input;
     Window *window;
     Graphics gfx;
+    Player *player;
 };
 
 #endif
