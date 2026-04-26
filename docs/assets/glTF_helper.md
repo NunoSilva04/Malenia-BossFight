@@ -15,7 +15,7 @@ None.
     - `[in]const char *file_path` - The file path.
     - `[in]const char *file_name` - The name of the file.
 - **Return:**  `bool`   
-- **Description:** Parses the data from the provided glTF file and creates a `.assets` file with the file name given by calling [create_assets_file](TODOOOOOO). Returns true in case of success, returns false otherwise.
+- **Description:** Parses the data from the provided glTF file and creates a `.assets` file with the file name given by calling [create_assets_file](File_Format.md#function-bool-create_assets_fileconst-char-gltf_file_path-const-char-gltf_file_name-cgltf_data-const-data-const-cgltf_options-options). Returns true in case of success, returns false otherwise.
 
 ## Dependencies
 None.
