@@ -1,18 +1,25 @@
 #include "file_system.h"
-#include <iostream>
-#include <fstream>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
-Core::n_vector<char> Core::File::read_binary_file(const char *file_path){
-    Core::n_vector<char> file_data;
+uint32_t *Core::File::read_spv_file(const char *file_path, uint32_t *file_size){
+    FILE *file = fopen(file_path, "rb");
+    if(file == NULL)
+        return NULL;
+
+    fseek(file, 0, SEEK_END);
+    *file_size = (uint32_t) ftell(file);
     
-    std::ifstream file(file_path, std::ios::ate | std::ios::binary);
-    if(!file.is_open()) return file_data;
+    uint32_t *file_data = (uint32_t *) malloc((*file_size) * sizeof(uint8_t));
+    memset(file_data, 0, (*file_size) * sizeof(uint8_t));
+    
+    rewind(file);
+    size_t out = fread(file_data, sizeof(uint8_t), (*file_size), file);
+    if(out != (size_t) ((*file_size) / sizeof(uint8_t)))
+        return NULL;
 
-    size_t file_size = static_cast<size_t>(file.tellg());
-    file_data.vector_resize(file_size);
-    file.seekg(0, std::ios::beg);
-    file.read(file_data.vector_data(), static_cast<long long>(file_size));
-    file.close();
+    fclose(file);
 
     return file_data;
 }

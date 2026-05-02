@@ -745,17 +745,19 @@ VkPresentModeKHR vk_helper::get_present_mode(const VkPresentModeKHR *present_mod
 }
 
 bool vk_helper::create_shader_module(const VkDevice logical_device, VkShaderModule *shader_module, const char *file_name){
-    Core::n_vector<char> file_data = Core::File::read_binary_file(file_name);
+    uint32_t file_size = 0;
+    uint32_t *file_data = Core::File::read_spv_file(file_name, &file_size);
 
     VkShaderModuleCreateInfo shader_module_create_info {};
     shader_module_create_info.sType = VK_STRUCTURE_TYPE_SHADER_MODULE_CREATE_INFO;
     shader_module_create_info.pNext = NULL;
     shader_module_create_info.flags = 0;
-    shader_module_create_info.codeSize = file_data.vector_size();
-    shader_module_create_info.pCode = (const uint32_t *)file_data.vector_data();
+    shader_module_create_info.codeSize = file_size;
+    shader_module_create_info.pCode = (const uint32_t *)file_data;
 
     if(vkCreateShaderModule(logical_device, &shader_module_create_info, NULL, shader_module) != VK_SUCCESS) return false;
 
+    free(file_data);
     return true;
 }
 

@@ -4,11 +4,13 @@ File namespace that handles how to read, write and create different types of fil
 ## Member functions
 ### Instance Functions
 
-#### Function: `Core::n_vector<char> read_binary_file(const char *file_path)`  
+#### Function: `uint32_t *read_spv_file(const char *file_path, uint32_t *file_size)`  
 - **Access:** `Public`
-- **Parameters:**  `[in]const char *file_path` - path to the file.  
-- **Return:**  `Core::n_vector<char>` - Vector of binary data.   
-- **Description**: Reads the file and returns a vector which holds the binary data of the file. Returns an empty string in case it couldn't read the file.
+- **Parameters:**  
+    - `[in]const char *file_path` - Path to the file.
+    - `[in, out]uint32_t *file_size` - The size of the file.  
+- **Return:**  `uint32_t *` - Pointer to an array with the file data.   
+- **Description**: Reads a SPIR-V file and returns a vector which holds the binary data of the file. The file data is allocated inside the function, meaning that it's the users responsability to free the memory afterwards. Returns `NULL` in case of failure.
 
 ## Dependencies
-- [n_vector](n_vector.md)
+None.

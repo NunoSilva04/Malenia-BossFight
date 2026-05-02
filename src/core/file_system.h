@@ -9,10 +9,10 @@
 *       for detailed documentation.
 * 
 *************************************************************************************/
-#include "n_vector.h"
+#include <stdint.h>
 
 namespace Core{
     namespace File{
-        Core::n_vector<char> read_binary_file(const char *file_path);
+        uint32_t *read_spv_file(const char *file_path, uint32_t *file_size);
     };
 };
