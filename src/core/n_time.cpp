@@ -8,10 +8,7 @@
         LARGE_INTEGER counter;
         LARGE_INTEGER frequency;
     }os_data;
-#elif defined(__APPLE__)
-    // TODO
-
-#elif defined(__linux__)
+#elif defined(__linux__) || defined(__APPLE__)
     #ifdef _POSIX_C_SOURCE
         #define NS_OLD_POSIX_C_SOURCE _POSIX_C_SOURCE
         #undef _POSIX_C_SOURCE
@@ -40,9 +37,7 @@ Core::n_time::Time_Data *Core::n_time::time_start(void){
 
 #if defined(_WIN32)
     QueryPerformanceFrequency(&time_data->data.frequency);
-#elif defined(__APPLE__)
-    // TODO
-#elif defined(__linux__)
+#elif defined(__linux__) || defined(__APPLE__)
     time_data->data.time.tv_sec = 0;
     time_data->data.time.tv_nsec = 0;   
 #endif    
@@ -53,9 +48,7 @@ Core::n_time::Time_Data *Core::n_time::time_start(void){
 void Core::n_time::get_time(Time_Data *time_data){
 #if defined(_WIN32)
     QueryPerformanceCounter(&time_data->data.counter);
-#elif defined(__APPLE__)
-    // TODO
-#elif defined(__linux__)
+#elif defined(__linux__) || defined(__APPLE__)
     clock_gettime(CLOCK_MONOTONIC, &time_data->data.time);
 #endif
 
@@ -66,9 +59,7 @@ double Core::n_time::time_diff(Time_Data *start_time, Time_Data *end_time){
     double result;
 #if defined(_WIN32)
     result = static_cast<double>(end_time->data.counter.QuadPart - start_time->data.counter.QuadPart) / static_cast<double>(start_time->data.frequency.QuadPart);
-#elif defined(__APPLE__)
-    //TODO
-#elif defined(__linux__)
+#elif defined(__linux__) || defined(__APPLE__)
     result = static_cast<double>(end_time->data.time.tv_sec - start_time->data.time.tv_sec) +
          static_cast<double>((end_time->data.time.tv_nsec - start_time->data.time.tv_nsec)) / 1e9;
 #endif

@@ -23,6 +23,16 @@ add_subdirectory(src/Game)
 set(SourceFiles src/main.cpp) 
 add_executable(${PROJECT_NAME} ${SourceFiles})
 
+# Export dynamic libs correctly
+if(UNIX)
+    set_target_properties(${PROJECT_NAME} PROPERTIES
+    BUILD_RPATH "$ORIGIN"
+    INSTALL_RPATH "$ORIGIN")               
+elseif(APPLE)
+    set_target_properties(${PROJECT_NAME} PROPERTIES
+    INSTALL_RPATH "@executable_path")
+endif()
+
 #Link libraries
 target_link_libraries(${PROJECT_NAME} PUBLIC project_options) 
 target_link_libraries(${PROJECT_NAME} PUBLIC Engine)
