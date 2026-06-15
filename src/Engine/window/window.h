@@ -17,13 +17,14 @@
 #include <SDL3/SDL.h>
 #include "Rect.h"
 #include "core.h"
+#include "str_array.h"
 
 class Window{
 public:
     Window();
     ~Window();
     bool create_window(const char *window_name);
-    Core::n_vector<const char *> get_extensions(void);
+    str_array *get_extensions(void) const;
     SDL_Window *get_window_handle(void) const;
     void destroy_window(void);
 
@@ -39,6 +40,7 @@ private:
         float refresh_rate;
     }properties_t;
     properties_t display_properties;
+    str_array *extension_data;
 };
 
 #endif

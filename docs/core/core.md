@@ -8,3 +8,4 @@ Aggregate header called `core.h` that include core libraries.
 - [debug_helper.h](debug_helper.md)
 - [file_system](file_system.md)
 - [n_time](n_time.md)
+- [str_array](str_array.md)

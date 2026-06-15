@@ -88,24 +88,23 @@ bool Window::create_window(const char *window_name){
         return false;
     }
 
+    uint32_t num_extensions = 0;
+    char const * const * array_extensions = SDL_Vulkan_GetInstanceExtensions(&num_extensions);
+    if(num_extensions == 0){
+        Core::debug::log(Core::debug::Fatal, "Couldn't get Vulkan instance extension\n");
+        return false;
+    }
+
+    extension_data = allocate_str_array(num_extensions);
+    for(uint32_t i = 0; i < num_extensions; i++){
+        str_array_push_back(extension_data, array_extensions[i]);
+    }
+
     return true;
 }
 
-Core::n_vector<const char *> Window::get_extensions(void){
-    Core::n_vector<const char *> extensions;
-    
-    uint32_t num_extensions = 0;
-    char const * const * array_extensions = SDL_Vulkan_GetInstanceExtensions(&num_extensions);
-    if(num_extensions == 0) return extensions; 
-    for(uint32_t i = 0; i < num_extensions; i++){
-        Core::debug::log(Core::debug::Info, "  %s\n", array_extensions[i]);
-    }
-
-    for(uint32_t i = 0; i < num_extensions; i++){
-        extensions.push_back(array_extensions[i]);
-    }
-
-    return extensions;
+str_array *Window::get_extensions(void) const{
+    return extension_data;
 }
 
 SDL_Window *Window::get_window_handle(void) const{
@@ -114,6 +113,7 @@ SDL_Window *Window::get_window_handle(void) const{
 
 void Window::destroy_window(void){
     SDL_DestroyWindow(window);
+    free_str_array(extension_data);
 
     return;
 }

@@ -10,7 +10,7 @@ None.
 |--------|------|------|-------------|-------------|
 | `input ` | `Input *` | Private | Pointer to [Input](../Engine/input.md) class. | `None` |
 |`window` | `Window *` | Private | Pointer to [Window](../Engine/window.md.md) class. | `None` |
-|`gfx` | `Graphics` | Private |Instance of [Graphics](../Engine/Graphics.md)s class. | `None` |
+|`gfx` | `Graphics_t` | Private |Pointer to the [Graphics](../Engine/Graphics.md) struct. | `None` |
 
 ### Static Variables
 None.
@@ -70,13 +70,13 @@ None.
 
 #### Function: `void update_game(double frame_time)` 
 - **Access:** `Public` 
-- **Parameters:**  `double frame_time` - The time of the frame in seconds.  
+- **Parameters:**  `[in]double frame_time` - The time of the frame in seconds.  
 - **Return:**  `void`   
 - **Description**: Updates the game.
 
 #### Function: `void render_game(int fps)` 
 - **Access:** `Public` 
-- **Parameters:**  `int fps` - Number of frames per second.  
+- **Parameters:**  `[in]int fps` - Number of frames per second.  
 - **Return:**  `void`   
 - **Description**: Renders the game along with all of it's assets.
 

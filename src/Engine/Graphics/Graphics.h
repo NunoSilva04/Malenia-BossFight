@@ -13,131 +13,39 @@
 #ifndef __GRAPHICS_H__
 #define __GRAPHICS_H__
 
-#include <SDL3/SDL_vulkan.h>
-#include <vulkan/vulkan.h>
-#include <core.h>
+#include <SDL3/SDL.h>
+#include "str_array.h"
 
-class Graphics{
-public:
-    Graphics();
-    ~Graphics();
-    bool initialize_graphics(SDL_Window *window, Core::n_vector<const char *> extensions);
-    void temp_render_func(void);
-    void close_graphics(void);
-
-private:
-    typedef struct Physical_Device_Information_t{
-        VkPhysicalDevice device;
-        uint32_t queue_index;
-        uint32_t queue_count;
-        uint32_t queue_count_used;
-        Core::n_vector<const char *> extensions_names;
-        uint32_t extension_count;
-        VkPhysicalDeviceFeatures features;
-    }Physical_Device_Info;
-
-    typedef struct Swapchain_Info_t{
-        // Device Surface Capabilities
-        uint32_t min_image_count;
-        uint32_t max_image_count;
-        VkExtent2D curr_image_extent;
-        uint32_t max_image_array_layers;
-        uint32_t defined_image_array_layers;
-        VkImageUsageFlags image_usage_flags;
-        VkSurfaceTransformFlagBitsKHR surface_transform;
-        VkCompositeAlphaFlagBitsKHR alpha_flags;
-        // Device Surface Formats
-        VkFormat format;
-        VkColorSpaceKHR color_space;
-        // Device Surface Present
-        VkPresentModeKHR present_mode;
-        // Additional Information
-        uint32_t queue_family_count_used;
-        uint32_t queue_family_index;
-        VkBool32 is_clipped;      
-    }Swapchain_Info;
-
-private:
-    //Instance
-    bool initialize_instance(Core::n_vector<const char *> extensions, Core::n_vector<const char *> layers);
+typedef enum Graphics_Errors{
+    GRAPHICS_ERROR_NONE = 0,
     
-    //Surface
-    bool initialize_surface(SDL_Window *window);
-    
-    //Device
-    bool get_best_device(void);
-    bool choose_queue_family(void);
-    bool get_device_extensions(void);
-    bool is_device_supported(void);
-    bool add_device_features(uint32_t num_features, ...);
-    bool initialize_device_get_queue_handle(void);
-    
-    //Swapchain and Image Views
-    bool get_swapchain_info(void);
-    bool create_swapchain(void);
-    bool create_images_and_image_views(void);
+    GRAPHICS_ERROR_ENABLE_DEBUG_MODE = 1,
+    GRAPHICS_ERROR_INITIALIZE_DEBUG_MESSENGER = 2,
 
-    // Graphics Pipeline
-    bool create_pipeline_layout(void);
-    bool create_render_pass(void);
-    bool create_graphics_pipeline(void);
+    GRAPHICS_ERROR_INITIALIZE_INSTANCE = 10,
 
-    // Frame Buffers
-    bool create_frame_buffers(void);
+    GRAPHICS_ERROR_INITIALIZE_SDL_SURFACE = 20,
 
-    // Command Pool and Buffers
-    bool create_command_pool_and_buffer(void);
-    void record_command_buffer(VkCommandBuffer command_buffer, uint32_t image_index);
+    GRAPHICS_ERROR_INITIALIZE_DEVICE_QUEUE_HANDLE = 30,
 
-    // Sync Objects
-    bool create_sync_objects(void);
+    GRAPHICS_ERROR_INITIALIZE_SWAPCHAIN = 40,
 
-    // Close Graphics 
-    void destroy_sync_objects(void);
-    void destroy_command_pool(void);
-    void destroy_frame_buffers(void);
-    void destroy_graphics_pipeline_and_layout(void);
-    void destroy_images_and_image_views(void);
-    void destroy_swapchain(void);
-    void destroy_device(void);
-    void destroy_surface(void);
+    GRAPHICS_ERROR_INITIALIZE_IMAGE_IMAGE_VIEWS = 50,
 
-private:
-    // Instance
-    VkInstance vk_instance;
-    
-    // Surface
-    VkSurfaceKHR vk_surface;
-    
-    // Logical Device
-    Physical_Device_Info physical_device_info;
-    VkDevice logical_device;
-    VkQueue logical_device_queue;
-    
-    // Swapchain and Image Views
-    Swapchain_Info swapchain_info;
-    VkSwapchainKHR swapchain;
-    Core::n_vector<VkImage> images;
-    Core::n_vector<VkImageView> image_views;
+    GRAPHICS_ERROR_INITIALIZE_GRAPHICS_PIPELINE = 60,
 
-    // Pipeline Creation
-    VkShaderModule vertex_shader_module;
-    VkShaderModule fragment_shader_module;
-    VkPipelineLayout pipeline_layout;
-    VkRenderPass render_pass;
-    VkPipeline graphics_pipeline;
+    GRAPHICS_ERROR_INITIALIZE_FRAME_BUFFERS = 70,
 
-    // Frame Buffers
-    Core::n_vector<VkFramebuffer> frame_buffers;
+    GRAPHICS_ERROR_INITIALIZE_SYNC_OBJECTS = 80,
 
-    // Command Pool and Buffers
-    VkCommandPool command_pool;
-    VkCommandBuffer command_buffer;
+    GRAPHICS_ERROR_INITIALIZE_COMMAND_POOL_BUFFER = 90,
+}Graphics_Errors;
 
-    // Sync Objects
-    VkSemaphore image_available_semaphore;
-    VkSemaphore render_finished_semaphore;
-    VkFence init_flight_fence;
-};
+typedef struct Graphics_t Graphics;
+
+const char *graphics_error_str(const Graphics_Errors error);
+Graphics *initialize_graphics(SDL_Window *const window, str_array *extensions, Graphics_Errors *error);
+void temp_render_function(Graphics *gfx);
+void close_graphics(Graphics *gfx);
 
 #endif

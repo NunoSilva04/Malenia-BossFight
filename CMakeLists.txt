@@ -24,13 +24,20 @@ set(SourceFiles src/main.cpp)
 add_executable(${PROJECT_NAME} ${SourceFiles})
 
 # Export dynamic libs correctly
-if(UNIX)
-    set_target_properties(${PROJECT_NAME} PROPERTIES
-    BUILD_RPATH "$ORIGIN"
-    INSTALL_RPATH "$ORIGIN")               
-elseif(APPLE)
-    set_target_properties(${PROJECT_NAME} PROPERTIES
-    INSTALL_RPATH "@executable_path")
+if(CMAKE_BUILD_TYPE STREQUAL "Release")
+    if(UNIX AND NOT APPLE)
+        set_target_properties(
+            ${PROJECT_NAME} PROPERTIES
+            BUILD_RPATH "$ORIGIN"
+            INSTALL_RPATH "$ORIGIN"
+        )               
+    elseif(APPLE)
+        set_target_properties(
+            ${PROJECT_NAME} PROPERTIES
+            BUILD_RPATH "@executable_path"
+            INSTALL_RPATH "@executable_path"
+        )
+    endif()
 endif()
 
 #Link libraries
@@ -38,6 +45,27 @@ target_link_libraries(${PROJECT_NAME} PUBLIC project_options)
 target_link_libraries(${PROJECT_NAME} PUBLIC Engine)
 target_link_libraries(${PROJECT_NAME} PUBLIC Game)
 
+# VULKAN_SDK and glslc  
+if(NOT DEFINED ENV{VULKAN_SDK})
+    message(FATAL_ERROR "VULKAN_SDK is not set. Please make sure to run setup-env.sh in your Vulkan Directory.\n"
+                        "Please note that this command only sets up the environment variables for your current shell session.")
+endif()
+
+if(NOT GLSLC_EXE)
+    find_program(
+        GLSLC_EXE
+        NAMES glslc
+        HINTS
+        "$ENV{VULKAN_SDK}/Bin"
+        "$ENV{VULKAN_SDK}/bin"
+    )   
+endif()
+
+if(GLSLC_EXE)
+    message(STATUS "Found glslc Shader Compiler under ${GLSLC_EXE}")
+else()
+    message(FATAL_ERROR "Couldn't find glslc Shader Compiler.")
+endif()
 
 #Shaders
 file(MAKE_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/Shaders)
@@ -54,17 +82,9 @@ foreach(SHADER IN LISTS Shader_Source_Dir)
     get_filename_component(SHADER_NAME "${SHADER}" NAME_WE)
     set(Out_File "${Shader_Output_Dir}/${SHADER_NAME}.spv")
     
-    if(WIN32)
-        set(GLSLC "$ENV{VULKAN_SDK}/Bin/glslc.exe")
-    elseif(UNIX)
-        set(GLSLC "$ENV{VULKAN_SDK}/bin/glslc")
-    elseif(APPLE)
-        # MISSING THIS PART
-    endif()
-    
     add_custom_command(
         OUTPUT "${Out_File}"
-        COMMAND ${GLSLC} "${SHADER}" -o "${Out_File}"
+        COMMAND ${GLSLC_EXE} "${SHADER}" -o "${Out_File}"
         DEPENDS "${SHADER}"
     )
     list(APPEND Shader_Output_List "${Out_File}")

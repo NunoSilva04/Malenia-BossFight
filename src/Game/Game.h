@@ -13,10 +13,9 @@
 #ifndef __GAME_H__
 #define __GAME_H__   
 
-#include "Graphics.h"
-
 class Input;
 class Window;
+struct Graphics_t;
 
 class Game{
 public:
@@ -37,7 +36,7 @@ public:
 private:
     Input *input;
     Window *window;
-    Graphics gfx;
+    Graphics_t *gfx;
 };
 
 #endif

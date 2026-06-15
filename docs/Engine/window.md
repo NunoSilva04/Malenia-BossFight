@@ -27,7 +27,7 @@ Structure containing the display information.
 |--------|------|---------|-------------|-------------|
 | `window` | `SDL_Window*` | Private |Pointer to SDL_Window| `nullptr` |
 | `display_properties` | `propeties_t` | Private |Containts essential display properties| `Zero` |
-| `gfx` | `Graphics*` | Private |Pointer to the [Graphics](Graphics.md) instance. | `nullptr` |
+| `extensions_data` | `str_array` | Pointer to `str_array` that contains the extensions strings| Private | `NULL`| 
 
 ### Static variables
 None.
@@ -54,11 +54,11 @@ None.
 - **Return:**  `bool`   
 - **Description:** Gets the main display information for `display_properties` and creates window. Also initializes the [graphics](Graphics.md)
 
-#### Function: `Core::n_vector<const char *> get_extensions(void)`
+#### Function: `str_array *get_extensions(void) const`
 - **Access:** `Public`
 - **Parameters:** `void`
-- **Return:**  `Core::n_vector<const char *>`   
-- **Description:** Gets the appropriate Vulkan extensions and returns a vector of strings.  
+- **Return:**  `str_array *`   
+- **Description:** Returns a structure of strings that holds the Vulkan extensions.  
 
 #### Function: `SDL_Window *get_window_handle(void) const`
 - **Access:** `Public`
@@ -80,3 +80,4 @@ None.
 - [SDL3](https://github.com/libsdl-org/SDL)
 - [debug_helper](../core/debug_helper.md)
 - [rect](../Math_Lib/Rect.md)
+- [str_array](../core/str_array.md)

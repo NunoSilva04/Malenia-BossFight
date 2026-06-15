@@ -1,6 +1,7 @@
 #include "Game.h"
 #include "window.h"
 #include "input.h"
+#include "Graphics.h"
 
 Game::Game(Input *input_class, Window *window_class) noexcept
     : input(input_class), window(window_class) {}
@@ -8,8 +9,12 @@ Game::Game(Input *input_class, Window *window_class) noexcept
 Game::~Game() {}
 
 bool Game::initialize_game(void){
-    Core::n_vector<const char *> extensions = window->get_extensions();
-    gfx.initialize_graphics(window->get_window_handle(), extensions);
+    Graphics_Errors gfx_error;
+    gfx = initialize_graphics(window->get_window_handle(), window->get_extensions(), &gfx_error);
+    if(gfx == NULL){
+        Core::debug::log(Core::debug::Fatal, "Couldn't initialize graphics\nExited with error number: %d (%s)\n", gfx_error, graphics_error_str(gfx_error));
+        return false;
+    }
 
     return true;
 }
@@ -35,13 +40,13 @@ void Game::update_game(double frame_time){
 }
 
 void Game::render_game(int fps){
-    gfx.temp_render_func();
+    temp_render_function(gfx);
 
     return;
 }
 
 void Game::close_game(void){
-    gfx.close_graphics();
+    close_graphics(gfx);
 
     return;
 }
