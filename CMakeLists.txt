@@ -11,6 +11,7 @@ if(CMAKE_BUILD_TYPE STREQUAL "Debug")
 else()
     message("Debug Disabled")
     target_compile_options(project_options INTERFACE -O3 -finline-functions)
+    target_link_options(project_options INTERFACE -static -static-libgcc)
 endif()
 
 #Subdirectories
